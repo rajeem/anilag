@@ -1,0 +1,65 @@
+/* 
+   Styles for scrolling layers  
+	 Specify width and height in hold and wn, and in clip for wn 
+*/
+div#hold	{ 
+	position:relative; overflow:hidden; height:150px; 
+  z-index:100; 
+	}
+div#wn	{ 
+	position:absolute; 
+	left:0px; top:0px; 
+	width:280px; height:200px; 
+	clip:rect(0px, 280px, 200px, 0px); 
+	overflow:hidden;	
+	z-index:1; 
+	}
+div.content { 
+	position:absolute; visibility:hidden;
+	left:-3px; top:-38px; 
+	z-index:1; 
+	}
+
+/* Set small font-size or size/position of div's will be off in some browsers  */
+div#scrollbar { 
+  position:relative; left:0; top:0;
+  width:11px; height:160px; 
+  font-size:1px; z-index:1;
+  }
+div#track { 
+  position:absolute; left:0; top:12px;
+  width:11px; height:136px;
+  background: url("images/track.gif") #336 repeat;
+  z-index:1;
+  }
+div#dragBar {
+  position:absolute; left:1px; top:1px;
+  width:9px; height:20px;
+  background-color:#ceced6;
+  z-index:1;
+  }  
+div#up { position:absolute; left:0; top:0; z-index:2 }  
+div#down { position:absolute; left:0; bottom:0; z-index:3 }  
+
+/* Styles for demo, not necessary for scrolling layers */  
+body  { overflow:hidden; text-align:center }
+body, td  { font: 12px verdana, arial, helvetica, sans-serif; }  
+th	{ font-size:1.4em; text-align:left }	
+a:link, a:visited { color:#339 }	
+a img { border:none }
+p { margin: 0 0 .6em 0 }
+h2 { font-size:1.2em; margin:0 0 .6em 0 }
+h3 { font-size:1.1em; margin:0 0 .6em 0 }
+div.content { text-align:left }
+table.main { 
+  background-color:#eee;
+  width:440px; 
+  margin:auto; text-align:left;
+  border:1px solid #999; 
+  }
+table.main td.text, table.main td.navs { vertical-align:top; text-align:left }
+td#scrollLinks  { width:12px }
+td.navs ul { margin:0; padding:0; list-style:none }
+td.navs ul li { margin:0 0 .6em .4em }
+td.navs ul li a { text-decoration:none }
+td.navs ul li a:hover { text-decoration:underline }
