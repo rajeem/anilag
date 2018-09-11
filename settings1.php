@@ -1,109 +1,105 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION["username"])){
-header("location:admin_login.php");
-exit;
+if (!isset($_SESSION["username"])) {
+    header("location:admin_login.php");
+    exit;
 }
-include("include/connect.php");
+include "include/connect.php";
 
-if($_POST['op']==1){
-	$save_css		=$_POST['template'];
-	$hour_allow		=$_POST['hour_allow'];
-	$auto			=$_POST['auto'];
-	$auto_deadline	=$_POST['auto1'];
-	//$footer			=$_POST['footer'];
-	$header			=$_POST['header'];
-	$overdue_price	=$_POST['overdue_price'];
-	$book_limit		=$_POST['book_limit'];
-	$rec_per_page	=$_POST['rec_per_page'];
+if ($_POST['op'] == 1) {
+    $save_css = $_POST['template'];
+    $hour_allow = $_POST['hour_allow'];
+    $auto = $_POST['auto'];
+    $auto_deadline = $_POST['auto1'];
+    //$footer            =$_POST['footer'];
+    $header = $_POST['header'];
+    $overdue_price = $_POST['overdue_price'];
+    $book_limit = $_POST['book_limit'];
+    $rec_per_page = $_POST['rec_per_page'];
 
-	$sql="UPDATE settings set css='$save_css',hour_allow='$hour_allow',auto_id='$auto',header_title='$header',auto_deadline='$auto_deadline',
+    $sql = "UPDATE settings set css='$save_css',hour_allow='$hour_allow',auto_id='$auto',header_title='$header',auto_deadline='$auto_deadline',
 			overdue_price='$overdue_price',book_limit='$book_limit',search_output=1,rec_per_page='$rec_per_page'";
-	mysql_query($sql,$connect) or die("cant execute query!z");
-	$alert='<strong><font color=red>The settings changed!</font></strong>';
-	
-	
-	//script for file upload logo
-	include("class.php");
-	$send_now = new multiple_upload;				//create instance
-	
-	//set some values         This is the whole path to! the upload dir
-	$send_now->uploaddir 	= "images/";	//set server upload dir
-	$send_now->max_files 	= 10;            		//set max files to upload
-	$send_now->max_size 	= 25000000;        		//set max file-size
-	$send_now->permission 	= 0777;			 		//set wanted permission
-	$send_now->notallowed 	= array("exe"."mp3");	//exclude some file-types
-	$send_now->show			= TRUE;					//show errors
-	$send_now->files 		= &$_FILES;				//get $_FILES global values
-	$send_now->cid			= $cid;					//set the category id
-	$send_now->domid		= $domid;				//set the domain id
-	$send_now->sequel		= $sequel;
-	$send_now->bilang		= $bilang;
-	
-	//validate on size and allowed files
-	$ok = $send_now->validate();
-	if ($ok) {
-	
-	$ok = $send_now->execute();
-	
-	}
-	
-	if (!$ok && $send_now->show) {
-	//echo perhaps some errors
-	$i_errors = count($send_now->errors);
-	echo "Error report, sending files to server <br />";
-	for ($i=0; $i<$i_errors;$i++) {
-		echo $send_now->errors[0][$i] . " <br />";
-		echo $send_now->errors[1][$i] . " <br />";
-	}
-	} else {
-	
-	
-	}
+    mysql_query($sql, $connect) or die("cant execute query!z");
+    $alert = '<strong><font color=red>The settings changed!</font></strong>';
+
+    //script for file upload logo
+    include "class.php";
+    $send_now = new multiple_upload; //create instance
+
+    //set some values         This is the whole path to! the upload dir
+    $send_now->uploaddir = "images/"; //set server upload dir
+    $send_now->max_files = 10; //set max files to upload
+    $send_now->max_size = 25000000; //set max file-size
+    $send_now->permission = 0777; //set wanted permission
+    $send_now->notallowed = array("exe" . "mp3"); //exclude some file-types
+    $send_now->show = true; //show errors
+    $send_now->files = &$_FILES; //get $_FILES global values
+    $send_now->cid = $cid; //set the category id
+    $send_now->domid = $domid; //set the domain id
+    $send_now->sequel = $sequel;
+    $send_now->bilang = $bilang;
+
+    //validate on size and allowed files
+    $ok = $send_now->validate();
+    if ($ok) {
+
+        $ok = $send_now->execute();
+
+    }
+
+    if (!$ok && $send_now->show) {
+        //echo perhaps some errors
+        $i_errors = count($send_now->errors);
+        echo "Error report, sending files to server <br />";
+        for ($i = 0; $i < $i_errors; $i++) {
+            echo $send_now->errors[0][$i] . " <br />";
+            echo $send_now->errors[1][$i] . " <br />";
+        }
+    } else {
+
+    }
 
 }
 //echo $_POST['op'];
-include("include/gensettings.php");
+include "include/gensettings.php";
 
-//css	
-if($css=="style.css"){
-	$selected1='selected="selected"';
+//css
+if ($css == "style.css") {
+    $selected1 = 'selected="selected"';
 }
 
-if($css=="style1.css"){
-	$selected2='selected="selected"';
+if ($css == "style1.css") {
+    $selected2 = 'selected="selected"';
 }
-if($css=="style2.css"){
-	$selected5='selected="selected"';
+if ($css == "style2.css") {
+    $selected5 = 'selected="selected"';
 }
-
 
 //auto id
-if($auto_id==1){
-	$selected3='checked="checked"';
+if ($auto_id == 1) {
+    $selected3 = 'checked="checked"';
 }
 
-if($auto_id==0){
-	$selected4='checked="checked"';
+if ($auto_id == 0) {
+    $selected4 = 'checked="checked"';
 }
 
 //auto deadline
-if($auto_deadline==1){
-	$selected6='checked="checked"';
+if ($auto_deadline == 1) {
+    $selected6 = 'checked="checked"';
 }
 
-if($auto_deadline==0){
-	$selected7='checked="checked"';
+if ($auto_deadline == 0) {
+    $selected7 = 'checked="checked"';
 }
-
 
 //search output style
-if($search_output==1){
-	$selected8='selected="selected"';
+if ($search_output == 1) {
+    $selected8 = 'selected="selected"';
 }
 
-if($search_output==2){
-	$selected9='selected="selected"';
+if ($search_output == 2) {
+    $selected9 = 'selected="selected"';
 }
 //echo $auto_deadline;
 ?>
@@ -111,13 +107,13 @@ if($search_output==2){
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title><?php echo $system_title."--".$footer;?></title>
-<link rel="stylesheet" type="text/css" href="css/<?php echo $css;?>" />
+<title><?php echo $system_title . "--" . $footer; ?></title>
+<link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
 </head>
 <body OnLoad="document.myform.search.focus();">
 <div class="header">
-  <div class="logo"><?php echo "&nbsp;&nbsp;&nbsp;".$header_title;?> </div>
-  <div id="Layer1"><img src="images/<?php echo $logo;?>" width="117" height="110" />
+  <div class="logo"><?php echo "&nbsp;&nbsp;&nbsp;" . $header_title; ?> </div>
+  <div id="Layer1"><img src="images/<?php echo $logo; ?>" width="117" height="110" />
     <div id="Layer2"></div>
   </div>
 </div>
@@ -148,12 +144,12 @@ if($search_output==2){
       <tr>
         <td width="21%" align="right">Name/Header:</td>
         <td width="4%">&nbsp;</td>
-        <td colspan="2"><input name="header" type="text" id="header" value="<?php echo $header_title;?>" size="40" class="dilaw"/></td>
+        <td colspan="2"><input name="header" type="text" id="header" value="<?php echo $header_title; ?>" size="40" class="dilaw"/></td>
         </tr>
       <tr>
         <td align="right">Logo:</td>
         <td>&nbsp;</td>
-        <td width="36%" valign="middle"><img name="" src="images/<?php echo $logo;?>" width="40" height="40" alt="" />
+        <td width="36%" valign="middle"><img name="" src="images/<?php echo $logo; ?>" width="40" height="40" alt="" />
           <input type="file" name="file[]" id="file[]" class="dilaw"/></td>
         <td width="39%">&nbsp;</td>
       </tr>
@@ -170,13 +166,13 @@ if($search_output==2){
     <!-- <tr>
         <td align="right">Footer:</td>
         <td>&nbsp;</td>
-        <td><input name="footer" type="text" id="footer" value="<?php echo $footer;?>" size="40" class="dilaw"/></td>
+        <td><input name="footer" type="text" id="footer" value="<?php echo $footer; ?>" size="40" class="dilaw"/></td>
         <td>&nbsp;</td>
       </tr>-->
       <tr>
         <td align="right">Hours allowed for borrowed books:</td>
         <td>&nbsp;</td>
-        <td><input name="hour_allow" type="text" id="hour_allow" value="<?php echo $hour_allow;?>" size="5" class="dilaw"/></td>
+        <td><input name="hour_allow" type="text" id="hour_allow" value="<?php echo $hour_allow; ?>" size="5" class="dilaw"/></td>
         <td>&nbsp;</td>
       </tr>
       <tr>
@@ -206,20 +202,20 @@ if($search_output==2){
         <td align="right">Fines per hour: </td>
         <td>&nbsp;</td>
         <td><label>
-          <input name="overdue_price" type="text" class="dilaw" id="overdue_price" value="<?php echo $overdue_price;?>" size="5"/>
+          <input name="overdue_price" type="text" class="dilaw" id="overdue_price" value="<?php echo $overdue_price; ?>" size="5"/>
         </label></td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td align="right">Book limit per borrower: </td>
         <td>&nbsp;</td>
-        <td><input name="book_limit" type="text" class="dilaw" id="book_limit" value="<?php echo $book_limit;?>" size="5"/></td>
+        <td><input name="book_limit" type="text" class="dilaw" id="book_limit" value="<?php echo $book_limit; ?>" size="5"/></td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td align="right">Record per page:</td>
         <td>&nbsp;</td>
-        <td><input name="rec_per_page" type="text" class="dilaw" id="rec_per_page" value="<?php echo $rec_per_page;?>" size="5"/></td>
+        <td><input name="rec_per_page" type="text" class="dilaw" id="rec_per_page" value="<?php echo $rec_per_page; ?>" size="5"/></td>
         <td>&nbsp;</td>
       </tr>
       <tr>
@@ -247,7 +243,7 @@ if($search_output==2){
 </tr>
 </table></div>
 <div class="footer">
-<?php echo $system_title;?><br /><?php echo $footer;?>
+<?php echo $system_title; ?><br /><?php echo $footer; ?>
 </div>
 </body>
 </html>

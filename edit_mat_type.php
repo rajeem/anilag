@@ -1,38 +1,37 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION["username"])){
-header("location:admin_login.php");
-exit;
+if (!isset($_SESSION["username"])) {
+    header("location:admin_login.php");
+    exit;
 }
-$id=$_GET['id'];
-$op=0;
-include("include/connect.php");
-include("include/gensettings.php");
+$id = $_GET['id'];
+$op = 0;
+include "include/connect.php";
+include "include/gensettings.php";
 
-
-$sql="SELECT * from material_type where id = $id"; 
-$result = mysql_query($sql); 
-while($row=mysql_fetch_array($result)){
-$mat_type = $row['mat_type'];
-$desc = $row['description'];
+$sql = "SELECT * from material_type where id = $id";
+$result = mysql_query($sql);
+while ($row = mysql_fetch_array($result)) {
+    $mat_type = $row['mat_type'];
+    $desc = $row['description'];
 }
 
-if($_POST['update']){
-$id = $_POST['id'];
-$mat_type =$_POST['type'];
-    $desc =$_POST['desc'];
-    
-$sql="UPDATE material_type set mat_type='$mat_type',description='$desc' WHERE id='$id'";
-	$result=mysql_query($sql,$connect) or die("cant execute query!!!");
+if ($_POST['update']) {
+    $id = $_POST['id'];
+    $mat_type = $_POST['type'];
+    $desc = $_POST['desc'];
 
-$sql="SELECT * from material_type where id = $id"; 
-$result = mysql_query($sql); 
-$row=mysql_fetch_array($result);
-$mat_type = $row['mat_type'];
-$desc = $row['description'];
+    $sql = "UPDATE material_type set mat_type='$mat_type',description='$desc' WHERE id='$id'";
+    $result = mysql_query($sql, $connect) or die("cant execute query!!!");
 
-	$op = 1;
-	}
+    $sql = "SELECT * from material_type where id = $id";
+    $result = mysql_query($sql);
+    $row = mysql_fetch_array($result);
+    $mat_type = $row['mat_type'];
+    $desc = $row['description'];
+
+    $op = 1;
+}
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -73,9 +72,9 @@ return false;}
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 
-<title><?php echo $system_title."--".$footer;?></title>
+<title><?php echo $system_title . "--" . $footer; ?></title>
 
-<link rel="stylesheet" href="css/<?php echo $css;?>" type="text/css" />
+<link rel="stylesheet" href="css/<?php echo $css; ?>" type="text/css" />
 
 <style type="text/css">
 <!--
@@ -88,9 +87,9 @@ return false;}
 <body>
 
 <div class="header">
-  <div class="logo"><?php echo "&nbsp;&nbsp;&nbsp;".$header_title;?> </div>
+  <div class="logo"><?php echo "&nbsp;&nbsp;&nbsp;" . $header_title; ?> </div>
   <div id="Layer1">
-    <img src="images/<?php echo $logo;?>" width="117" height="110" />
+    <img src="images/<?php echo $logo; ?>" width="117" height="110" />
     <div id="Layer2"></div>
   </div></div>
 <div class="navbg">
@@ -112,33 +111,33 @@ return false;}
 <div id="new_item202">
  <fieldset>
  <legend class="style1">Edit Material Type </legend>
- 
- <?php if($op!=1){?>
+
+ <?php if ($op != 1) {?>
 	  <form action="edit_mat_type.php" method="post" id="myform" name="myform">
 	 <table width="70%" border="0" cellpadding="5" cellspacing="5">
-             
+
 			  <tr>
-			  
+
                 <td width="25%" align="right"><strong>Material Type:  </strong></td>
-               
-                <td colspan="3"><input name="id" type="hidden" id="id" value="<?php echo $id;?>" /><input name="type" type="text" id="type"   size="40" value="<?php echo $mat_type;?>"/></td>
+
+                <td colspan="3"><input name="id" type="hidden" id="id" value="<?php echo $id; ?>" /><input name="type" type="text" id="type"   size="40" value="<?php echo $mat_type; ?>"/></td>
               </tr>
               <tr>
                 <td align="right"><strong>Description: </strong></td>
-                <td  colspan="3"><input name="desc" type="text" id="desc"   size="40" value="<?php echo $desc;?>"/></td>
-              
+                <td  colspan="3"><input name="desc" type="text" id="desc"   size="40" value="<?php echo $desc; ?>"/></td>
+
               </tr>
 				<tr>
                 <td align="right"><input name="Submit" type="submit" onClick="document.myform.action ='material_type.php';" value="Cancel" class="btn"/></td>
-                
+
                 <td colspan="3"><input type="submit" name="update" id="update" value="Update"class="btn" onClick=" return FormValidate()"/></td>
-                
+
               </tr>
 	    </table></form><?php }?>
 
 
 
- <?php if ($op == 1){?>
+ <?php if ($op == 1) {?>
 	  <form action="edit_mat_type.php" method="post" id="myform" name="myform">
 		<table width="100%" border="0" cellpadding="5" cellspacing="5">
               <tr>
@@ -146,19 +145,19 @@ return false;}
 
         </tr>
 			  <tr>
-			  
+
                 <td width="25%" align="right"><strong>Material Type  : </strong></td>
                 <td width="2%">&nbsp;</td>
-                <td colspan="2"><input name="id" type="hidden" id="id" value="<?php echo $id;?>" />
-				<?php echo $mat_type;?></td>
+                <td colspan="2"><input name="id" type="hidden" id="id" value="<?php echo $id; ?>" />
+				<?php echo $mat_type; ?></td>
               </tr>
               <tr>
                 <td align="right"><strong>Description  :</strong></td>
                 <td>&nbsp;</td>
-                <td width="67%"><?php echo $desc;?></td>
+                <td width="67%"><?php echo $desc; ?></td>
                 <td width="4%">&nbsp;</td>
               </tr>
-             
+
 				 </table></form><?php }?>
 			 </fieldset></div>
 

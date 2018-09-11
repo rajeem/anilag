@@ -1,39 +1,38 @@
 <?php
 //session_destroy();
 session_start();
-include("include/connect.php");
-include("include/gensettings.php");
+include "include/connect.php";
+include "include/gensettings.php";
 
-if (isset($_POST['submit'])){
-	$username =$_POST['username'];
-	$password=$_POST['password'];
-	$username=addslashes($username);
-	$password=addslashes($password);
-	
-	$_SESSION['username'] = $_POST['username'];		//username
-	
-	if (($username=="")||($password=="")){
-	$errorup="<strong><font color=red>Please complete the fields!</font></strong>";
-	}
-	else{
-		//$password=md5($password);
-		$sql="SELECT * from user WHERE username='$username' and password='$password'";
-		$result=mysql_query($sql,$connect) or die("cant execute query!.....");
-		$rows=mysql_num_rows($result);
-		
-		while($ano=mysql_fetch_array($result)) {
-			$uri = $ano['type'];
-		} 
-		
-		$_SESSION['type_in']= $uri;
-		
-		if ($rows>=1){
-			$_SESSION['username']=$username;
-			header("location:home.php");
-		} else {
-			$usernameerror="<strong><font color=red>Invalid username or password!</font></strong>";
-		}
-	}
+if (isset($_POST['submit'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $username = addslashes($username);
+    $password = addslashes($password);
+
+    $_SESSION['username'] = $_POST['username']; //username
+
+    if (($username == "") || ($password == "")) {
+        $errorup = "<strong><font color=red>Please complete the fields!</font></strong>";
+    } else {
+        //$password=md5($password);
+        $sql = "SELECT * from user WHERE username='$username' and password='$password'";
+        $result = mysql_query($sql, $connect) or die("cant execute query!.....");
+        $rows = mysql_num_rows($result);
+
+        while ($ano = mysql_fetch_array($result)) {
+            $uri = $ano['type'];
+        }
+
+        $_SESSION['type_in'] = $uri;
+
+        if ($rows >= 1) {
+            $_SESSION['username'] = $username;
+            header("location:home.php");
+        } else {
+            $usernameerror = "<strong><font color=red>Invalid username or password!</font></strong>";
+        }
+    }
 }
 ?>
 
@@ -41,13 +40,13 @@ if (isset($_POST['submit'])){
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title><?php echo $system_title."--".$footer;?></title>
-<link rel="stylesheet" type="text/css" href="css/<?php echo $css;?>" />
+<title><?php echo $system_title . "--" . $footer; ?></title>
+<link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
 </head>
 <body OnLoad="document.myform.username.focus();">
 <div class="header">
-  <div class="logo"><?php echo "&nbsp;&nbsp;&nbsp;".$header_title;?> </div>
-  <div id="Layer1"><img src="images/<?php echo $logo;?>" width="117" height="110" />
+  <div class="logo"><?php echo "&nbsp;&nbsp;&nbsp;" . $header_title; ?> </div>
+  <div id="Layer1"><img src="images/<?php echo $logo; ?>" width="117" height="110" />
     <div id="Layer2"></div>
   </div>
 </div>
@@ -70,14 +69,13 @@ if (isset($_POST['submit'])){
           <td bgcolor="#000000"><table width="327" height="170" border="0" cellpadding="5" cellspacing="5" class="bg_login">
             <tr>
               <td><?php
-			  if(($usernameerror!="")||($errorup!="")){
-			  echo'<img src="images/warningnew.gif" width="50" height="45" />';
-			  }
-			  else{
-			  echo '<img src="images/mm_spacer.gif" width="50" height="45" />';
-			  }
-			  ?></td>
-              <td colspan="3" valign="middle"><?php echo $usernameerror.$errorup;?></td>
+if (($usernameerror != "") || ($errorup != "")) {
+    echo '<img src="images/warningnew.gif" width="50" height="45" />';
+} else {
+    echo '<img src="images/mm_spacer.gif" width="50" height="45" />';
+}
+?></td>
+              <td colspan="3" valign="middle"><?php echo $usernameerror . $errorup; ?></td>
             </tr>
             <tr>
               <td width="11%">Username:</td>
@@ -96,120 +94,119 @@ if (isset($_POST['submit'])){
         </tr>
       </table>
     </form>
-      <p><?php echo $pagination;?><a href="index.php"></a></p>
-      <?php 
+      <p><?php echo $pagination; ?><a href="index.php"></a></p>
+      <?php
 
 /**perform the query
-  *with limit assigned 
-  */
+ *with limit assigned
+ */
 
 echo $er;
-if(($_POST['op']!=1)&&($txt!="")){
-$sql.=" LIMIT $from, $max_results ";
-$result=mysql_query($sql,$connect) or die("cant execute query!.....");
-$rows=mysql_num_rows($result);
-if($search!=""){
-		if($rows==0){
-		echo "<strong><font color=red>Your search return zero result(s)</font>
-			 in category ".$type."</strong>";
-		}
-}
-		if($rows>0){	 
-        echo '<img src="images/arrowr.gif" width="15" height="9" />Your search for  
-		<strong>'.$search.'</strong> returned <strong>'.$number.'</strong> results<br><br><hr/>';
-	
-				$count=1;
-		        while($row=mysql_fetch_array($result)){
-				$id          =$row['id'];
-				$call_num    =$row['call_num'];
-				$author      =$row['author'];
-				$corp_author =$row['corp_author'];
-				$title       =$row['title'];
-				$subject     =$row['subject'];
-				$isbn        =$row['isbn'];
-				$edition     =$row['edition'];
-				$place_pub   =$row['place_pub'];
-				$publisher   =$row['publisher'];
-				$date_pub    =$row['date_pub'];
-				$collation   =$row['collation'];
-				$language    =$row['language'];
-				$pdf         =$row['pdf'];
-				$help        =$row['help'];
-				$front       =$row['front'];
-				$pdb         =$row['pdb'];
-				
-				if($pdf!=""){
-				$dest="pdf";
-				$doc="(PDF)";
-				}
-				if($help!=""){
-				$dest="help";
-				$doc="(compiled HTML)";
-				}
-				if($pdb!=""){
-				$dest="pdb";
-				$doc="(PDB)";
-				}
-				if(($pdf!="")&&($help!="")){
-				$dest="all";
-				}
-				if($front==""){
-				$front='no_preview.gif';
-				}
-				?>
+if (($_POST['op'] != 1) && ($txt != "")) {
+    $sql .= " LIMIT $from, $max_results ";
+    $result = mysql_query($sql, $connect) or die("cant execute query!.....");
+    $rows = mysql_num_rows($result);
+    if ($search != "") {
+        if ($rows == 0) {
+            echo "<strong><font color=red>Your search return zero result(s)</font>
+			 in category " . $type . "</strong>";
+        }
+    }
+    if ($rows > 0) {
+        echo '<img src="images/arrowr.gif" width="15" height="9" />Your search for
+		<strong>' . $search . '</strong> returned <strong>' . $number . '</strong> results<br><br><hr/>';
+
+        $count = 1;
+        while ($row = mysql_fetch_array($result)) {
+            $id = $row['id'];
+            $call_num = $row['call_num'];
+            $author = $row['author'];
+            $corp_author = $row['corp_author'];
+            $title = $row['title'];
+            $subject = $row['subject'];
+            $isbn = $row['isbn'];
+            $edition = $row['edition'];
+            $place_pub = $row['place_pub'];
+            $publisher = $row['publisher'];
+            $date_pub = $row['date_pub'];
+            $collation = $row['collation'];
+            $language = $row['language'];
+            $pdf = $row['pdf'];
+            $help = $row['help'];
+            $front = $row['front'];
+            $pdb = $row['pdb'];
+
+            if ($pdf != "") {
+                $dest = "pdf";
+                $doc = "(PDF)";
+            }
+            if ($help != "") {
+                $dest = "help";
+                $doc = "(compiled HTML)";
+            }
+            if ($pdb != "") {
+                $dest = "pdb";
+                $doc = "(PDB)";
+            }
+            if (($pdf != "") && ($help != "")) {
+                $dest = "all";
+            }
+            if ($front == "") {
+                $front = 'no_preview.gif';
+            }
+            ?>
       <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td width="77" rowspan="3"><?php 
-				if(($pdf=="")&&($help=="")&&($pdb=="")){
-					echo'<img src="images/no_preview.gif"
-					title="'.$title.' by ' .$author.'"/>';
-				}else{  			  
-    			  	echo'<a href="view_result.php?dest='.$dest.'&id='.$id.'">
-					<img src="images/front/'.$front.'" 
-					title="'.$title.' by '.$author.''.$doc.'"/>
+          <td width="77" rowspan="3"><?php
+if (($pdf == "") && ($help == "") && ($pdb == "")) {
+                echo '<img src="images/no_preview.gif"
+					title="' . $title . ' by ' . $author . '"/>';
+            } else {
+                echo '<a href="view_result.php?dest=' . $dest . '&id=' . $id . '">
+					<img src="images/front/' . $front . '"
+					title="' . $title . ' by ' . $author . '' . $doc . '"/>
 					</a>';
-				}
-				?>
+            }
+            ?>
               <br />
               <br /></td>
           <td width="277" bgcolor="#FFFFFF"><strong></strong><strong>Author(s):</strong>
-              <?php  
-				if(($pdf!="")||($help!="")||($pdb!="")){
-				echo'<a href="view_result.php?dest='.$dest.'&id='.$id.'">'.$author.'</a><br>';
-				}
-				else{
-				echo "<strong>".$author."</strong>";
-				}
-  				?></td>
-          <td width="207" bgcolor="#FFFFFF"><strong>Subject:</strong> <?php echo $subject;?></td>
+              <?php
+if (($pdf != "") || ($help != "") || ($pdb != "")) {
+                echo '<a href="view_result.php?dest=' . $dest . '&id=' . $id . '">' . $author . '</a><br>';
+            } else {
+                echo "<strong>" . $author . "</strong>";
+            }
+            ?></td>
+          <td width="207" bgcolor="#FFFFFF"><strong>Subject:</strong> <?php echo $subject; ?></td>
         </tr>
         <tr>
-          <td><strong>Title:</strong><?php echo $title;?></td>
-          <td><strong>Language:</strong><?php echo $language;?></td>
+          <td><strong>Title:</strong><?php echo $title; ?></td>
+          <td><strong>Language:</strong><?php echo $language; ?></td>
         </tr>
         <tr>
-          <td bgcolor="#FFFFFF"><strong>Date of Publication</strong>: <?php echo $date_pub;?></td>
-          <td bgcolor="#FFFFFF"><strong>Collation</strong>:<?php echo $collation;?></td>
+          <td bgcolor="#FFFFFF"><strong>Date of Publication</strong>: <?php echo $date_pub; ?></td>
+          <td bgcolor="#FFFFFF"><strong>Collation</strong>:<?php echo $collation; ?></td>
         </tr>
         <tr>
-          <td><a href="admin_edit.php?id=<?php echo $id;?>"></a> <a href="admin_delete.php"></a></td>
-          <td><strong>Publisher:</strong><?php echo $publisher;?></td>
-          <td><strong>Edition</strong>:<?php echo $edition;?></td>
+          <td><a href="admin_edit.php?id=<?php echo $id; ?>"></a> <a href="admin_delete.php"></a></td>
+          <td><strong>Publisher:</strong><?php echo $publisher; ?></td>
+          <td><strong>Edition</strong>:<?php echo $edition; ?></td>
         </tr>
         <tr>
-          <td><strong>Call Number</strong><?php echo $call_num;?></td>
-          <td bgcolor="#FFFFFF"><strong>Place of Publication</strong>: <?php echo $place_pub;?></td>
-          <td bgcolor="#FFFFFF"><strong>ISBN</strong>:<?php echo $isbn;?></td>
+          <td><strong>Call Number</strong><?php echo $call_num; ?></td>
+          <td bgcolor="#FFFFFF"><strong>Place of Publication</strong>: <?php echo $place_pub; ?></td>
+          <td bgcolor="#FFFFFF"><strong>ISBN</strong>:<?php echo $isbn; ?></td>
         </tr>
       </table>
       <hr />
 			     <p>
 			       <?php
-				$count++;
-		        }  
-			
-		}
-}		
+$count++;
+        }
+
+    }
+}
 ?>
     </p>
 			     <p><?php echo $pagination;
@@ -225,7 +222,7 @@ if($search!=""){
 </tr>
 </table></div>
 <div class="footer">
-<?php echo $system_title;?><br /><?php echo $footer;?>
+<?php echo $system_title; ?><br /><?php echo $footer; ?>
 </div>
 </body>
 </html>

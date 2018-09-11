@@ -1,38 +1,37 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION["username"])){
-header("location:admin_login.php");
-exit;
+if (!isset($_SESSION["username"])) {
+    header("location:admin_login.php");
+    exit;
 }
-$id=$_GET['id'];
-$op=0;
-include("include/connect.php");
-include("include/gensettings.php");
+$id = $_GET['id'];
+$op = 0;
+include "include/connect.php";
+include "include/gensettings.php";
 
-
-$sql="SELECT * from school where id = $id"; 
-$result = mysql_query($sql); 
-while($row=mysql_fetch_array($result)){
-$school_name = $row['school_name'];
-$school_code = $row['school_code'];
+$sql = "SELECT * from school where id = $id";
+$result = mysql_query($sql);
+while ($row = mysql_fetch_array($result)) {
+    $school_name = $row['school_name'];
+    $school_code = $row['school_code'];
 }
 
-if($_POST['update']){
-$id = $_POST['id'];
-$school_name =$_POST['name'];
-    $school_code =$_POST['code'];
-    
-$sql="UPDATE school set school_name='$school_name',school_code='$school_code' WHERE id='$id'";
-	$result=mysql_query($sql,$connect) or die("cant execute query!!!");
+if ($_POST['update']) {
+    $id = $_POST['id'];
+    $school_name = $_POST['name'];
+    $school_code = $_POST['code'];
 
-$sql="SELECT * from school where id = $id"; 
-$result = mysql_query($sql); 
-$row=mysql_fetch_array($result);
-$school_name = $row['school_name'];
-$school_code = $row['school_code'];
+    $sql = "UPDATE school set school_name='$school_name',school_code='$school_code' WHERE id='$id'";
+    $result = mysql_query($sql, $connect) or die("cant execute query!!!");
 
-	$op = 1;
-	}
+    $sql = "SELECT * from school where id = $id";
+    $result = mysql_query($sql);
+    $row = mysql_fetch_array($result);
+    $school_name = $row['school_name'];
+    $school_code = $row['school_code'];
+
+    $op = 1;
+}
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -75,9 +74,9 @@ return false;}
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 
-<title><?php echo $system_title."--".$footer;?></title>
+<title><?php echo $system_title . "--" . $footer; ?></title>
 
-<link rel="stylesheet" href="css/<?php echo $css;?>" type="text/css" />
+<link rel="stylesheet" href="css/<?php echo $css; ?>" type="text/css" />
 
 <style type="text/css">
 <!--
@@ -90,8 +89,8 @@ return false;}
 <body>
 
 <div class="header">
-  <div class="logo"><?php echo "&nbsp;&nbsp;&nbsp;".$header_title;?> </div>
-  <div id="Layer1"><img src="images/<?php echo $logo;?>" width="117" height="110" />
+  <div class="logo"><?php echo "&nbsp;&nbsp;&nbsp;" . $header_title; ?> </div>
+  <div id="Layer1"><img src="images/<?php echo $logo; ?>" width="117" height="110" />
     <div id="Layer2"></div>
   </div></div>
 <div class="navbg">
@@ -113,33 +112,33 @@ return false;}
 <div id="new_item202">
  <fieldset>
  <legend class="style1">Edit School </legend>
- 
- <?php if($op!=1){?>
+
+ <?php if ($op != 1) {?>
 	  <form action="edit_school.php" method="post" id="myform" name="myform">
 	 <table width="63%" border="0" cellpadding="5" cellspacing="5">
-             
+
 			  <tr>
-			  
+
                 <td width="25%" align="right"><strong>School name </strong></td>
-               
-                <td colspan="3"><input name="id" type="hidden" id="id" value="<?php echo $id;?>" /><input name="name" type="text" id="name"   size="40" value="<?php echo $school_name;?>"/></td>
+
+                <td colspan="3"><input name="id" type="hidden" id="id" value="<?php echo $id; ?>" /><input name="name" type="text" id="name"   size="40" value="<?php echo $school_name; ?>"/></td>
               </tr>
               <tr>
                 <td align="right"><strong>School code </strong></td>
-                <td  colspan="3"><input name="code" type="text" id="code"   size="40" value="<?php echo $school_code;?>"/></td>
-              
+                <td  colspan="3"><input name="code" type="text" id="code"   size="40" value="<?php echo $school_code; ?>"/></td>
+
               </tr>
 				<tr>
                 <td align="right"><input name="Submit" type="submit" onClick="document.myform.action ='school.php';" value="Cancel" class="btn"/></td>
-                
+
                 <td colspan="3"><input type="submit" name="update" id="update" value="Update"class="btn" onClick=" return FormValidate()"/></td>
-                
+
               </tr>
 	    </table></form><?php }?>
 
 
 
- <?php if ($op == 1){?>
+ <?php if ($op == 1) {?>
 	  <form action="edit_school.php" method="post" id="myform" name="myform">
 		<table width="100%" border="0" cellpadding="5" cellspacing="5">
               <tr>
@@ -147,19 +146,19 @@ return false;}
 
         </tr>
 			  <tr>
-			  
+
                 <td width="25%" align="right"><strong>School name : </strong></td>
                 <td width="2%">&nbsp;</td>
-                <td colspan="2"><input name="id" type="hidden" id="id" value="<?php echo $id;?>" />
-				<?php echo $school_name;?></td>
+                <td colspan="2"><input name="id" type="hidden" id="id" value="<?php echo $id; ?>" />
+				<?php echo $school_name; ?></td>
               </tr>
               <tr>
                 <td align="right"><strong>School code  :</strong></td>
                 <td>&nbsp;</td>
-                <td width="67%"><?php echo $school_code;?></td>
+                <td width="67%"><?php echo $school_code; ?></td>
                 <td width="4%">&nbsp;</td>
               </tr>
-             
+
 				 </table></form><?php }?>
 			 </fieldset></div>
 

@@ -6,14 +6,13 @@ if (!$link) {
 }
 //echo 'Connected successfully';
 
-mysql_select_db("card_cat",$link);
-$sql="SELECT * from card_cat";
-$result=mysql_query($sql,$link) or die("cant execute query!#1");
-while($row=mysql_fetch_array($result)){
-$id  				=$row['id'];
-$title  				=$row['title'];
-echo $id.$title.'<br>  ';		
+mysql_select_db("card_cat", $link);
+$sql = "SELECT * from card_cat";
+$result = mysql_query($sql, $link) or die("cant execute query!#1");
+while ($row = mysql_fetch_array($result)) {
+    $id = $row['id'];
+    $title = $row['title'];
+    echo $id . $title . '<br>  ';
 }
 
 mysql_close($link);
-?> 

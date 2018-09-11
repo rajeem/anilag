@@ -1,75 +1,69 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION["username"])){
+if (!isset($_SESSION["username"])) {
 
-header("location:admin_login.php");
-exit;
+    header("location:admin_login.php");
+    exit;
 }
-include("include/connect.php");
-include("include/gensettings.php");
-include("user.php");
+include "include/connect.php";
+include "include/gensettings.php";
+include "user.php";
 
-$op=1;
+$op = 1;
 //authorized
-if($del_book=="on"){
+if ($del_book == "on") {
 
 //check who delete...
 
-$sql = "select * from user WHERE username='$user'"; 
-$result=mysql_query($sql,$connect) or die("cant execute query!.....23".mysql_error());
-$row=mysql_fetch_array($result);
-$name = $row[first1].' '.$row[middle1]{0}.'.'.' '.$row[last1];
-$type = $row[type];
+    $sql = "select * from user WHERE username='$user'";
+    $result = mysql_query($sql, $connect) or die("cant execute query!.....23" . mysql_error());
+    $row = mysql_fetch_array($result);
+    $name = $row[first1] . ' ' . $row[middle1]{0} . '.' . ' ' . $row[last1];
+    $type = $row[type];
 //==============================
-$id=$_GET['id'];
-$date = date("Y-m-d");
-$sql = "select * from card_cat WHERE id='$id'"; 
-$result=mysql_query($sql,$connect) or die("cant execute query!.....23".mysql_error());
-while($row=mysql_fetch_array($result)){
-		$access_no		=$row['access_no'];
-		$school_code		=$row['school_code'];
-		$author_sname		=$row['author_sname'];
-		$author_fname		=$row['author_fname'];
-		$author_mname		=$row['author_mname'];
-		$title			=$row['title'];
-		$gmd			=$row['gmd'];
-}
+    $id = $_GET['id'];
+    $date = date("Y-m-d");
+    $sql = "select * from card_cat WHERE id='$id'";
+    $result = mysql_query($sql, $connect) or die("cant execute query!.....23" . mysql_error());
+    while ($row = mysql_fetch_array($result)) {
+        $access_no = $row['access_no'];
+        $school_code = $row['school_code'];
+        $author_sname = $row['author_sname'];
+        $author_fname = $row['author_fname'];
+        $author_mname = $row['author_mname'];
+        $title = $row['title'];
+        $gmd = $row['gmd'];
+    }
 
-$sql="INSERT INTO recyclebin
+    $sql = "INSERT INTO recyclebin
 			(booktitle,author_sname,author_fname,author_mname,accession_no,mat_type,date_deleted,person_deleted,type,school_code) values('$title','$author_sname','$author_fname','$author_mname','$access_no','$gmd','$date','$name','$type','$school_code')";
-	$result=mysql_query($sql,$connect) or die("cant execute query!".mysql_error());
+    $result = mysql_query($sql, $connect) or die("cant execute query!" . mysql_error());
 
-$sql="DELETE from card_cat WHERE id='$id'"; 
-mysql_query($sql) or die("cant execute query"); 
+    $sql = "DELETE from card_cat WHERE id='$id'";
+    mysql_query($sql) or die("cant execute query");
 
-	   //if title already exists!
-	$sql_1 = "select * from card_cat where title='$title' && author_sname='$author_sname' && author_fname='$author_fname' && author_mname='$author_mname' ";
-	$result4 = mysql_query($sql_1,$connect) or die("cant execute query!".mysql_error());
-     $num = mysql_num_rows($result4); 				// count number of times the title is present and same main author is present
-	 
-	 if (mysql_num_rows($result4) != 0){	
+    //if title already exists!
+    $sql_1 = "select * from card_cat where title='$title' && author_sname='$author_sname' && author_fname='$author_fname' && author_mname='$author_mname' ";
+    $result4 = mysql_query($sql_1, $connect) or die("cant execute query!" . mysql_error());
+    $num = mysql_num_rows($result4); // count number of times the title is present and same main author is present
 
-//	$sql2 = "select * from titles where title_proper='$title'";
-//	$result2 = mysql_query($sql2,$connect) or die("cant execute query!".mysql_error());
-//	if (mysql_num_rows($result2) != 0){				// if already exists
-     $quantity= $num;
-//	  echo $quantity;
-	 }
-	 else   	{
-	 $quantity= 0;}
-			$sql_2="UPDATE titles set quantity='$quantity' WHERE title_proper='$title' && author_sname='$author_sname' && author_fname='$author_fname' && author_mname='$author_mname' ";
-	$result5=mysql_query($sql_2,$connect) or die("cant execute query!!!");
+    if (mysql_num_rows($result4) != 0) {
 
-header("location:admin.php?show=do");
+//    $sql2 = "select * from titles where title_proper='$title'";
+        //    $result2 = mysql_query($sql2,$connect) or die("cant execute query!".mysql_error());
+        //    if (mysql_num_rows($result2) != 0){                // if already exists
+        $quantity = $num;
+//      echo $quantity;
+    } else {
+        $quantity = 0;}
+    $sql_2 = "UPDATE titles set quantity='$quantity' WHERE title_proper='$title' && author_sname='$author_sname' && author_fname='$author_fname' && author_mname='$author_mname' ";
+    $result5 = mysql_query($sql_2, $connect) or die("cant execute query!!!");
 
- }
+    header("location:admin.php?show=do");
 
-
-
-else
-{
-$msg_mo="You are not allowed to delete a book record!";
-$op=2;}
+} else {
+    $msg_mo = "You are not allowed to delete a book record!";
+    $op = 2;}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -83,14 +77,14 @@ function MM_openBrWindow1(theURL,winName,features) { //v2.0
 </script>
 <SCRIPT language=javascript>
 
-function numbersOnly(el){	
+function numbersOnly(el){
 el.value = el.value.replace(/[^0-9]/g, "");
 }
 </SCRIPT>
 <html><title>Elibrary System</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title><?php echo $system_title."--".$footer;?></title>
-<link rel="stylesheet" type="text/css" href="css/<?php echo $css;?>" />
+<title><?php echo $system_title . "--" . $footer; ?></title>
+<link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
 <style type="text/css">
 <!--
 .style2 {	font-size: small;
@@ -103,8 +97,8 @@ el.value = el.value.replace(/[^0-9]/g, "");
 
 <body>
 <div class="header">
-  <div class="logo"><?php echo "&nbsp;&nbsp;&nbsp;".$header_title;?> </div>
-  <div id="Layer1"><img src="images/<?php echo $logo;?>" width="117" height="110" />
+  <div class="logo"><?php echo "&nbsp;&nbsp;&nbsp;" . $header_title; ?> </div>
+  <div id="Layer1"><img src="images/<?php echo $logo; ?>" width="117" height="110" />
     <div id="Layer2"></div>
   </div>
 </div>
@@ -125,14 +119,14 @@ el.value = el.value.replace(/[^0-9]/g, "");
 <div class="maincontent">
   <div class="floatelft">
 
-<?php if($op==2){
-	?>
+<?php if ($op == 2) {
+    ?>
 	<table width="100%" border="0" cellpadding="5" cellspacing="5">
       <tr>
         <td align="right"><a href="home.php">back to Home Page</a></td>
-        <td colspan="2" align="left"><?php echo $msg_mo;?></td>
+        <td colspan="2" align="left"><?php echo $msg_mo; ?></td>
         <td align="center">&nbsp;</td>
-       
+
       </tr>
       <tr>
         <td align="left" bgcolor="#FFFFFF">&nbsp;</td>

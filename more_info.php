@@ -1,32 +1,32 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION["username"])){
-header("location:admin_login.php");
-exit;
+if (!isset($_SESSION["username"])) {
+    header("location:admin_login.php");
+    exit;
 }
 
-include("include/connect.php");
-include("include/gensettings.php");
+include "include/connect.php";
+include "include/gensettings.php";
 
-$id= $_GET['id'];
+$id = $_GET['id'];
 
-$sql="SELECT * from card_cat where id='$id'";
-$result=mysql_query($sql,$connect) or die("cant execute query!z");
-while($row=mysql_fetch_array($result)) {
-		
-		$id				=$row['id'];
-		$access_no		=$row['access_no'];
-		$source_of_fund	=$row['source_of_fund'];
-		$mode_of_ac		=$row['mode_of_ac'];
-		$mode_ac		=$row['mode_ac'];
-		$date_ac		=$row['date_ac'];
-		$property_no	=$row['property_no'];
-		$are			=$row['are'];
-		$date_verify	=$row['date_verify'];
-		$date_encode	=$row['date_encode'];
-		$encoded_by		=$row['encoded_by'];
-		$verified_by	=$row['verified_by'];
-		
+$sql = "SELECT * from card_cat where id='$id'";
+$result = mysql_query($sql, $connect) or die("cant execute query!z");
+while ($row = mysql_fetch_array($result)) {
+
+    $id = $row['id'];
+    $access_no = $row['access_no'];
+    $source_of_fund = $row['source_of_fund'];
+    $mode_of_ac = $row['mode_of_ac'];
+    $mode_ac = $row['mode_ac'];
+    $date_ac = $row['date_ac'];
+    $property_no = $row['property_no'];
+    $are = $row['are'];
+    $date_verify = $row['date_verify'];
+    $date_encode = $row['date_encode'];
+    $encoded_by = $row['encoded_by'];
+    $verified_by = $row['verified_by'];
+
 }
 
 ?>
@@ -34,8 +34,8 @@ while($row=mysql_fetch_array($result)) {
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title><?php echo $system_title."--".$footer;?></title>
-<link rel="stylesheet" type="text/css" href="css/<?php echo $css;?>" />
+<title><?php echo $system_title . "--" . $footer; ?></title>
+<link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
 <style type="text/css">
 <!--
 body {
@@ -62,44 +62,44 @@ function MM_openBrWindow1(theURL,winName,features) { //v2.0
 <form action="about.php" method="post">
 <table width="100%" border="0">
   <tr>
-    <td width="286" bgcolor="#CCCCCC"><strong><font color="#FF0000"><?php echo $access_no;?></font></strong></td>
+    <td width="286" bgcolor="#CCCCCC"><strong><font color="#FF0000"><?php echo $access_no; ?></font></strong></td>
     <td width="471" bgcolor="#CCCCCC">&nbsp;</td>
     </tr>
   <tr>
     <td align="right" bgcolor="#FFFFFF"><strong>Source of Fund:</strong></td>
-    <td bgcolor="#FFFFFF"><?php echo $source_of_fund;?></td>
+    <td bgcolor="#FFFFFF"><?php echo $source_of_fund; ?></td>
     </tr>
   <tr>
     <td align="right" bgcolor="#FFFFFF"><strong>Mode of Acquisition:</strong></td>
-    <td bgcolor="#FFFFFF"><?php echo $mode_of_ac;?>(<?php echo $mode_ac;?>)</td>
+    <td bgcolor="#FFFFFF"><?php echo $mode_of_ac; ?>(<?php echo $mode_ac; ?>)</td>
     </tr>
   <tr>
     <td align="right" bgcolor="#FFFFFF"><strong>Date Acquired:</strong></td>
-    <td bgcolor="#FFFFFF"><?php echo $date_ac;?></td>
+    <td bgcolor="#FFFFFF"><?php echo $date_ac; ?></td>
     </tr>
   <tr>
     <td align="right" bgcolor="#FFFFFF"><strong>Property No:</strong></td>
-    <td bgcolor="#FFFFFF"><?php echo $property_no;?></td>
+    <td bgcolor="#FFFFFF"><?php echo $property_no; ?></td>
     </tr>
   <tr>
     <td align="right" bgcolor="#FFFFFF"><strong>Acknowledgement Receipt Expense (ARE) Date:</strong></td>
-    <td bgcolor="#FFFFFF"><?php echo $are;?></td>
+    <td bgcolor="#FFFFFF"><?php echo $are; ?></td>
     </tr>
   <tr>
     <td align="right" bgcolor="#FFFFFF"><strong>Encoded/updated by:</strong></td>
-    <td bgcolor="#FFFFFF"><?php echo $encoded_by;?></td>
+    <td bgcolor="#FFFFFF"><?php echo $encoded_by; ?></td>
     </tr>
   <tr>
     <td align="right" bgcolor="#FFFFFF"><strong>Date encoded:</strong></td>
-    <td bgcolor="#FFFFFF"><?php echo $date_encode;?></td>
+    <td bgcolor="#FFFFFF"><?php echo $date_encode; ?></td>
     </tr>
   <tr>
     <td align="right" bgcolor="#FFFFFF"><strong>Verified by:</strong></td>
-    <td bgcolor="#FFFFFF"><?php echo $verified_by;?></td>
+    <td bgcolor="#FFFFFF"><?php echo $verified_by; ?></td>
     </tr>
   <tr>
     <td align="right" bgcolor="#FFFFFF"><strong>Date Verified:</strong></td>
-    <td bgcolor="#FFFFFF"><?php echo $date_verify;?></td>
+    <td bgcolor="#FFFFFF"><?php echo $date_verify; ?></td>
     </tr>
   <tr>
     <td align="right" bgcolor="#FFFFFF">&nbsp;</td>

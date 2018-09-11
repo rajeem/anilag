@@ -3,6 +3,7 @@
 	$connect=mysql_connect("localhost","root","") or die("couldnt connect to server");
 
 	$db_list = mysql_list_dbs($connect);
+$meron=0;
 
 	while ($row = mysql_fetch_object($db_list)) {
      //echo $row->Database . "\n";
@@ -18,10 +19,10 @@
 	if($meron==1){
 
 	//$database=card_cat;
-	mysql_select_db("elib",$connect) or die ("could not select database0");
+	mysql_select_db("elib",$connect) or die ("could not select database");
 
 	}else{
-	mysql_select_db("information_schema",$connect) or die ("could not select database0aa");
+	mysql_select_db("information_schema",$connect) or die ("could not select database");
 
 	}
 	

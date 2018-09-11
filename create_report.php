@@ -1,37 +1,37 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION["username"])){
-header("location:login.php");
-exit;
+if (!isset($_SESSION["username"])) {
+    header("location:login.php");
+    exit;
 }
-include("include/connect.php");
-include("include/gensettings.php");
+include "include/connect.php";
+include "include/gensettings.php";
 
-$sql="SELECT * from settings";
+$sql = "SELECT * from settings";
 
-$result=mysql_query($sql,$connect) or die("cant execute query!z");
+$result = mysql_query($sql, $connect) or die("cant execute query!z");
 
-while($row=mysql_fetch_array($result)){
-$footer_in_table		=$row['footer'];
+while ($row = mysql_fetch_array($result)) {
+    $footer_in_table = $row['footer'];
 }
 
-if($_POST['op']==1){
-	
-	$report_type	=$_POST['report_type'];
+if ($_POST['op'] == 1) {
+
+    $report_type = $_POST['report_type'];
 //echo $header;
-	if($report_type==""){
-	$ok="Please enter footer name!";
-	
-	}else{
+    if ($report_type == "") {
+        $ok = "Please enter footer name!";
 
-			header('location:report/index1.php?d=1');
-			echo 'wah';
-			//$sql="UPDATE settings set footer='$footer'";
-			//$result=mysql_query($sql,$connect) or die("cant execute query! #1");
-			//$ok="$footer_in_table change to $footer!";
-			//$header_title="";
-			
-	}
+    } else {
+
+        header('location:report/index1.php?d=1');
+        echo 'wah';
+        //$sql="UPDATE settings set footer='$footer'";
+        //$result=mysql_query($sql,$connect) or die("cant execute query! #1");
+        //$ok="$footer_in_table change to $footer!";
+        //$header_title="";
+
+    }
 
 }
 ?>
@@ -82,7 +82,7 @@ a:active {
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Create report</title>
-<link href="css/<?php echo $css;?>" rel="stylesheet" type="text/css" />
+<link href="css/<?php echo $css; ?>" rel="stylesheet" type="text/css" />
 </head>
 
 <body onLoad="
@@ -95,7 +95,7 @@ if (window.moveTo) window.moveTo(w/2,h/1)">
 <form id="form1" name="form1" method="post" action="create_report.php">
   <table width="100%" border="0">
     <tr>
-      <td colspan="2"><?php echo $ok;?></td>
+      <td colspan="2"><?php echo $ok; ?></td>
       <td width="6%">&nbsp;</td>
     </tr>
     <tr>
@@ -114,7 +114,7 @@ if (window.moveTo) window.moveTo(w/2,h/1)">
       <td width="2%">&nbsp;</td>
       <td colspan="2" align="left">&nbsp;</td>
     </tr>
-   
+
     <tr>
       <td>&nbsp;</td>
       <td width="92%" align="center">

@@ -1,19 +1,19 @@
 <?php
-include("include/connect.php");
-include("include/gensettings.php");
+include "include/connect.php";
+include "include/gensettings.php";
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title><?php echo $system_title."--".$footer;?></title>
-<link rel="stylesheet" type="text/css" href="css/<?php echo $css;?>" />
+<title><?php echo $system_title . "--" . $footer; ?></title>
+<link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
 </head>
 <body OnLoad="document.myform.search.focus();">
 <div class="header">
-  <div class="logo"><?php echo "&nbsp;&nbsp;&nbsp;".$header_title;?> <a name="top" id="top"></a></div>
-  <div id="Layer1"><img src="images/<?php echo $logo;?>" width="117" height="110" />
+  <div class="logo"><?php echo "&nbsp;&nbsp;&nbsp;" . $header_title; ?> <a name="top" id="top"></a></div>
+  <div id="Layer1"><img src="images/<?php echo $logo; ?>" width="117" height="110" />
     <div id="Layer2"></div>
   </div>
 </div>
@@ -39,9 +39,9 @@ include("include/gensettings.php");
           <td class="pageName"><table cellspacing="0" cellpadding="0" width="95%" align="center" border="0">
               <tbody>
                 <tr>
-                  <td width="58%" 
+                  <td width="58%"
     background="Basic Search (Library of Congress Online Catalog)_files/tips-background.gif">&nbsp;</td>
-                  <td width="42%" 
+                  <td width="42%"
     background="Basic Search (Library of Congress Online Catalog)_files/tips-background.gif">&nbsp;</td>
                 </tr>
                 <tr>
@@ -90,7 +90,7 @@ include("include/gensettings.php");
                   <td colspan="2"><p>&nbsp;</p>
                     <p>&nbsp;</p>
                     <p>&nbsp;</p>
-                    <hr />                  
+                    <hr />
                     <p><strong>1.1 Logging On the  System</strong><a name="a1" id="a1"></a><a href="#top"></a></p>
                     <p>To logon the system</p>
                     <ol start="1" type="1">
@@ -104,7 +104,7 @@ include("include/gensettings.php");
                     <p><strong>1.2 Logging Out of  the System</strong><a name="a2" id="a2"></a></p>
                     <p>To LogOut</p>
                     <p>Click the LogOut button to exit the system and  you will be redirected to the LogOn Screen.</p>
-                    <hr />                  
+                    <hr />
                   <p><strong>1.3 Glossary</strong><a name="a3" id="a3"></a></p>
                   <p>
                     <ul>
@@ -122,7 +122,7 @@ include("include/gensettings.php");
                     </ul>
                       <hr />
                       <p>&nbsp;</p>
-                   
+
                     <strong>Browsing Around the  System</strong><br />
                     <strong>The Home Page</strong></p>
                   <p><strong>1.1 Glossary</strong><a name="a4" id="a4"></a></p>
@@ -168,7 +168,7 @@ include("include/gensettings.php");
                     <p>.<strong>3.2 Entering a Text </strong><strong><a name="a8" id="a8"></a></strong></p>
                   <p>To enter any text</p>
                   <ul>
-                 
+
                     <li>Click on the field and type.</li>
                   </ul>
                   <p><strong>3.3 Deleting a  Particular Information or Text </strong><strong><a name="a9" id="a9"></a></strong></p>
@@ -197,8 +197,8 @@ include("include/gensettings.php");
                   <ul>
                     <li>Fields - are line areas&nbsp; or textboxes that allow the user to input  text.</li>
                     <li>File - a collection of data or information that  has a name.</li>
-                 
-                  <li>Menu - a list of commands or options from which  you can choose.</li> </ul>                  
+
+                  <li>Menu - a list of commands or options from which  you can choose.</li> </ul>
                   <hr />                  <p><strong>4. The Borrower's  Page</strong></p>
                   <p><strong>4.1 Searching for a  Borrower </strong><strong><a name="a12" id="a12"></a></strong></p>
                   <p>To search for a borrower&nbsp; </p>
@@ -288,7 +288,7 @@ include("include/gensettings.php");
                     <li>Icon - a small picture that represents an object  or program.</li>
                     <li>Reports - a formatted and organized presentation  of data.</li>
                     <li>Submenu - a menu that is contained within  another menu.</li>
-                    </ul>                  
+                    </ul>
                   <hr />                  <p><strong>6. The Settings Page</strong></p>
                   <p><strong>6.1 Accessing the  Settings Page </strong><strong><a name="a23" id="a23"></a></strong></p>
                   <p>To access the settings page</p>
@@ -323,7 +323,7 @@ include("include/gensettings.php");
 </tr>
 </table></div>
 <div class="footer">
-<?php echo $system_title;?><br /><?php echo $footer;?>
+<?php echo $system_title; ?><br /><?php echo $footer; ?>
 </div>
 </body>
 </html>

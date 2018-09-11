@@ -1,12 +1,12 @@
-<?php 
+<?php
 session_start();
-$_SESSION[admin_num2]  = $_SESSION['admin_num2']; 
+$_SESSION[admin_num2] = $_SESSION['admin_num2'];
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title><?php echo $system_title."--".$footer;?></title>
+<title><?php echo $system_title . "--" . $footer; ?></title>
 <style type="text/css">
 <!--
 #Layer1 {
@@ -48,7 +48,7 @@ $_SESSION[admin_num2]  = $_SESSION['admin_num2'];
       <input name="userfile" type="file" />
       <br />
       Admin ID Number:
-      <input type="text" name="admin_num" size="10"  value="<?php echo $_SESSION['admin_num2']?>" disabled="disabled"/>
+      <input type="text" name="admin_num" size="10"  value="<?php echo $_SESSION['admin_num2'] ?>" disabled="disabled"/>
 &nbsp;&nbsp;&nbsp;&nbsp;
   <input name="submit" type="submit" value="Send File" />
     </p>

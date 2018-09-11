@@ -1,25 +1,24 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION[$myusername])){
-header("location:admin_login.php");
-exit;
+if (!isset($_SESSION[$myusername])) {
+    header("location:admin_login.php");
+    exit;
 }
 
-include("include/connect.php");
-include("include/gensettings.php");
+include "include/connect.php";
+include "include/gensettings.php";
 
-$copy='&copy; Copyleft 2007 by Provincial Government of Laguna & Laguna University. All rights reserved. <br />
+$copy = '&copy; Copyleft 2007 by Provincial Government of Laguna & Laguna University. All rights reserved. <br />
       This software is legally free to copy, modify and redistribute.<br /><br /><br />';
-$credit='&nbsp;&nbsp;Credits&nbsp;&nbsp;&nbsp;';	
-$hidden=1; 
+$credit = '&nbsp;&nbsp;Credits&nbsp;&nbsp;&nbsp;';
+$hidden = 1;
 
- 
-if($_POST['copy']==1){
-$copy="Provincial Government of Laguna: Gov. Teresita 'Ning ning' Lazaro,Provincial Administrator Dennis Lazaro.
+if ($_POST['copy'] == 1) {
+    $copy = "Provincial Government of Laguna: Gov. Teresita 'Ning ning' Lazaro,Provincial Administrator Dennis Lazaro.
       MISO Management:Jaime Garcia, Charito Perez, Adrian Miras, Lee Samonte, Jill Sandoval.
 	  Jason Jimenez, Analie Vergel,Julie Ann Delgado,Manolito Isles,Rodel Sulsona ";
-$credit='&nbsp;&nbsp;&nbsp;About&nbsp;&nbsp;&nbsp;&nbsp;';	  
-$hidden=2;
+    $credit = '&nbsp;&nbsp;&nbsp;About&nbsp;&nbsp;&nbsp;&nbsp;';
+    $hidden = 2;
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -27,7 +26,7 @@ $hidden=2;
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>About the system</title>
-<link rel="stylesheet" type="text/css" href="css/<?php echo $css;?>" />
+<link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
 <style type="text/css">
 <!--
 body {
@@ -81,7 +80,7 @@ function MM_openBrWindow1(theURL,winName,features) { //v2.0
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td align="left"><?php echo $copy;?></td>
+    <td align="left"><?php echo $copy; ?></td>
     <td>&nbsp;</td>
   </tr>
   <tr>
@@ -100,10 +99,10 @@ function MM_openBrWindow1(theURL,winName,features) { //v2.0
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td align="center"><div id="Layer1">
-      <input name="button2" type="submit"  value="<?php echo $credit;?>" class="btn"/>
+      <input name="button2" type="submit"  value="<?php echo $credit; ?>" class="btn"/>
       <input name="button" type="button" onclick="javascript:window.close();" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" class="btn"/>
     </div>      </td>
-    <td><input name="copy" type="hidden" id="copy" value="<?php echo $hidden;?>" /></td>
+    <td><input name="copy" type="hidden" id="copy" value="<?php echo $hidden; ?>" /></td>
   </tr>
 </table>
 </form>

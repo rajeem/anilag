@@ -1,11 +1,11 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION["username"])){
-header("location:admin_login.php");
-exit;
+if (!isset($_SESSION["username"])) {
+    header("location:admin_login.php");
+    exit;
 }
-include("include/connect.php");
-include("include/gensettings.php");
+include "include/connect.php";
+include "include/gensettings.php";
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -24,7 +24,7 @@ function MM_openBrWindow(theURL,winName,features) { //v2.0
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>About the system</title>
-<link rel="stylesheet" type="text/css" href="css/<?php echo $css;?>" />
+<link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
 <style type="text/css">
 <!--
 body {
@@ -53,7 +53,7 @@ body {
       <input name="button2" type="button"  value="Backup database" onclick="MM_openBrWindow1('backup.php','','scrollbars=yes,width=380,height=350')" class="btn"/>
     </div></td>
     <td align="left">
-      
+
       <div align="center">
         <input name="button" type="button" onclick="javascript:window.close();" value="&nbsp;&nbsp;Cancel&nbsp;&nbsp;" class="btn"/>
       </div></td><td align="center">&nbsp;</td>

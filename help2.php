@@ -1,19 +1,19 @@
 <?php
-include("include/connect.php");
-include("include/gensettings.php");
+include "include/connect.php";
+include "include/gensettings.php";
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title><?php echo $system_title."--".$footer;?></title>
-<link rel="stylesheet" type="text/css" href="css/<?php echo $css;?>" />
+<title><?php echo $system_title . "--" . $footer; ?></title>
+<link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
 </head>
 <body>
 <div class="header">
-  <div class="logo"><?php echo "&nbsp;&nbsp;&nbsp;".$header_title;?> </div>
-  <div id="Layer1"><img src="images/<?php echo $logo;?>" width="117" height="110" />
+  <div class="logo"><?php echo "&nbsp;&nbsp;&nbsp;" . $header_title; ?> </div>
+  <div id="Layer1"><img src="images/<?php echo $logo; ?>" width="117" height="110" />
     <div id="Layer2"></div>
   </div>
 </div>
@@ -35,73 +35,73 @@ include("include/gensettings.php");
           <td class="pageName"><table cellspacing="0" cellpadding="0" width="95%" align="center" border="0">
               <tbody>
                 <tr>
-                  <td 
+                  <td
     background="Basic Search (Library of Congress Online Catalog)_files/tips-background.gif">&nbsp;</td>
                 </tr>
                 <tr>
-                  <td><table bordercolor="#cccc99" cellspacing="0" cellpadding="5" width="100%" 
+                  <td><table bordercolor="#cccc99" cellspacing="0" cellpadding="5" width="100%"
       border="1">
                       <tbody>
                         <tr bgcolor="#cccc99">
-                          <th width="19%"><b><font face="Arial, Helvetica, sans-serif" 
+                          <th width="19%"><b><font face="Arial, Helvetica, sans-serif"
             size="-1">Search Type</font></b></th>
-                          <th width="78%"><font face="Arial, Helvetica, sans-serif" 
+                          <th width="78%"><font face="Arial, Helvetica, sans-serif"
             size="-1">Brief Help </font></th>
-                          <th width="3%"><a 
+                          <th width="3%"><a
             href="http://catalog.loc.gov/help/limits.htm"></a></th>
                         </tr>
                         <tr bgcolor="#ffffdd">
-                          <td valign="top" align="middle" width="19%"><font 
+                          <td valign="top" align="middle" width="19%"><font
             face="Arial, Helvetica, sans-serif" color="#000000" size="-1"><b>Title</b></font> </td>
-                          <td width="78%"><p><font face="Arial, Helvetica, sans-serif" color="#000000" size="-1">- 
+                          <td width="78%"><p><font face="Arial, Helvetica, sans-serif" color="#000000" size="-1">-
                             Enter all or initial part of title, starting with the first word: <b>king and i </b><br />
-                            - Drop initial articles (a, das, the) and 
+                            - Drop initial articles (a, das, the) and
                             punctuation (&quot;, &iquest;, ! ) in any language.<br />
-                                                <i>- Truncation is 
+                                                <i>- Truncation is
                                                   automatic.</i></font></p></td>
                           <td width="3%">&nbsp;</td>
                         </tr>
                         <tr bgcolor="#ffffdd">
-                          <td valign="top" align="middle" width="19%"><font 
+                          <td valign="top" align="middle" width="19%"><font
             face="Arial, Helvetica, sans-serif" color="#000000" size="-1"><b>Author/Creator </b></font></td>
-                          <td width="78%"><p><font face="Arial, Helvetica, sans-serif" color="#000000" size="-1">- <U>For personal names</U>, enter surname first: <b>shakespeare 
+                          <td width="78%"><p><font face="Arial, Helvetica, sans-serif" color="#000000" size="-1">- <U>For personal names</U>, enter surname first: <b>shakespeare
                             william</b><br />
                             - <U>For group names</U>, enter in direct order: <b>army war college</b><br />
-                            <i>- Truncation is 
+                            <i>- Truncation is
                               automatic.</i></font></p></td>
                           <td width="3%">&nbsp;</td>
                         </tr>
-                        
+
 
 
 
 
                         <tr bgcolor="#ffffdd">
-                          <td valign="top" align="middle" width="19%"><font 
+                          <td valign="top" align="middle" width="19%"><font
             face="Arial, Helvetica, sans-serif" color="#000000" size="-1"><b>Subject</b></font></td>
-                          <td width="78%"><p><font face="Arial, Helvetica, sans-serif" color="#000000" size="-1">- 
+                          <td width="78%"><p><font face="Arial, Helvetica, sans-serif" color="#000000" size="-1">-
                             Enter standard subject heading, name, or genre term: <b>solar energy </b><br />
-                            - Start with the left-most word: <b>vietnamese conflict 1961 
+                            - Start with the left-most word: <b>vietnamese conflict 1961
                               1975 </b><br />
                           - Omit most punctuation: <b>united states army history</b><b><br />
                                               </b><i>- Truncation is automatic.</i><b> </b></font></p></td>
                           <td width="3%">&nbsp;</td>
                         </tr>
                         <tr bgcolor="#ffffdd">
-                          <td valign="top" align="middle" width="19%"><font 
+                          <td valign="top" align="middle" width="19%"><font
             face="Arial, Helvetica, sans-serif" color="#000000" size="-1"><b>Keywords </b></font> </td>
-                          <td width="78%"><p><font face="Arial, Helvetica, sans-serif" color="#000000" size="-1">- </font><font face="Arial, Helvetica, sans-serif" color="#000000"><b>Enter 'bill' </b></font><font face="Arial, Helvetica, sans-serif" color="#000000" 
+                          <td width="78%"><p><font face="Arial, Helvetica, sans-serif" color="#000000" size="-1">- </font><font face="Arial, Helvetica, sans-serif" color="#000000"><b>Enter 'bill' </b></font><font face="Arial, Helvetica, sans-serif" color="#000000"
             size="-1"> and will results --&gt; bill of rights, accessing bill, the bill of our native parents, bill gates <br />
                           </font></p>
                               </td>
                           <td width="3%">&nbsp;</td>
                         </tr>
                         <tr bgcolor="#ffffdd">
-                          <td valign="top" align="middle" width="19%"><font 
+                          <td valign="top" align="middle" width="19%"><font
             face="Arial, Helvetica, sans-serif" color="#000000" size="-1"><b>Wild cards </b></font> </td>
-                          <td width="78%"><p><font 
-            face="Arial, Helvetica, sans-serif" color="#000000" size="-1">- </font><strong><font color="#000000" face="Arial, Helvetica, sans-serif">*</font></strong><font 
-            face="Arial, Helvetica, sans-serif" color="#000000" size="-1"> truncates: <b>entrepr*</b> --&gt; <i>finds</i> entrepreneur, 
+                          <td width="78%"><p><font
+            face="Arial, Helvetica, sans-serif" color="#000000" size="-1">- </font><strong><font color="#000000" face="Arial, Helvetica, sans-serif">*</font></strong><font
+            face="Arial, Helvetica, sans-serif" color="#000000" size="-1"> truncates: <b>entrepr*</b> --&gt; <i>finds</i> entrepreneur,
                                       entrepreneurial, etc.</font> <br />
                                       <strong><font color="#000000" size="-1" face="Arial, Helvetica, sans-serif">*ing --&gt; </font></strong><em><font color="#000000" size="-1" face="Arial, Helvetica, sans-serif">finds billing,engineering, etc</font></em> <br />
                           </p></td>
@@ -131,7 +131,7 @@ include("include/gensettings.php");
 </tr>
 </table></div>
 <div class="footer">
-<?php echo $system_title;?><br /><?php echo $footer;?>
+<?php echo $system_title; ?><br /><?php echo $footer; ?>
 </div>
 </body>
 </html>
