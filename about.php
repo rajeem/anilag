@@ -8,7 +8,7 @@ if (!isset($_SESSION[$myusername])) {
 include "include/connect.php";
 include "include/gensettings.php";
 
-$copy = '&copy; Copyleft 2007 by Provincial Government of Laguna & Laguna University. All rights reserved. <br />
+$copy = '&copy; Copyright 2007 by Provincial Government of Laguna & Laguna University. All rights reserved. <br />
       This software is legally free to copy, modify and redistribute.<br /><br /><br />';
 $credit = '&nbsp;&nbsp;Credits&nbsp;&nbsp;&nbsp;';
 $hidden = 1;

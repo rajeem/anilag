@@ -40,9 +40,9 @@ $sql = "SELECT * from titles";
 $result = mysql_query($sql);
 $all_title = mysql_num_rows($result);
 
-$_SESSION[school_code] = $_SESSION['school_code']; //school
-$_SESSION[type] = $_SESSION['type']; //keyword
-$_SESSION[search] = $_SESSION['search']; //text
+$_SESSION['school_code'] = $_SESSION['school_code']; //school
+$_SESSION['type'] = $_SESSION['type']; //keyword
+$_SESSION['search'] = $_SESSION['search']; //text
 
 $school_code = $_SESSION['school_code'];
 //echo $school_code;        //school

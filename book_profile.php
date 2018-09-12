@@ -15,7 +15,7 @@ $sname = $_POST['sname'];
 $fname = $_POST['fname'];
 $mname = $_POST['mname'];
 $author = $fname . '  ' . $mname{0} . '.' . ' ' . $sname;
-$_SESSION[author] = $author;
+$_SESSION['author'] = $author;
 $title = $_POST['title'];
 $access_num = $_POST['access_num'];
 $subject1 = $_POST['subject1'];
@@ -37,7 +37,6 @@ if ($_POST['submit']) {
     $access_num = $_POST['access_no'];
     $call_num = $_POST['call_num'];
     $author = $_POST['author'];
-//    $_SESSION[author] =$_POST['author'];
 
     $other_author1_sname = $_POST['other_author1_sname'];
     $other_author1_fname = $_POST['other_author1_fname'];
@@ -167,7 +166,6 @@ if ($_POST['submit2']) {
     $access_num = $_POST['access_no'];
     $call_num = $_POST['call_num'];
     $author = $_POST['author'];
-//    $_SESSION[author] =$_POST['author'];
 
     $other_author1 = $_POST['other_author1'];
     $other_author2 = $_POST['other_author2'];

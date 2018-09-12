@@ -57,7 +57,7 @@ $due_tom = mysql_num_rows($result2);
 
 $window = 1;
 
-$_SESSION[type_hanap] = $_SESSION['type_hanap'];
+$_SESSION['type_hanap'] = $_SESSION['type_hanap'];
 $type_code = $_SESSION['type_hanap'];
 //    echo $type;
 $sql = "SELECT *,concat(first1,' ',last1)

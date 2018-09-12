@@ -47,7 +47,7 @@ class multiple_upload
 
     public function validate()
     {
-        $num = count($this->files[file][name]);
+        $num = count($this->files['file']['name']);
         //Control for max_files
         if ($num > $this->max_files) {
             $this->errors[0][] = "To many files! max allowed=" . $this->max_files;
@@ -56,23 +56,23 @@ class multiple_upload
             //check for all files, SIZE and FILE_TYPE
             for ($i = 0; $i < $num; $i++) {
                 //Check SIZE
-                if ($this->files[file][size][$i] > $this->max_size) {
-                    $this->errors[1][] = "File: " . $this->files[file][name][$i] .
-                    " size: " . $this->files[file][size][$i] .
+                if ($this->files['file']['size'][$i] > $this->max_size) {
+                    $this->errors[1][] = "File: " . $this->files['file']['name'][$i] .
+                    " size: " . $this->files['file']['size'][$i] .
                         " not allowed Max=: " .
                         ($this->max_size / 1000) . " kb";
                 }
                 //split file-type information (image/gif)
-                $file_type = split('[/.-]', $this->files[file][type][$i]);
+                $file_type = split('[/.-]', $this->files['file']['type'][$i]);
                 //Check if file-type ALLOWED
                 if (in_array($file_type[1], $this->allowed)) {
-                    $this->errors[2][] = "File: " . $this->files[file][name][$i] .
-                    " type: " . $this->files[file][type][$i] .
+                    $this->errors[2][] = "File: " . $this->files['file']['name'][$i] .
+                    " type: " . $this->files['file']['type'][$i] .
                         " not in list allowed";
                     //else Check if file-type NOT ALLOWED
                 } else if (in_array($file_type[1], $this->notallowed)) {
-                    $this->errors[2][] = "File: " . $this->files[file][name][$i] .
-                    " type: " . $this->files[file][type][$i] .
+                    $this->errors[2][] = "File: " . $this->files['file']['name'][$i] .
+                    " type: " . $this->files['file']['type'][$i] .
                         " not allowed";
                 }
             }
@@ -97,7 +97,7 @@ class multiple_upload
             return false;
         }
 
-        $num = count($this->files[file][name]);
+        $num = count($this->files['file']['name']);
         //Control for max_files
         if ($num > $this->max_files) {
             $this->errors[0][] = "To many files! max allowed=" . $this->max_files;
@@ -108,24 +108,19 @@ class multiple_upload
 
             //check for all files, SIZE and FILE_TYPE
             for ($i = 0; $i < $num; $i++) {
-                $filename = $this->files[file][name][$i];
+                $filename = $this->files['file']['name'][$i];
 
                 //$this->errors[0][] = $filename;
                 if (!empty($filename)) { // this will check if any blank field is entered
                     $add = $remdir . $filename; // upload directory path is set
-                    if (is_uploaded_file($this->files[file][tmp_name][$i])) {
-                        move_uploaded_file($this->files[file][tmp_name][$i], $add);
+                    if (is_uploaded_file($this->files['file']['tmp_name'][$i])) {
+                        move_uploaded_file($this->files['file']['tmp_name'][$i], $add);
 
                         //echo $filename;
                         $sql = "UPDATE settings set logo='$filename'";
                         mysql_query($sql) or die("cant execute query!z" . mysql_error());
 
                     }
-                    /*
-                copy($this->files[file][tmp_name][$i], $add); //upload the file to the server
-                if (!chmod( "$add", $this->permission)) { // set permission to the file.
-                $this->errors[0][] = "Problems with copy of: " . $filename;                    }
-                 */
                 }
             }
             return true;

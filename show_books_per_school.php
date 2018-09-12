@@ -55,9 +55,9 @@ if (($_POST['op'] == 1) || ($_GET['search']) || ($_GET['show'] == "do")) {
     $list = $_POST['list'];
     $type = $_POST['type'];
     $school_code = $_POST['school_code'];
-    $_SESSION[code] = $_POST['school_code']; //username
-    $_SESSION[type] = $_POST['type']; //username
-    $_SESSION[search] = $_POST['search']; //username
+    $_SESSION['code'] = $_POST['school_code']; //username
+    $_SESSION['type'] = $_POST['type']; //username
+    $_SESSION['search'] = $_POST['search']; //username
 
 /**if the $_GET['txt'] is not blank,
  *use the variable below instead the
@@ -97,7 +97,7 @@ $list=1;
 //============================if the search field is not blank
     if (($search != "") && ($count >= 2)) {
 
-        if ($_SESSION[code] == "all") {
+        if ($_SESSION['code'] == "all") {
             $sql = "SELECT * from card_cat where match(title,author_sname,call_num,
 			isbn,edition,place_pub,publisher,date_pub,access_no,other_author1_sname,other_author2_sname,other_author3_sname,other_author4_sname,subject1,subject2,subject3)
 			against ('$search')";
@@ -155,7 +155,7 @@ $list=1;
 
     if ($search == "") {
         $school_code = $_POST['school_code'];
-        if ($_SESSION[code] == "all") {
+        if ($_SESSION['code'] == "all") {
             $sql = "SELECT * from card_cat";
             $txt = "<strong>All books</strong>";
         } // end if $type==All

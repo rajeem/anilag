@@ -18,8 +18,8 @@ if ($del_book == "on") {
     $sql = "select * from user WHERE username='$user'";
     $result = mysql_query($sql, $connect) or die("cant execute query!.....23" . mysql_error());
     $row = mysql_fetch_array($result);
-    $name = $row[first1] . ' ' . $row[middle1]{0} . '.' . ' ' . $row[last1];
-    $type = $row[type];
+    $name = $row['first1'] . ' ' . $row['middle1']{0} . '.' . ' ' . $row['last1'];
+    $type = $row['type'];
 //==============================
     $id = $_GET['id'];
     $date = date("Y-m-d");

@@ -59,7 +59,7 @@ $due_tom = mysql_num_rows($result2);
 //$type=$_GET['type1'];
 if (($_POST['op'] == 1) || ($_POST['submit']) || ($_GET['show'] == "do")) {
     $type = $_POST['type'];
-    $_SESSION[type_hanap] = $_POST['type']; //username
+    $_SESSION['type_hanap'] = $_POST['type']; //username
 
     if ($type == "all") {
 

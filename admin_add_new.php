@@ -75,22 +75,21 @@ if ($add_book == "on") {
         $subject6 = $_POST['subject6'];
         $subject7 = $_POST['subject7'];
         $status = "in";
-        $_SESSION[school_code] = $_POST['school_code'];
-        $_SESSION[author_no] = $_POST['author_no'];
-        $_SESSION[author_sname] = $_POST['sname'];
-        $_SESSION[author_fname] = $_POST['fname'];
-        $_SESSION[author_mname] = $_POST['mname'];
-        $_SESSION[title] = $_POST['title'];
-        $_SESSION[access_num] = $_POST['access_no'];
-        $_SESSION[subject_classification] = $_POST['subject_classification'];
-        $_SESSION[subject1] = $_POST['subject1'];
-        $_SESSION[subject2] = $_POST['subject2'];
-        $_SESSION[subject3] = $_POST['subject3'];
-        $_SESSION[subject4] = $_POST['subject4'];
-        $_SESSION[subject5] = $_POST['subject5'];
-        $_SESSION[subject6] = $_POST['subject6'];
-        $_SESSION[subject7] = $_POST['subject7'];
-//    $_SESSION[status]             =$_POST['status'];
+        $_SESSION['school_code'] = $_POST['school_code'];
+        $_SESSION['author_no'] = $_POST['author_no'];
+        $_SESSION['author_sname'] = $_POST['sname'];
+        $_SESSION['author_fname'] = $_POST['fname'];
+        $_SESSION['author_mname'] = $_POST['mname'];
+        $_SESSION['title'] = $_POST['title'];
+        $_SESSION['access_num'] = $_POST['access_no'];
+        $_SESSION['subject_classification'] = $_POST['subject_classification'];
+        $_SESSION['subject1'] = $_POST['subject1'];
+        $_SESSION['subject2'] = $_POST['subject2'];
+        $_SESSION['subject3'] = $_POST['subject3'];
+        $_SESSION['subject4'] = $_POST['subject4'];
+        $_SESSION['subject5'] = $_POST['subject5'];
+        $_SESSION['subject6'] = $_POST['subject6'];
+        $_SESSION['subject7'] = $_POST['subject7'];
 
         //if access number already exists!
         $sql = "select * from card_cat where access_no='$access_num'";

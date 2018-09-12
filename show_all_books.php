@@ -43,9 +43,9 @@ $sql = "SELECT * from titles";
 $result = mysql_query($sql);
 $all_title = mysql_num_rows($result);
 
-$_SESSION[code] = $_SESSION['code']; //school
-$_SESSION[type] = $_SESSION['type']; //keyword
-$_SESSION[search] = $_SESSION['search']; //text
+$_SESSION['code'] = $_SESSION['code']; //school
+$_SESSION['type'] = $_SESSION['type']; //keyword
+$_SESSION['search'] = $_SESSION['search']; //text
 
 $school_code = $_SESSION['code']; //school
 $type = $_SESSION['type']; //keyword
@@ -121,11 +121,7 @@ if ($search != "") {
             }
 
         } // end if school_code==all
-        if ($school_code != "All") { // if school_code=="$school_code"
-            //$sql="SELECT * from card_cat where match(call_num,author_sname,author_fname,
-            //author_mname,title,subject1,subject2,subject3,location,place_pub,publisher,date_pub,classification)
-            //against ('$search') && school_code='$_SESSION[code]'";
-            //$txt="<strong>All books</strong>";
+        if ($school_code != "All") {
             if ($type == "author") {
                 $sql = "SELECT * from card_cat where school_code='$school_code' AND (author_sname like '%$search%' or author_fname like '%$search%' or
 			author_mname like '%$search%')";
@@ -261,27 +257,6 @@ if ($page < $total_pages) {
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title><?php echo $system_title . "--" . $footer; ?></title>
 <link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
-<style type="text/css">
-<!--
-#Layer3 {
-	position:absolute;
-	width:200px;
-	height:115px;
-	z-index:1;
-	left: 571px;
-	top: 797px;
-}
-.style4 {
-	font-size: larger;
-	font-weight: bold;
-}
-.style5 {color: #FF0000}
-.style6 {font-size: larger; font-weight: bold; color: #FF0000; }
-.style7 {color: #FFFFFF}
-.style9 {color: #FFFFFF; font-weight: bold; }
-
--->
-</style>
 </head>
 <body>
 <div class="header">
@@ -349,10 +324,16 @@ if ($rows > 0) {
  		   <td width="19%" bgcolor="#000000"><strong class="style9">Main Author</strong></td>
  		   <td width="10%" bgcolor="#000000"><span class="style7"><strong>Access No.</strong></span></td>
  	 	  <td width="10%" bgcolor="#000000"><span class="style9">Status</span></td>
- 	  <? if ($school_code=="all") echo" <td width='15%' bgcolor='#000000'><span class='style9'>School</span></td>
- 	 ";?>
-	  <? if ($location2=="on") echo" <td width='20%' bgcolor='#000000'><span class='style9'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</span></td>
- 	 ";?>
+       <?php
+if ($school_code == "all") {
+            echo " <td width='15%' bgcolor='#000000'><span class='style9'>School</span></td>";
+        }
+            ?>
+      <?php
+if ($location2 == "on") {
+                echo " <td width='20%' bgcolor='#000000'><span class='style9'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</span></td>";
+            }
+            ?>
 	   </tr>
 		<?php }?>
 		<?php if ($book_preview == "off") {?>
@@ -375,7 +356,7 @@ if ($rows > 0) {
 
     $count = 1;
 
-    if ($_GET['type'] != "") {
+    if (isset($_GET['type'])) {
         $type = $_GET['type'];
     }
     $x = 2;
@@ -398,7 +379,7 @@ if ($rows > 0) {
         $author_mname = $row['author_mname'];
 
         $author_mname = ucfirst($author_mname);
-        $author = $author_fname . ' ' . $author_mname{0} . '. ' . $author_sname;
+        $author = $author_fname . ' ' . $author_mname . ' ' . $author_sname;
         if ($author_mname == "") {
             $author = $author_fname . ' ' . $author_sname;
         }
@@ -470,7 +451,7 @@ if ($rows > 0) {
         $the_final_call_num = $call_num;
         $the_final_title = $title;
         $the_final_author = $author;
-        $the_final_subject = $subject;
+        $the_final_subject = $subject1;
 
         if ($x > $y) {
             $y += 2;
@@ -834,11 +815,17 @@ if (($pdf == "") && ($help == "") && ($pdb == "")) {
             }
 
             ?></td>
-			 <? if ($school_code=="all") echo" <td width='15%' bgcolor='$bg'>$code_mo</td>
- 	 ";?>
+             <?php
+if ($school_code == "all") {
+                echo '<td width="15%" bgcolor="' . $bg . '">' . $code_mo . '</td>';
+            }
+            ?>
 
-	   <? if ($location2=="on") echo" <td width='20%' bgcolor='$bg'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$location</td>
- 	 ";?>
+       <?
+       if ($location2=="on") {
+        echo "<td width='20%' bgcolor='$bg'>$location</td>";
+       }
+       ?>
 </tr>
 
 <?php

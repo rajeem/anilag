@@ -40,9 +40,9 @@ if ($_POST['op'] == 1) {
     $start = $_POST['start'];
     $end = $_POST['ending'];
 
-    $_SESSION[borrow_type] = $_POST['type']; //school code
-    $_SESSION[start] = $_POST['start']; //start date
-    $_SESSION[ending] = $_POST['ending']; //end date
+    $_SESSION['borrow_type'] = $_POST['type']; //school code
+    $_SESSION['start'] = $_POST['start']; //start date
+    $_SESSION['ending'] = $_POST['ending']; //end date
 
     $s = date($start);
     $e = date($end);

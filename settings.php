@@ -12,6 +12,7 @@ $selected3 = "";
 $selected7 = "";
 $selected99 = "";
 $selected9 = "";
+$selected10 = "";
 $selected11 = "";
 $selected15 = "";
 
@@ -28,16 +29,18 @@ if ($uri == "admin") {
         $header = $_POST['header'];
         $overdue_price = $_POST['overdue_price'];
         $search_output = $_POST['search_output'];
-        $location2 = $_POST['location2'];
+        $location2 = isset($_POST['location2']) ? $_POST['location2'] : '';
         $author_card = $_POST['author_card'];
         $title_card = $_POST['title_card'];
         $rec_per_page = $_POST['rec_per_page'];
         $default_school = $_POST['school_code'];
         $book_preview = $_POST['bp'];
 
-        $sql = "UPDATE settings set css='$save_css',hour_allow='$hour_allow',auto_id='$auto',header_title='$header',auto_deadline='$auto_deadline',rate='$rate',sat='$sat',sun='$sun',location2='$location2',author_card='$author_card',title_card='$title_card',
-          overdue_price='$overdue_price',search_output='$search_output',rec_per_page='$rec_per_page',default_school='$default_school',book_preview='$book_preview'";
-        mysql_query($sql, $connect) or die("cant execute query!z");
+        $sql = "UPDATE settings set css='$save_css',hour_allow='$hour_allow',auto_id='$auto',";
+        $sql .= "header_title='$header',auto_deadline='$auto_deadline',rate='$rate',sat='$sat',";
+        $sql .= "sun='$sun',location2='$location2',author_card='$author_card',title_card='$title_card',";
+        $sql .= "overdue_price='$overdue_price',search_output='$search_output',rec_per_page='$rec_per_page',";
+        $sql .= "default_school='$default_school',book_preview='$book_preview'";
 
         $alert = '<strong><font color=red>The settings changed!</font></strong>';
 
@@ -53,10 +56,12 @@ if ($uri == "admin") {
         $send_now->notallowed = array("exe" . "mp3"); //exclude some file-types
         $send_now->show = true; //show errors
         $send_now->files = &$_FILES; //get $_FILES global values
-        $send_now->cid = $cid; //set the category id
-        $send_now->domid = $domid; //set the domain id
-        $send_now->sequel = $sequel;
-        $send_now->bilang = $bilang;
+
+        //todo: know what are these for
+        //$send_now->cid = $cid; //set the category id 
+        //$send_now->domid = $domid; //set the domain id
+        //$send_now->sequel = $sequel;
+        //$send_now->bilang = $bilang;
 
         //validate on size and allowed files
         $ok = $send_now->validate();
@@ -291,19 +296,22 @@ if ($uri == "admin") {
       <tr>
         <td align="right">Default School for Search</td>
         <td>&nbsp;</td>
-        <td colspan="2"><select name="school_code" id="school_code">
-              <?php
-$i = 0;
-    $sql = "SELECT school_code from school order by school_code";
+        <td colspan="2">
+            <select name="school_code" id="school_code">
+<?php
+
+    $sql = "SELECT * from school order by school_code";
     $result = mysql_query($sql);
     while ($row = mysql_fetch_array($result)) {
         $code = $row['school_code'];
-        ?>
-              <option <?php if ($dschool_code == "$code") {
-            echo selected;
+        if ($dschool_code == $code) {
+            echo '<option selected="selected" value="' . $row['school_code'] . '">' . $row['school_name'] . '</option>';
+        } else {
+            echo '<option value="' . $row['school_code'] . '">' . $row['school_name'] . '</option>';
         }
-        ?>><?php echo $code; ?></option>
-              <?php $i++;}?>
+    }
+
+    ?>
             </select></td>
         </tr>
 		 <tr>

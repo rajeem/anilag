@@ -40,18 +40,14 @@ $sql = "SELECT * from titles";
 $result = mysql_query($sql);
 $all_title = mysql_num_rows($result);
 
-//$_SESSION[school_code] = $_SESSION['school_code'];        //school
-//$_SESSION[type] = $_SESSION['type'];        //keyword
-//$_SESSION[search] = $_SESSION['search'];        //text
-
 //$school_code = $_SESSION['school_code'];
 //echo $school_code;        //school
 //$type = $_SESSION['type'];        //keyword
 //$search = $_SESSION['search'];        //text
 
-$_SESSION[code] = $_SESSION['code']; //school
-$_SESSION[type] = $_SESSION['type']; //keyword
-$_SESSION[search] = $_SESSION['search']; //text
+$_SESSION['code'] = $_SESSION['code']; //school
+$_SESSION['type'] = $_SESSION['type']; //keyword
+$_SESSION['search'] = $_SESSION['search']; //text
 
 $school_code = $_SESSION['code']; //school
 $type = $_SESSION['type']; //keyword
@@ -130,11 +126,7 @@ if ($search != "") {
             }
 
         } // end if school_code==all
-        if ($school_code != "all") { // if school_code=="$school_code"
-            //$sql="SELECT * from card_cat where match(call_num,author_sname,author_fname,
-            //author_mname,title,subject1,subject2,subject3,location,place_pub,publisher,date_pub,classification)
-            //against ('$search') && school_code='$_SESSION[code]'";
-            //$txt="<strong>All books</strong>";
+        if ($school_code != "all") {
             if ($type == "author") {
                 $sql = "SELECT * from card_cat where school_code='$school_code' AND (author_sname like '%$search%' or author_fname like '%$search%' or
 			author_mname like '%$search%')";

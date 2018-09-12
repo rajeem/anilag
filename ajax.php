@@ -44,10 +44,10 @@ $rows = mysql_num_rows($qry_result);
 // Insert a new row in the table for each person returned
 while ($row = mysql_fetch_array($qry_result)) {
     $display_string .= "<tr>";
-    $display_string .= "<td>$row[author]</td>";
-    $display_string .= "<td>$row[title]</td>";
-    $display_string .= "<td>$row[qty]</td>";
-    $display_string .= "<td>$row[call_num]</td>";
+    $display_string .= "<td>$row['author']</td>";
+    $display_string .= "<td>$row['title']</td>";
+    $display_string .= "<td>$row['qty']</td>";
+    $display_string .= "<td>$row['call_num']</td>";
     $display_string .= "</tr>";
     $display_string = $row['call_num'];
 }

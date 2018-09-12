@@ -49,9 +49,9 @@ if (isset($_POST['op']) && $_POST['op'] == 1) {
     $search = $_POST['search'];
     $type = $_POST['type'];
     $school_code = $_POST['school_code'];
-    $_SESSION[code] = $_POST['school_code']; //school
-    $_SESSION[type] = $_POST['type']; //keyword
-    $_SESSION[search] = $_POST['search']; //text
+    $_SESSION['code'] = $_POST['school_code']; //school
+    $_SESSION['type'] = $_POST['type']; //keyword
+    $_SESSION['search'] = $_POST['search']; //text
 
     header("Location: regular_show_all_books.php");
     exit();} //end if all
@@ -124,17 +124,21 @@ if (isset($_POST['op']) && $_POST['op'] == 1) {
             <option value="title" <?php echo $selected3; ?>>Title</option>
             <option value="subject" <?php echo $selected4; ?>>Subject</option>
           </select></td>
-          <td width="14%"><select name="school_code" id="school_code">
+          <td width="14%">
+            <select name="school_code" id="school_code">
             <?php
-$i = 0;
-$sq6 = "SELECT school_code from school order by school_code";
-$result6 = mysql_query($sq6);
-while ($row = mysql_fetch_array($result6)) {
-    $code = $row['school_code'];
-    ?>
-            <option <? if ($dschool_code=="$code") echo "selected";?>><?php echo $code; ?></option>
-            <?php $i++;}?>
-            <option  value="all"<? if ($school_code=="all") echo "selected";?>>All</option>
+              $i = 0;
+              $sq6 = "SELECT * from school order by school_code";
+              $result6 = mysql_query($sq6);
+              while ($row = mysql_fetch_array($result6)) {
+                if ($dschool_code == $code) { 
+                  echo '<option selected="selected">' . $row['school_code'] . '</option>';
+                } else {
+                  echo '<option>' . $row['school_code'] . '</option>';
+                }
+                echo '<option value="all"' . ($school_code == "all" ? ' selected="selected"' : '') . '>All</option>';
+              }
+            ?>
           </select></td>
 		  <td>
             <input name="Submit" type="submit" class="btn"  value="Search"/>

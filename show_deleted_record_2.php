@@ -54,9 +54,9 @@ $due_tom = mysql_num_rows($result2);
 
 $window = 1;
 
-$_SESSION[borrow_type] = $_SESSION['borrow_type']; //school_code
-$_SESSION[start] = $_SESSION['start']; //text
-$_SESSION[ending] = $_SESSION['ending']; //text
+$_SESSION['borrow_type'] = $_SESSION['borrow_type']; //school_code
+$_SESSION['start'] = $_SESSION['start']; //text
+$_SESSION['ending'] = $_SESSION['ending']; //text
 
 $type_code = $_SESSION['borrow_type']; //school_code
 $start = $_SESSION['start']; //start

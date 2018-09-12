@@ -21,7 +21,7 @@ $author_sname = $_POST['sname'];
 $author_fname = $_POST['fname'];
 $author_mname = $_POST['mname'];
 $author = $fname . '  ' . $mname{0} . '.' . ' ' . $sname;
-$_SESSION[author] = $author;
+$_SESSION['author'] = $author;
 $title = $_POST['title'];
 $access_num = $_POST['access_no'];
 $subject_classification = $_POST['subject_classification'];
@@ -58,7 +58,6 @@ if ($add_book == "on") {
         $author_fname = $_POST['author_fname'];
         $author_mname = $_POST['author_mname'];
 
-//    $_SESSION[author] =$_POST['author'];
         $other_author1_no = $_POST['other_author1_no'];
         $other_author1_sname = $_POST['other_author1_sname'];
         $other_author1_fname = $_POST['other_author1_fname'];
@@ -330,7 +329,6 @@ title,parallel_title,oti,uti,edition,gmd,classification,place_pub,
         $author_fname = $_POST['author_fname'];
         $author_mname = $_POST['author_mname'];
 
-//    $_SESSION[author] =$_POST['author'];
 
 /*    $other_author1    = $_POST['other_author1'];
 $other_author2    = $_POST['other_author2'];

@@ -35,8 +35,8 @@ $due_tom = mysql_num_rows($result2);
 
 //#################################################################################################
 
-$_SESSION[type] = $_SESSION['type']; //school_code
-$_SESSION[search] = $_SESSION['search']; //text
+$_SESSION['type'] = $_SESSION['type']; //school_code
+$_SESSION['search'] = $_SESSION['search']; //text
 
 $type_code = $_SESSION['type']; //school_code
 $search = $_SESSION['search']; //text

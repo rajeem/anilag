@@ -43,21 +43,19 @@ $sql = "SELECT * from titles";
 $result = mysql_query($sql);
 $all_title = mysql_num_rows($result);
 
-$search = $_POST['search'];
-$type = $_POST['type'];
-$school_code = $_POST['school_code'];
+$search = '';
 
-if ($_POST['op'] == 1) {
-
+if (isset($_POST['op'])) {
     $search = $_POST['search'];
     $type = $_POST['type'];
     $school_code = $_POST['school_code'];
-    $_SESSION[code] = $_POST['school_code']; //school
-    $_SESSION[type] = $_POST['type']; //keyword
-    $_SESSION[search] = $_POST['search']; //text
+    $_SESSION['code'] = $_POST['school_code']; //school
+    $_SESSION['type'] = $_POST['type']; //keyword
+    $_SESSION['search'] = $_POST['search']; //text
 
     header("Location: show_all_books.php");
-    exit();} //end if all
+    exit();
+} //end if all
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -70,13 +68,13 @@ if ($_POST['op'] == 1) {
 	{
 
     var answer = confirm("Are you sure you wish to delete this item?\n Click OK to proceed otherwise click Cancel.")
-	if (!answer){
+    if (!answer){
 
-		return false;
-	}
+      return false;
+    }
 
     document.supportform.action = "admin_delete.php"
-	document.supportform.method="post"
+	  document.supportform.method="post"
     document.supportform.submit();
 
     return true;
@@ -87,27 +85,6 @@ if ($_POST['op'] == 1) {
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title><?php echo $system_title . "--" . $footer; ?></title>
 <link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
-<style type="text/css">
-<!--
-#Layer3 {
-	position:absolute;
-	width:200px;
-	height:115px;
-	z-index:1;
-	left: 571px;
-	top: 797px;
-}
-.style4 {
-	font-size: larger;
-	font-weight: bold;
-}
-.style5 {color: #FF0000}
-.style6 {font-size: larger; font-weight: bold; color: #FF0000; }
-.style7 {color: #FFFFFF}
-.style9 {color: #FFFFFF; font-weight: bold; }
-
--->
-</style>
 </head>
 <body>
 <div class="header">
@@ -152,17 +129,20 @@ if ($_POST['op'] == 1) {
             <option value="title" <?php echo $selected3; ?>>Title</option>
             <option value="subject" <?php echo $selected4; ?>>Subject</option>
           </select></td>
-          <td width="14%"> <select name="school_code" id="school_code">
-
-                <?php
-$i = 0;
-$sq6 = "SELECT school_code from school order by school_code";
-$result6 = mysql_query($sq6);
-while ($row = mysql_fetch_array($result6)) {
-    $code = $row['school_code'];
+          <td width="14%">
+          <select name="school_code" id="school_code">
+<?php
+        $sq6 = "SELECT * from school order by school_code";
+        $result6 = mysql_query($sq6);
+        while ($row = mysql_fetch_array($result6)) {
+          if ($dschool_code == $code) {
+            echo '<option selected="selected">' . $row['school_code'].'</option>';
+          } else {
+            echo '<option>' . $row['school_code'].'</option>';
+          }
+        } 
     ?>
-                <option <? if ($dschool_code=="$code") echo "selected";?>><?php echo $code; ?></option>
-          <?php $i++;}?> <option  value="All"<? if ($school_code=="all") echo "selected";?>>All</option></select></td>
+      </td>
 		  <td>
             <input name="Submit" type="submit" class="btn"  value="Search"/>
            </td>

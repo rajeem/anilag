@@ -150,7 +150,6 @@ if ($edit_book == "on") {
         $author_sname = $_POST['author_sname'];
         $author_fname = $_POST['author_fname'];
         $author_mname = $_POST['author_mname'];
-//    $_SESSION[author] =$_POST['author'];
 
         $other_author1_no = $_POST['other_author1_no'];
         $other_author1_sname = $_POST['other_author1_sname'];

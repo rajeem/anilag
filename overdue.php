@@ -40,8 +40,8 @@ if ($_POST['op'] == 1) {
     $search = $_POST['search']; // today, all, tomorrow
     $type = $_POST['type']; // school_code
 
-    $_SESSION[type] = $_POST['type']; //keyword
-    $_SESSION[search] = $_POST['search']; //text
+    $_SESSION['type'] = $_POST['type']; //keyword
+    $_SESSION['search'] = $_POST['search']; //text
 
     header("Location: show_overdue.php");
     exit();} //end if all
