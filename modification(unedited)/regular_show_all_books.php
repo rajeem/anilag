@@ -439,16 +439,16 @@ $rows=mysql_num_rows($result);
 					//$front='pdf.jpeg';
 					
 					}
-					if($help!=""){
+					if (isset($help)) {
 					$dest="help";
 					$doc="(compiled HTML)";
 					//$front='manual.jpg';
 					}
-					if($pdb!=""){
+					if (isset($pdb)) {
 					$dest="pdb";
 					$doc="(PDB)";
 					}
-					if(($pdf!="")&&($help!="")){
+					if (isset($pdf) && isset($help)) {
 					$dest="all";
 					}
 					if($front==""){

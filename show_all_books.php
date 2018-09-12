@@ -821,7 +821,7 @@ if ($school_code == "all") {
             }
             ?>
 
-       <?
+       <?php
        if ($location2=="on") {
         echo "<td width='20%' bgcolor='$bg'>$location</td>";
        }

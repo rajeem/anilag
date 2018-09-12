@@ -31,7 +31,7 @@ $window = 1;
 $total_income = 0;
 
 //collection with date range
-if ($_POST['op'] == 1) {
+if (isset($_POST['op'])) {
     $type_code = $_POST['type'];
     $start = $_POST['start'];
     $end = $_POST['ending'];

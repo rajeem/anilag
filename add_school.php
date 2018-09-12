@@ -69,11 +69,6 @@ return false;}
 
 <link rel="stylesheet" href="css/<?php echo $css; ?>" type="text/css" />
 
-<style type="text/css">
-<!--
-.style1 {font-weight: bold}
--->
-</style>
 </head>
 
 <body>
@@ -155,7 +150,7 @@ return false;}
 	  <?php if ($op == 3) {?>
     <table width="73%" border="0" cellpadding="5" cellspacing="5">
               <tr>
-        <td  colspan="4"  class="style2">The Record is successfully added!&nbsp;&nbsp;<a href="school.php" >Back to Account Page</a> </td>
+        <td  colspan="4"  class="style2">The Record is successfully added!&nbsp;&nbsp;<a href="school.php" >Back to Schools Page</a> </td>
 
         </tr>
 			  <tr>
@@ -174,7 +169,7 @@ return false;}
               </tr>
   </table>
 <?php }?>
-  </fieldset>�</div>
+  </fieldset></div>
 
   <!-- End of New Item Description -->
   <!-- Start of Sub Item Descriptions -->

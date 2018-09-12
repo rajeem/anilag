@@ -52,7 +52,7 @@ while ($row = mysql_fetch_array($result)) {
 
 //if the form has been submit or paging is click
 
-if (($_POST['op'] == 1) || ($_GET['search']) || ($_GET['show'] == "do")) {
+if ((isset($_POST['op'])) || ($_GET['search']) || ($_GET['show'] == "do")) {
     $search = $_POST['search'];
     $list = $_POST['list'];
     $type = $_POST['type'];
@@ -309,7 +309,7 @@ echo $pagination;?>
  */
 //output error msg if there is
 echo $er;
-if (($_POST['op'] == 1) || ($_GET['search']) || ($_GET['show'] == "do")) {
+if ((isset($_POST['op'])) || ($_GET['search']) || ($_GET['show'] == "do")) {
     $sql .= " ORDER BY title LIMIT $from, $max_results";
 
     $result = mysql_query($sql, $connect) or die("cant execute query!.....1");

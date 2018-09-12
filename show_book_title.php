@@ -233,7 +233,7 @@ while ($row = mysql_fetch_array($result)) {
     echo "<tr><td bgcolor='$bg'>$title</td>" . "<td bgcolor='$bg'>$author_sname&nbsp;&nbsp;$author_fname&nbsp;" . '' . $author_mname{0} . '.' . "</td>" . "<td bgcolor='$bg'>$quantity</td>" . "<td bgcolor='$bg'>$available</td></tr>";
 }
 ?>
-	<tr><td>		<?	 if (strlen($pagination)<100){
+	<tr><td>		<?php	 if (strlen($pagination)<100){
 					$pagination="";
 				 }
 				  echo $pagination;?></td>

@@ -69,58 +69,68 @@ $number = mysql_num_rows($result);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<script type="text/JavaScript" src="js/function.js">
-</script>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title><?php echo $system_title . "--" . $footer; ?></title>
-<link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
+    <script type="text/JavaScript" src="js/function.js">
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>
+        <?php echo $system_title . "--" . $footer; ?>
+    </title>
+    <link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
 </head>
+
 <body>
-<div class="header">
-  <div class="logo"><?php echo "&nbsp;&nbsp;&nbsp;" . $header_title; ?> </div>
-  <div id="Layer1"><img src="images/<?php echo $logo; ?>" width="110" height="110" />
-    <div id="Layer2"></div>
-  </div>
-</div>
-<div class="navbg">
-  <div id="navcontainer">
-<ul id="navlist">
-<li id="active"><a href="home.php" id="current" title="Home">Home</a></li>
-<li><a href="admin.php" title="Search">Search</a></li>
-<li><a href="admin_add_new.php" title="Add book">Add book</a></li>
-<li><a href="barrower.php" title="Borrower">Borrower</a></li>
-<li><a href="inventory.php" title="Inventory">Inventory</a></li>
-<li><a href="settings.php" title="Settings">Settings</a></li>
-<li><a href="help1.php" title="Help">Help</a></li>
-<li><a href="logout.php" title="Logout">Logout</a></li>
-</ul>
-</div>
-</div>
-<div class="maincontent">
-  <div class="floatelft">
-    <h2>Home</h2>
-    <table width="100%" border="0">
-      <tr>
-        <td width="11%" align="center"><a href="admin.php" title="search for books,authors and more."><img src="images/lens.jpg" width="72" height="61" /><br />
-        Search</a></td>
-        <td width="11%" align="center"><?php if ($add_book == "on") {
+    <div class="header">
+        <div class="logo">
+            <?php echo "&nbsp;&nbsp;&nbsp;" . $header_title; ?>
+        </div>
+        <div id="Layer1"><img src="images/<?php echo $logo; ?>" width="110" height="110" />
+            <div id="Layer2"></div>
+        </div>
+    </div>
+    <div class="navbg">
+        <div id="navcontainer">
+            <ul id="navlist">
+                <li id="active"><a href="home.php" id="current" title="Home">Home</a></li>
+                <li><a href="admin.php" title="Search">Search</a></li>
+                <li><a href="admin_add_new.php" title="Add book">Add book</a></li>
+                <li><a href="barrower.php" title="Borrower">Borrower</a></li>
+                <li><a href="inventory.php" title="Inventory">Inventory</a></li>
+                <li><a href="settings.php" title="Settings">Settings</a></li>
+                <li><a href="help1.php" title="Help">Help</a></li>
+                <li><a href="logout.php" title="Logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="maincontent">
+        <div class="floatelft">
+            <h2>Home</h2>
+            <table width="100%" border="0">
+                <tr>
+                    <td width="11%" align="center"><a href="admin.php" title="search for books,authors and more."><img
+                                src="images/lens.jpg" width="72" height="61" /><br />
+                            Search</a></td>
+                    <td width="11%" align="center">
+                        <?php if ($add_book == "on") {
     echo '<a href="admin_add_new.php" title="Add new books."><img src="images/add.jpg" width="72" height="61" /><br />
         Add Book</a>';
 } else {
     echo '<img src="images/add.jpg" width="72" height="61" /><br />
         Add Book';
 }
-?></td>
-        <td width="11%" align="center"><a href="barrower.php" title="borrowers' information,add new borrower.">
-        <img src="images/borrower2.jpg" width="72" height="61" /><br />
-        Borrower</a></td>
-        <td width="11%" align="center">&nbsp;</td>
-        <td colspan="2" rowspan="2" align="center">&nbsp;</td>
-        <td width="22%"></td>
-      </tr>
-      <tr>
-        <td align="center"><?php if ($uri == "admin") {
+?>
+                    </td>
+                    <td width="11%" align="center"><a href="barrower.php" title="borrowers' information,add new borrower.">
+                            <img src="images/borrower2.jpg" width="72" height="61" /><br />
+                            Borrower</a></td>
+                    <td width="11%" align="center">&nbsp;</td>
+                    <td colspan="2" rowspan="2" align="center">&nbsp;</td>
+                    <td width="22%"></td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <?php if ($uri == "admin") {
     echo '<a href="inventory.php">
         <img src="images/inventory.jpg" width="72" height="64" /><br />
         Inventory</a>';
@@ -128,8 +138,10 @@ $number = mysql_num_rows($result);
     echo ' <img src="images/inventory.jpg" width="72" height="64" /><br />
         Inventory';
 }
-?></td>
-        <td align="center"><?php if ($uri == "admin") {
+?>
+                    </td>
+                    <td align="center">
+                        <?php if ($uri == "admin") {
     echo '<a href="settings.php">
         <img src="images/settings.jpg" width="72" height="61" /><br />
         Settings</a>';
@@ -137,8 +149,10 @@ $number = mysql_num_rows($result);
     echo '<img src="images/settings.jpg" width="72" height="61" /><br />
         Settings';
 }
-?></td>
-         <td align="center"><?php if ($uri == "admin") {
+?>
+                    </td>
+                    <td align="center">
+                        <?php if ($uri == "admin") {
     echo '<a href="#" onclick=MM_openBrWindow1("restore_backup.php","","scrollbars=yes,width=500,height=370")>
         <img src="images/thumb.png" width="72" height="61" /><br/>
         Backup/Restore</a>';
@@ -146,58 +160,62 @@ $number = mysql_num_rows($result);
     echo '<img src="images/thumb.png" width="72" height="61" /><br/>
         Backup/Restore';
 }
-?> </td>
-        <td>&nbsp;</td>
-        <td><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','images/books.jpg',1)"></a></td>
-      </tr>
-      <tr>
-        <td align="center"><a href="#" onclick="MM_openBrWindow1('user_account.php','','scrollbars=yes,width=380,height=350')">
-        <img src="images/computer_user.jpg" width="72" height="61" /><br />
-        User account</a>
-        </td>
-        <td align="center"><a href="logout.php">
-        <img src="images/logout.gif" width="72" height="61" /><br />
-        Logout</a>&nbsp;</td>
-        <td align="center"><a href="#" onclick="MM_openBrWindow1('about.php','','scrollbars=yes,width=400,height=350')">
-        <img src="images/question.jpg" width="72" height="61" /><br />
-        About</a></td>
-        <td>&nbsp;</td>
-        <td width="14%">&nbsp;</td>
-        <td width="20%">&nbsp;</td>
-        <td><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','images/clock_book.jpg',1)"></a></td>
-      </tr>
-    </table>
-    <hr />
-    <?php
+?>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','images/books.jpg',1)"></a></td>
+                </tr>
+                <tr>
+                    <td align="center"><a href="#" onclick="MM_openBrWindow1('user_account.php','','scrollbars=yes,width=380,height=350')">
+                            <img src="images/computer_user.jpg" width="72" height="61" /><br />
+                            User account</a>
+                    </td>
+                    <td align="center"><a href="logout.php">
+                            <img src="images/logout.gif" width="72" height="61" /><br />
+                            Logout</a>&nbsp;</td>
+                    <td align="center"><a href="#" onclick="MM_openBrWindow1('about.php','','scrollbars=yes,width=400,height=350')">
+                            <img src="images/question.jpg" width="72" height="61" /><br />
+                            About</a></td>
+                    <td>&nbsp;</td>
+                    <td width="14%">&nbsp;</td>
+                    <td width="20%">&nbsp;</td>
+                    <td><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','images/clock_book.jpg',1)"></a></td>
+                </tr>
+            </table>
+            <hr />
+            <?php
 //output if there is
 if ($number != 0) {
     echo '<strong><img src="images/arrowr.gif" width="15" height="9" /> We have  </strong>
 		<strong>' . $total_results . ' Book(s) Over due</strong><br><br><hr/>';
     ?>
 
-				 <p><?php
+            <p>
+                <?php
 
     if (strlen($pagination) < 100) {
         $pagination = "";
     }
     echo $pagination;?>&nbsp;</p>
-    <table width="100%" border="0">
-                   <tr>
-                     <td colspan="2"><h3><strong>OVERDUE BOOKS </strong></h3></td>
-                     <td width="22%">&nbsp;</td>
-                     <td width="19%">&nbsp;</td>
-                     <td width="20%">&nbsp;</td>
+            <table width="100%" border="0">
+                <tr>
+                    <td colspan="2">
+                        <h3><strong>OVERDUE BOOKS </strong></h3>
+                    </td>
+                    <td width="22%">&nbsp;</td>
+                    <td width="19%">&nbsp;</td>
+                    <td width="20%">&nbsp;</td>
 
-                   </tr>
-                   <tr>
-                     <td width="14%"><strong>Access No. </strong></td>
-                     <td width="25%"><strong>Book Title </strong></td>
-                     <td><strong>Author</strong></td>
-                     <td><strong>Borrower</strong></td>
-                     <td><strong>Due date</strong></td>
+                </tr>
+                <tr>
+                    <td width="14%"><strong>Access No. </strong></td>
+                    <td width="25%"><strong>Book Title </strong></td>
+                    <td><strong>Author</strong></td>
+                    <td><strong>Borrower</strong></td>
+                    <td><strong>Due date</strong></td>
 
-                   </tr>
-				   <?php
+                </tr>
+                <?php
 $x = 2;
     $y = 1;
     //set total books to 0
@@ -882,47 +900,56 @@ $total=$total+$qty;
 
 
 
-                   <tr bgcolor="<?php echo $bg; ?>">
-				    <td align="left" bgcolor="<?php echo $bg; ?>"><strong><?php echo $access_no; ?></strong></td>
-    <td align="left" bgcolor="<?php echo $bg; ?>"><strong><?php echo $books; ?></strong></td>
-    <td align="left" bgcolor="<?php echo $bg; ?>"><strong><?php echo $author; ?></strong></td>
-    <td><a href="pay_fee.php?bar_id_from_home=<?php echo $bar_id; ?>"><?php echo $bar_name; ?></a></td>
-	<td align="center" bgcolor="<?php echo $bg; ?>"><strong><?php echo $deadline; ?></strong></td>
+                <tr bgcolor="<?php echo $bg; ?>">
+                    <td align="left" bgcolor="<?php echo $bg; ?>"><strong>
+                            <?php echo $access_no; ?></strong></td>
+                    <td align="left" bgcolor="<?php echo $bg; ?>"><strong>
+                            <?php echo $books; ?></strong></td>
+                    <td align="left" bgcolor="<?php echo $bg; ?>"><strong>
+                            <?php echo $author; ?></strong></td>
+                    <td><a href="pay_fee.php?bar_id_from_home=<?php echo $bar_id; ?>">
+                            <?php echo $bar_name; ?></a></td>
+                    <td align="center" bgcolor="<?php echo $bg; ?>"><strong>
+                            <?php echo $deadline; ?></strong></td>
 
 
 
-                   </tr>
-				   <?php
+                </tr>
+                <?php
 }
     ?>
-    </table>
-				 <?php
+            </table>
+            <?php
 } else {
     echo '<strong><font color=red>No over due books.</font></strong>';
 }
 ?>
 
-			     <p><?php
+            <p>
+                <?php
 
 if (strlen($pagination) < 100) {
     $pagination = "";
 }
 echo $pagination;?>&nbsp;</p>
-	<p>&nbsp;</p>
-	<p>&nbsp;</p>
-  </div>
-</div>
-<div class="lowercontent"></div>
-<div class="footer1">
-<table align="center">
-<tr>
-<td><img src="logo/anilag systems logo 300x155 trnsparent.png" /></td>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td><img src="images/isch.gif" width="200" height="70"/></td>
-</tr>
-</table></div>
-<div class="footer">
-<?php echo $system_title; ?><br /><?php echo $footer; ?>
-</div>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+        </div>
+    </div>
+    <div class="lowercontent"></div>
+    <div class="footer1">
+        <table align="center">
+            <tr>
+                <td><img src="logo/anilag systems logo 300x155 trnsparent.png" /></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><img src="images/isch.gif" width="200" height="70" /></td>
+            </tr>
+        </table>
+    </div>
+    <div class="footer">
+        <?php echo $system_title; ?><br />
+        <?php echo $footer; ?>
+    </div>
 </body>
+
 </html>

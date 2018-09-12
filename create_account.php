@@ -90,13 +90,6 @@ function MM_openBrWindow(theURL,winName,features) { //v2.0
 <title><?php echo $system_title . "--" . $footer; ?></title>
 
 <link rel="stylesheet" href="css/<?php echo $css; ?>" type="text/css" />
-
-<style type="text/css">
-<!--
-.style1 {font-weight: bold}
-.style2 {font-weight: bold}
--->
-</style>
 </head>
 
 <body >
@@ -205,7 +198,7 @@ echo $pagination;?></td>
 
                           </table>
 	  </form>
-    </fieldset>�</div></div>
+    </fieldset></div></div>
 
   <!-- End of New Item Description -->
   <!-- Start of Sub Item Descriptions -->

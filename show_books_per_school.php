@@ -50,7 +50,7 @@ $school_code = $_POST['school_code'];
 
 //##################################################################################################################################################################################################
 
-if (($_POST['op'] == 1) || ($_GET['search']) || ($_GET['show'] == "do")) {
+if ((isset($_POST['op'])) || ($_GET['search']) || ($_GET['show'] == "do")) {
     $search = $_POST['search'];
     $list = $_POST['list'];
     $type = $_POST['type'];
@@ -387,7 +387,7 @@ display_pagination($pagination);
  */
 //output error msg if there is
 echo $er;
-if (($_POST['op'] == 1) || ($_GET['search']) || ($_GET['show'] == "do")) {
+if ((isset($_POST['op'])) || ($_GET['search']) || ($_GET['show'] == "do")) {
     $sql .= " ORDER BY title LIMIT $from, $max_results";
 
     $result = mysql_query($sql, $connect) or die("cant execute query!.....");

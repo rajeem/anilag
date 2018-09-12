@@ -6,7 +6,7 @@ if (!isset($_SESSION["username"])) {
 }
 include "include/connect.php";
 
-if ($_POST['op'] == 1) {
+if (isset($_POST['op'])) {
     $save_css = $_POST['template'];
     $hour_allow = $_POST['hour_allow'];
     $auto = $_POST['auto'];

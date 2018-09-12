@@ -18,7 +18,7 @@ $selected15 = "";
 
 //authorized
 if ($uri == "admin") {
-    if ($_POST['op'] == 1) {
+    if (isset($_POST['op'])) {
         $save_css = $_POST['template'];
         $hour_allow = $_POST['hour_allow'];
         $rate = $_POST['rate'];

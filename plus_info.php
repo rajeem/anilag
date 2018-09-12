@@ -102,22 +102,6 @@ while ($row = mysql_fetch_array($result)) {
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Card Catalog</title>
 <link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
-<style type="text/css">
-<!--
-body {
-	background-image: url();
-}
-#Layer1 {
-	position:absolute;
-	width:200px;
-	height:115px;
-	z-index:1;
-	left: 104px;
-	top: 224px;
-}
-.style1 {font-family: "Courier New", Courier, monospace}
--->
-</style>
 <script type="text/JavaScript">
 <!--
 function MM_openBrWindow1(theURL,winName,features) { //v2.0

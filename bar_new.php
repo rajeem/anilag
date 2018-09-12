@@ -39,7 +39,7 @@ if ($borrow_book == "on") {
     $op = 0;
 
 //show borrower's detail
-    if ($_POST['show']) {
+    if (isset($_POST['show'])) {
 //get the value from form submitted
         $search = $_POST['bar_id'];
 
@@ -73,7 +73,7 @@ if ($borrow_book == "on") {
     }
 
 //show book detail
-    if ($_POST['detail']) {
+    if (isset($_POST['detail'])) {
 //get the value from form submitted
 
         $search = $_POST['bar_id'];
@@ -149,14 +149,14 @@ if ($borrow_book == "on") {
         while ($row = mysql_fetch_array($result)) {
 
             $book_title = $row['title'];
-            $book_author = $row['author'];
+            $book_author = $row['author_fname'] . ' ' . $row['author_sname'];
 
         }
 
     }
 
 //if submit button has been clicked
-    if ($_POST['submit']) {
+    if (isset($_POST['submit'])) {
 
         if ($_POST['deadline']) {
             $deadline = $_POST['deadline'];
@@ -335,15 +335,6 @@ else {
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title><?php echo $system_title . "--" . $footer; ?></title>
 <link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
-<style type="text/css">
-<!--
-.style1 {
-	color: #FFFFFF;
-	font-weight: bold;
-}
-
--->
-</style>
 
 <script type="text/JavaScript">
 <!--
@@ -482,7 +473,7 @@ function alert1(){
                 <input name="show"  id="show" type="submit" class="btn"  value="  Show" onclick="return FormValidate1()"/>
                 <br/>
           </strong></td>
-          <td colspan="3"  valign="top" <?php echo $bgcolor; ?>><?php echo $message; ?></td>
+          <td colspan="3"  valign="top"></td>
           <td width="254"  rowspan="2" align="center" ></td>
         </tr>
         <tr>

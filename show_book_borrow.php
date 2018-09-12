@@ -35,7 +35,7 @@ $due_tom = mysql_num_rows($result2);
 
 //#################################################################################################
 
-if ($_POST['op'] == 1) {
+if (isset($_POST['op'])) {
     $type_code = $_POST['type'];
     $start = $_POST['start'];
     $end = $_POST['ending'];

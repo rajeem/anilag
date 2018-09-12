@@ -15,7 +15,7 @@ while ($row = mysql_fetch_array($result)) {
     $footer_in_table = $row['footer'];
 }
 
-if ($_POST['op'] == 1) {
+if (isset($_POST['op'])) {
 
     $report_type = $_POST['report_type'];
 //echo $header;

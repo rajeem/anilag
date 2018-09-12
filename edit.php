@@ -25,7 +25,7 @@ if ($edit_borrower == "on") {
     }
 
 //if form submit
-    if ($_POST['op'] == 1) {
+    if (isset($_POST['op'])) {
 
         $id = $_POST['id'];
         $last = $_POST['last'];

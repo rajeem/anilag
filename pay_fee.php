@@ -58,14 +58,6 @@ document.myform2.book_ret[i].checked = true ;
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title><?php echo $system_title."--".$footer;?></title>
 <link rel="stylesheet" type="text/css" href="css/<?php echo $css;?>" />
-<style type="text/css">
-<!--
-.style1 {	color: #FFFFFF;
-	font-weight: bold;
-}
-
--->
-</style>
 </head>
 <body>
 <div class="header">

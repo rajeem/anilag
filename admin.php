@@ -125,9 +125,9 @@ if (isset($_POST['op'])) {
           <td><input name="search" type="text" class="dilaw" id="search" value="<?php echo trim($search); ?>" size="30" /></td>
           <td><select name="type" id="type">
             <option value="all">Keywords</option>
-            <option value="author" <?php echo $selected2; ?>>Author</option>
-            <option value="title" <?php echo $selected3; ?>>Title</option>
-            <option value="subject" <?php echo $selected4; ?>>Subject</option>
+            <option value="author">Author</option>
+            <option value="title">Title</option>
+            <option value="subject">Subject</option>
           </select></td>
           <td width="14%">
           <select name="school_code" id="school_code">

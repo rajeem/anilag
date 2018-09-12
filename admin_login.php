@@ -74,7 +74,6 @@ if ((isset($usernameerror)) || (isset($errorup))) {
     echo '<img src="images/mm_spacer.gif" width="50" height="45" />';
 }
 ?></td>
-              <td colspan="3" valign="middle"><?php echo $usernameerror . $errorup; ?></td>
             </tr>
             <tr>
               <td width="11%">Username:</td>

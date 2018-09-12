@@ -4,7 +4,7 @@ if (!isset($_SESSION["username"])) {
     header("location:admin_login.php");
     exit;
 }
-$id = $_GET['id'];
+$id = isset($_GET['id']) ? $_GET['id'] : 0;
 $op = 0;
 include "include/connect.php";
 include "include/gensettings.php";
@@ -77,13 +77,6 @@ return false;}
 <title><?php echo $system_title . "--" . $footer; ?></title>
 
 <link rel="stylesheet" href="css/<?php echo $css; ?>" type="text/css" />
-
-<style type="text/css">
-<!--
-.style1 {font-weight: bold}
-.style2 {font-weight: bold}
--->
-</style>
 </head>
 
 <body>

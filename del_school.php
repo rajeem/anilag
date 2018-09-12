@@ -4,8 +4,8 @@ if (!isset($_SESSION["username"])) {
     header("location:admin_login.php");
     exit;
 }
-$id = $_GET['id'];
-$school_code = $_GET['school_code'];
+$id = isset($_GET['id']) ? $_GET['id'] : 0;
+$school_code = isset($_GET['school_code']) ? $_GET['school_code'] : '';
 
 $op = 0;
 include "include/connect.php";
@@ -64,13 +64,6 @@ function MM_openBrWindow(theURL,winName,features) { //v2.0
 <title><?php echo $system_title . "--" . $footer; ?></title>
 
 <link rel="stylesheet" href="css/<?php echo $css; ?>" type="text/css" />
-
-<style type="text/css">
-<!--
-.style1 {font-weight: bold}
-.style2 {font-weight: bold}
--->
-</style>
 </head>
 
 <body>
@@ -154,7 +147,7 @@ function MM_openBrWindow(theURL,winName,features) { //v2.0
 			 </table>
 <?php }?>
 
-    </fieldset>�</div>
+    </fieldset></div>
 
   <!-- End of New Item Description -->
   <!-- Start of Sub Item Descriptions -->

@@ -21,7 +21,7 @@ while ($row = mysql_fetch_array($result)) {
     //$password=md5($password);
 }
 
-if ($_POST['op'] == 1) {
+if (isset($_POST['op'])) {
 
 //$table_insert    = $_POST['table'];
     $id = $_POST['id'];
@@ -130,19 +130,19 @@ function MM_openBrWindow(theURL,winName,features) { //v2.0
               <tr>
                 <td width="25%" align="right">&nbsp;</td>
                 <td width="2%">&nbsp;</td>
-                <td colspan="2"><?php echo $error; ?><?php echo $ok; ?></td>
+                <td colspan="2"></td>
               </tr>
               <tr>
                 <td align="right"><strong>Last name:</strong></td>
                 <td>&nbsp;</td>
                 <td width="67%"><input name="last" type="text" id="last" value="<?php echo $last; ?>" /></td>
-                <td width="4%"><?php echo $error2; ?></td>
+                <td width="4%"><?php echo isset($error2) ? $error2 : ''; ?></td>
               </tr>
               <tr>
                 <td align="right"><strong>First name:</strong></td>
                 <td>&nbsp;</td>
                 <td><input name="first" type="text" id="first" value="<?php echo $first; ?>" /></td>
-                <td><?php echo $error3; ?></td>
+                <td><?php echo isset($error3) ? $error3 : ''; ?></td>
               </tr>
               <tr>
                 <td align="right"><strong>Username:</strong></td>
@@ -154,19 +154,19 @@ function MM_openBrWindow(theURL,winName,features) { //v2.0
                 <td align="right"><strong>Current password</strong> </td>
                 <td>&nbsp;</td>
                 <td><input name="cpassword" type="password" id="cpassword" /></td>
-                <td><?php echo $error5; ?></td>
+                <td><?php echo isset($error5) ? $error5 : ''; ?></td>
               </tr>
               <tr>
                 <td align="right"><strong>password:</strong></td>
                 <td>&nbsp;</td>
                 <td><input name="password" type="password" id="password" /></td>
-                <td><?php echo $error6; ?></td>
+                <td><?php echo isset($error6) ? $error6 : ''; ?></td>
               </tr>
               <tr>
                 <td align="right"><strong>retype password:</strong></td>
                 <td>&nbsp;</td>
                 <td><input name="repassword" type="password" id="repassword" /></td>
-                <td><?php echo $error7; ?></td>
+                <td><?php echo isset($error7) ? $error7 : ''; ?></td>
               </tr>
               <tr>
                 <td align="right"><input name="button" type="button" onclick="javascript:window.close();" value="<?php echo $cancel_ok; ?>" class="btn"/></td>
@@ -181,7 +181,7 @@ if ($type == 1) {
               </tr>
             </table>
 	  </form>
-    </fieldset>�</div>
+    </fieldset></div>
 
   <!-- End of New Item Description -->
   <!-- Start of Sub Item Descriptions -->

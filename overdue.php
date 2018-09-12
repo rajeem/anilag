@@ -35,7 +35,7 @@ $due_tom = mysql_num_rows($result2);
 
 //#################################################################################################
 
-if ($_POST['op'] == 1) {
+if (isset($_POST['op'])) {
 
     $search = $_POST['search']; // today, all, tomorrow
     $type = $_POST['type']; // school_code

@@ -32,7 +32,7 @@ if ($add_borrower == "on") {
 
     }
 
-    if ($_POST['op'] == 1) {
+    if (isset($_POST['op'])) {
 
 /*$target_path = "upload/";
 $filename=basename($_FILES['photo']['name']);

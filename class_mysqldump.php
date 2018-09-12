@@ -4,7 +4,7 @@
  * Dump data from MySQL database
  *
  * @name    MySQLDump
- * @author  Marcus Vin�cius <mv@cidademais.com.br>
+ * @author  Marcus Vincius <mv@cidademais.com.br>
  * @version 1.1 2005-06-01
  * @example
  *
