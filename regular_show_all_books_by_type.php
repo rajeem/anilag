@@ -269,8 +269,8 @@ $result6 = mysql_query($sq6);
 while ($row = mysql_fetch_array($result6)) {
     $code = $row['school_code'];
     ?>
-                <option <? if ($school_code=="$code") echo selected;?>><?php echo $code; ?></option>
-          <?php $i++;}?><option  value="all"<? if ($school_code=="all") echo selected;?>>All</option></select></td>
+                <option <?php if ($school_code=="$code") echo selected;?>><?php echo $code; ?></option>
+          <?php $i++;}?><option  value="all"<?php if ($school_code=="all") echo selected;?>>All</option></select></td>
 		  <td>
             <input name="Submit" type="submit" class="btn" value="Search"/>
            </td>
@@ -322,10 +322,10 @@ if ($window == 1) {
  		   <td width="24%" bgcolor="#000000"><strong class="style9">Main Author</strong></td>
  		   <td width="14%" bgcolor="#000000"><span class="style7"><strong>Access No.</strong></span></td>
  	 	   <td width="15%" bgcolor="#000000"><span class="style9">Availability</span></td>
- 	     <? if ($school_code=="all") echo" <td width='15%' bgcolor='#000000'><span class='style9'>School</span></td>
+ 	     <?php if ($school_code=="all") echo" <td width='15%' bgcolor='#000000'><span class='style9'>School</span></td>
  	 ";?>
 
-	   <? if ($location2=="on") echo" <td width='15%' bgcolor='#000000'><span class='style9'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</span></td>
+	   <?php if ($location2=="on") echo" <td width='15%' bgcolor='#000000'><span class='style9'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</span></td>
  	 ";?></tr>
 
 			<?php
@@ -791,9 +791,9 @@ if (($pdf == "") && ($help == "") && ($pdb == "")) {
                 }
 
                 ?></td>
-			 <? if ($school_code=="all") echo" <td width='15%' bgcolor='$bg'>$code_mo</td>
+			 <?php if ($school_code=="all") echo" <td width='15%' bgcolor='$bg'>$code_mo</td>
  	 ";?>
-	   <? if ($location2=="on") echo" <td width='15%' bgcolor='$bg'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$location</td>
+	   <?php if ($location2=="on") echo" <td width='15%' bgcolor='$bg'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$location</td>
  	 ";?>
 
 </tr>

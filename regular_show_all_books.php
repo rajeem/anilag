@@ -240,82 +240,63 @@ $result = mysql_query($sql, $connect) or die("cant execute query!.....");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<SCRIPT language=javascript>
+    <script language=javascript>
+        //-->
+        function trash() {
 
-	//-->
-	function trash()
-	{
+            var answer = confirm("Are you sure you wish to delete this item?\n Click OK to proceed otherwise click Cancel.")
+            if (!answer) {
 
-    var answer = confirm("Are you sure you wish to delete this item?\n Click OK to proceed otherwise click Cancel.")
-	if (!answer){
+                return false;
+            }
 
-		return false;
-	}
+            document.supportform.action = "admin_delete.php"
+            document.supportform.method = "post"
+            document.supportform.submit();
 
-    document.supportform.action = "admin_delete.php"
-	document.supportform.method="post"
-    document.supportform.submit();
-
-    return true;
-}
-</SCRIPT>
-<script type="text/JavaScript" src="js/function.js">
-</script>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title><?php echo $system_title . "--" . $footer; ?></title>
-<link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
-<style type="text/css">
-<!--
-#Layer3 {
-	position:absolute;
-	width:200px;
-	height:115px;
-	z-index:1;
-	left: 571px;
-	top: 797px;
-}
-.style4 {
-	font-size: larger;
-	font-weight: bold;
-}
-.style5 {color: #FF0000}
-.style6 {font-size: larger; font-weight: bold; color: #FF0000; }
-.style7 {color: #FFFFFF}
-.style9 {color: #FFFFFF; font-weight: bold; }
-
--->
-</style>
+            return true;
+        }
+    </script>
+    <script type="text/JavaScript" src="js/function.js">
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>
+        <?php echo $system_title . "--" . $footer; ?>
+    </title>
+    <link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
+    <style type="text/css">
+    </style>
 </head>
+
 <body>
-<div class="header">
-  <div class="logo"><?php echo "&nbsp;&nbsp;&nbsp;" . $header_title; ?> </div>
-  <div id="Layer1"><img src="images/<?php echo $logo; ?>" width="117" height="110" />
-    <div id="Layer2"></div>
-  </div>
-</div>
-<div class="navbg">
-  <div id="navcontainer">
-<ul id="navlist">
-<li id="active"><a href="index.php" id="current" title="Search">Search</a></li>
-<li><a href="admin_login.php" title="Administrator">Administrator</a></li>
-<li><a href="elib.rar" title="Download Demo Version">Download demo version</a></li>
-<li><a href="help2.php" title="Help">Help</a></li>
-</ul>
-</div>
-</div>
-<div class="maincontent">
-  <div class="floatelft">
-    <h2>Search</h2>
-	  <p>
-        <?php
-display_pagination($pagination);
-?>
-      <a href="regular_show_all_books.php"></a></p>
-
-
-
-  <?php
+    <div class="header">
+        <div class="logo">
+            <?php echo "&nbsp;&nbsp;&nbsp;" . $header_title; ?>
+        </div>
+        <div id="Layer1"><img src="images/<?php echo $logo; ?>" width="117" height="110" />
+            <div id="Layer2"></div>
+        </div>
+    </div>
+    <div class="navbg">
+        <div id="navcontainer">
+            <ul id="navlist">
+                <li id="active"><a href="index.php" id="current" title="Search">Search</a></li>
+                <li><a href="admin_login.php" title="Administrator">Administrator</a></li>
+                <li><a href="elib.rar" title="Download Demo Version">Download demo version</a></li>
+                <li><a href="help2.php" title="Help">Help</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="maincontent">
+        <div class="floatelft">
+            <h2>Search</h2>
+            <p>
+                <?php display_pagination($pagination); ?>
+                <a href="regular_show_all_books.php"></a>
+            </p>
+            <?php
 if ($window == 1) {
 /**perform the query
  *with limit assigned
@@ -335,40 +316,39 @@ if ($window == 1) {
 
         if ($search_output == 2) {
             ?>
-		<table width="100%" border="0" cellpadding="0" cellspacing="0">
-		<?php if ($book_preview == "on") {?>
-		  <tr>
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <?php if ($book_preview == "on") {?>
+                <tr>
 
-		    <td  colspan="2"bgcolor="#000000" align="left" width="10%"><strong class="style9">Features </strong></td>
-			<td width="10%" bgcolor="#000000"><strong class="style9">Preview</strong></td>
- 		   <td width="9%" bgcolor="#000000"><strong class="style9">Download</strong></td>
- 		   <td width="22%" bgcolor="#000000"><strong class="style9">Book Title </strong></td>
- 		   <td width="19%" bgcolor="#000000"><strong class="style9">Main Author</strong></td>
- 		   <td width="10%" bgcolor="#000000"><span class="style7"><strong>Access No.</strong></span></td>
- 	 	  <td width="10%" bgcolor="#000000"><span class="style9">Status</span></td>
- 	  <? if ($school_code=="all") echo" <td width='15%' bgcolor='#000000'><span class='style9'>School</span></td>
- 	 ";?>
-	  <? if ($location2=="on") echo" <td width='20%' bgcolor='#000000'><span class='style9'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</span></td>
- 	 ";?>
-	   </tr>
-		<?php }?>
-		<?php if ($book_preview == "off") {?>
-		  <tr>
-		   <td width="12%"colspan="2"bgcolor="#000000" ><strong class="style9">Feature </strong></td>
- 		   <td width="11%" bgcolor="#000000"><strong class="style9">Download</strong></td>
- 		   <td width="20%" bgcolor="#000000"><strong class="style9">Book Title </strong></td>
- 		   <td width="19%" bgcolor="#000000"><strong class="style9">Main Author</strong></td>
- 		   <td width="11%" bgcolor="#000000"><span class="style7"><strong>Access No.</strong></span></td>
- 	 	   <td width="10%" bgcolor="#000000"><span class="style9">Availability</span></td>
- 	  <? if ($school_code=="all") echo" <td width='15%' bgcolor='#000000'><span class='style9'>School</span></td>
- 	 ";?>
-	  <? if ($location2=="on") echo" <td width='20%' bgcolor='#000000'><span class='style9'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</span></td>
- 	 ";?>
-	   </tr>
-		<?php }?>
+                    <td colspan="2" bgcolor="#000000" align="left" width="10%"><strong class="style9">Features </strong></td>
+                    <td width="10%" bgcolor="#000000"><strong class="style9">Preview</strong></td>
+                    <td width="9%" bgcolor="#000000"><strong class="style9">Download</strong></td>
+                    <td width="22%" bgcolor="#000000"><strong class="style9">Book Title </strong></td>
+                    <td width="19%" bgcolor="#000000"><strong class="style9">Main Author</strong></td>
+                    <td width="10%" bgcolor="#000000"><span class="style7"><strong>Access No.</strong></span></td>
+                    <td width="10%" bgcolor="#000000"><span class="style9">Status</span></td>
+                    <?php if ($school_code=="all") {  ?>
+                    <td width='15%' bgcolor='#000000'><span class='style9'>School</span></td>
+                    <?php } ?>
+                    <?php if ($location2=="on") { ?>
+                    <td width='20%' bgcolor='#000000'><span class='style9'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</span></td>
+                    <?php } ?>
+                </tr>
+                <?php }?>
+                <?php if ($book_preview == "off") {?>
+                <tr>
+                    <td width="12%" colspan="2" bgcolor="#000000"><strong class="style9">Feature </strong></td>
+                    <td width="11%" bgcolor="#000000"><strong class="style9">Download</strong></td>
+                    <td width="20%" bgcolor="#000000"><strong class="style9">Book Title </strong></td>
+                    <td width="19%" bgcolor="#000000"><strong class="style9">Main Author</strong></td>
+                    <td width="11%" bgcolor="#000000"><span class="style7"><strong>Access No.</strong></span></td>
+                    <td width="10%" bgcolor="#000000"><span class="style9">Availability</span></td>
+                    <?php if ($school_code=="all") echo" <td width='15%' bgcolor='#000000'><span class='style9'>School</span></td>"; ?>
+                    <?php if ($location2=="on") echo" <td width='20%' bgcolor='#000000'><span class='style9'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</span></td>"; ?>
+                </tr>
+                <?php } ?>
 
-			<?php
-
+                <?php
         }
 
         $count = 1;
@@ -395,7 +375,7 @@ if ($window == 1) {
             $author_fname = $row['author_fname'];
             $author_mname = $row['author_mname'];
             $author_mname = ucfirst($author_mname);
-            $author = $author_fname . ' ' . $author_mname{0} . '. ' . $author_sname;
+            $author = $author_fname . ' ' . substr($author_mname, 0, 1) . '. ' . $author_sname;
             if ($author_mname == "") {
                 $author = $author_fname . ' ' . $author_sname;
             }
@@ -467,7 +447,7 @@ if ($window == 1) {
             $the_final_call_num = $call_num;
             $the_final_title = $title;
             $the_final_author = $author;
-            $the_final_subject = $subject;
+            $the_final_subject = $subject1;
 
             if ($x > $y) {
                 $y += 2;
@@ -516,186 +496,237 @@ if ($window == 1) {
             if ($search_output == 1) {
                 //echo $classification;
                 ?>
-      <table width="100%" border="0" cellpadding="0" cellspacing="0">
-        <tr>
-          <td width="23" align="right" valign="top" bgcolor="#CCCCCC">&nbsp;</td>
-          <td width="211" align="right" valign="top" bgcolor="#CCCCCC"><br />          </td>
-          <td width="13" bgcolor="#CCCCCC">&nbsp;</td>
-          <td width="130" bgcolor="#CCCCCC"><?php echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $top; ?>&nbsp;</td>
-          <td width="248" bgcolor="#CCCCCC">&nbsp;</td>
-          <td width="12" bgcolor="#CCCCCC">&nbsp;</td>
-          <td width="165" bgcolor="#CCCCCC">&nbsp;</td>
-          <td width="16" bgcolor="#CCCCCC">&nbsp;</td>
-          <td width="140" bgcolor="#CCCCCC">&nbsp;</td>
-	    </tr>
-        <tr>
-          <td width="23" align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
-          <td width="211" align="right" valign="top" bgcolor="#FFFFFF"><strong class="style6">Location:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $location; ?></td>
-          <td align="right" bgcolor="#FFFFFF"><strong>Place of Publication:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $place_pub; ?></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"></td>
-	    </tr>
-        <tr>
-          <td align="right" valign="top" bgcolor="#FFFFFF"><img src="images/<?php echo $class_image; ?>" width="20" height="20" /></td>
-          <td align="right" valign="top" bgcolor="#FFFFFF"><strong class="style4 style5">Accession no.:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><strong><?php echo $access_no; ?></strong></td>
-          <td align="right" bgcolor="#FFFFFF"><strong>Publisher:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $publisher; ?></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><strong>
-            <?php if ($qty == 0) {
+                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td width="23" align="right" valign="top" bgcolor="#CCCCCC">&nbsp;</td>
+                        <td width="211" align="right" valign="top" bgcolor="#CCCCCC"><br /> </td>
+                        <td width="13" bgcolor="#CCCCCC">&nbsp;</td>
+                        <td width="130" bgcolor="#CCCCCC">
+                            <?php echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $top; ?>&nbsp;</td>
+                        <td width="248" bgcolor="#CCCCCC">&nbsp;</td>
+                        <td width="12" bgcolor="#CCCCCC">&nbsp;</td>
+                        <td width="165" bgcolor="#CCCCCC">&nbsp;</td>
+                        <td width="16" bgcolor="#CCCCCC">&nbsp;</td>
+                        <td width="140" bgcolor="#CCCCCC">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="23" align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+                        <td width="211" align="right" valign="top" bgcolor="#FFFFFF"><strong class="style6">Location:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $location; ?>
+                        </td>
+                        <td align="right" bgcolor="#FFFFFF"><strong>Place of Publication:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $place_pub; ?>
+                        </td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF"></td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top" bgcolor="#FFFFFF"><img src="images/<?php echo $class_image; ?>"
+                                width="20" height="20" /></td>
+                        <td align="right" valign="top" bgcolor="#FFFFFF"><strong class="style4 style5">Accession no.:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF"><strong>
+                                <?php echo $access_no; ?></strong></td>
+                        <td align="right" bgcolor="#FFFFFF"><strong>Publisher:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $publisher; ?>
+                        </td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF"><strong>
+<?php 
+                if ($qty == 0) {
                     echo '<blink><strong class="style6">item unavailable!</strong></blink>';
                 } else {
                     echo '<a href="bar_new.php?access_no_from=' . $access_no . '">Borrow this item</a>';
                 }
-
-                ?>
-          </strong></td>
-	    </tr>
-        <tr>
-          <td align="right" valign="top" bgcolor="#FFFFFF"><?php echo '<a href="#"  onClick="MM_openBrWindow1(\'plus_info.php?id=' . $id . '\',\'\',\'scrollbars=yes,width=600,height=400\')" style="cursor: pointer;">Card Catalog</a>'; ?></td>
-          <td align="right" valign="top" bgcolor="#FFFFFF"><strong>Call no. </strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $call_num; ?></td>
-          <td align="right" bgcolor="#FFFFFF"><strong>Year of Publication/Copyright Date:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $date_pub; ?></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td rowspan="8" bgcolor="#FFFFFF"><?php
-if (($pdf == "") && ($help == "") && ($pdb == "")) {
-                    //    echo'<img src="no_preview.gif"
-                    //    title="'.$title.' by ' .$author.'"/>';
-                } else {
-
-                    echo '<a href="view_result.php?dest=' . $dest . '&id=' . $id . '" target="_blank">
-					<img src="pdf/front/' . $front . '"
-					title="' . $title . ' by ' . $author . '' . $doc . '"/>
-					</a>';}
-
-                ?></td>
-        </tr>
-        <tr>
-          <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
-          <td align="right" valign="top" bgcolor="#FFFFFF"><span class="style6">Author:</span></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><strong><?php echo $author; ?></strong></td>
-          <td align="right" bgcolor="#FFFFFF"><strong>Extent of Item:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $eoi; ?></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-	    </tr>
-        <tr>
-          <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
-          <td align="right" valign="top" bgcolor="#FFFFFF"><strong>Other Authors:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $other_author1; ?>,<?php echo $other_author2; ?></td>
-          <td align="right" bgcolor="#FFFFFF"><strong>Other Physical Details:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $opd; ?></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-	    </tr>
-        <tr>
-          <td align="right" valign="top" bgcolor="#FFFFFF"></td>
-          <td align="right" valign="top" bgcolor="#FFFFFF"></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $other_author3; ?>,<?php echo $other_author4; ?></td>
-          <td align="right" bgcolor="#FFFFFF"><strong>Size or Dimesion:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $size_dimension; ?></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-	    </tr>
-        <tr>
-          <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
-          <td align="right" valign="top" bgcolor="#FFFFFF"><strong class="style6">Title:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><strong><?php echo $title; ?></strong></td>
-          <td align="right" bgcolor="#FFFFFF"><strong>Series:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $series; ?></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-	    </tr>
-        <tr>
-          <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
-          <td align="right" valign="top" bgcolor="#FFFFFF"><strong>Parallel Title:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $parallel_title; ?></td>
-          <td align="right" bgcolor="#FFFFFF"><strong>Accompanying Materials:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $accom_mat; ?></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-	    </tr>
-        <tr>
-          <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
-          <td align="right" valign="top" bgcolor="#FFFFFF"><strong>Other Title Information:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $oti; ?></td>
-          <td align="right" bgcolor="#FFFFFF"><strong>Notes:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $notes; ?></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-	    </tr>
-        <tr>
-          <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
-          <td align="right" valign="top" bgcolor="#FFFFFF"><strong>Edition:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $edition; ?></td>
-          <td align="right" bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-	    </tr>
-        <tr>
-          <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
-          <td align="right" valign="top" bgcolor="#FFFFFF"><strong>General Material Designation:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $gmd; ?></td>
-          <td align="right" bgcolor="#FFFFFF"><strong>ISBN/ISSN:</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $isbn; ?></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-	    </tr>
-        <tr>
-          <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
-          <td align="right" valign="top" bgcolor="#FFFFFF"><strong>Material type: </strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $classification; ?></td>
-          <td align="right" bgcolor="#FFFFFF"><strong>Subject(s)</strong></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $subject1; ?>,<?php echo $subject2; ?></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><a href="admin_edit.php?id=<?php echo $id; ?>">edit</a> | <a href="admin_delete.php?id=<?php echo $id; ?>" onclick="return trash();">delete</a>&nbsp;</td>
-        </tr>
-        <tr>
-          <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
-          <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td align="right" bgcolor="#FFFFFF"><input name="action" type="hidden" id="action" value="<?php echo $sql; ?>" /></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"><?php echo $subject3; ?>,<?php echo $subject4; ?></td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF"></td>
-        </tr>
-        <tr>
-          <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
-          <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td align="right" bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-          <td bgcolor="#FFFFFF">&nbsp;</td>
-        </tr>
-      </table>
-      <p><?php
+?>
+                            </strong></td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top" bgcolor="#FFFFFF">
+                            <?php echo '<a href="#"  onClick="MM_openBrWindow1(\'plus_info.php?id=' . $id . '\',\'\',\'scrollbars=yes,width=600,height=400\')" style="cursor: pointer;">Card Catalog</a>'; ?>
+                        </td>
+                        <td align="right" valign="top" bgcolor="#FFFFFF"><strong>Call no. </strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $call_num; ?>
+                        </td>
+                        <td align="right" bgcolor="#FFFFFF"><strong>Year of Publication/Copyright Date:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $date_pub; ?>
+                        </td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td rowspan="8" bgcolor="#FFFFFF">
+                            <?php 
+                                if (($pdf == "") && ($help == "") && ($pdb == "")) {
+                                } else {
+                                    echo '<a href="view_result.php?dest=' . $dest . '&id=' . $id . '" target="_blank"><img src="pdf/front/' . $front . '" title="' . $title . ' by ' . $author . '' . $doc . '"/></a>';
+                                }
+                            ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+                        <td align="right" valign="top" bgcolor="#FFFFFF"><span class="style6">Author:</span></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF"><strong>
+                                <?php echo $author; ?></strong></td>
+                        <td align="right" bgcolor="#FFFFFF"><strong>Extent of Item:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $eoi; ?>
+                        </td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+                        <td align="right" valign="top" bgcolor="#FFFFFF"><strong>Other Authors:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $other_author1; ?>,
+                            <?php echo $other_author2; ?>
+                        </td>
+                        <td align="right" bgcolor="#FFFFFF"><strong>Other Physical Details:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $opd; ?>
+                        </td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top" bgcolor="#FFFFFF"></td>
+                        <td align="right" valign="top" bgcolor="#FFFFFF"></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $other_author3; ?>,
+                            <?php echo $other_author4; ?>
+                        </td>
+                        <td align="right" bgcolor="#FFFFFF"><strong>Size or Dimesion:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $size_dimension; ?>
+                        </td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+                        <td align="right" valign="top" bgcolor="#FFFFFF"><strong class="style6">Title:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF"><strong>
+                                <?php echo $title; ?></strong></td>
+                        <td align="right" bgcolor="#FFFFFF"><strong>Series:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $series; ?>
+                        </td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+                        <td align="right" valign="top" bgcolor="#FFFFFF"><strong>Parallel Title:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $parallel_title; ?>
+                        </td>
+                        <td align="right" bgcolor="#FFFFFF"><strong>Accompanying Materials:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $accom_mat; ?>
+                        </td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+                        <td align="right" valign="top" bgcolor="#FFFFFF"><strong>Other Title Information:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $oti; ?>
+                        </td>
+                        <td align="right" bgcolor="#FFFFFF"><strong>Notes:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $notes; ?>
+                        </td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+                        <td align="right" valign="top" bgcolor="#FFFFFF"><strong>Edition:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $edition; ?>
+                        </td>
+                        <td align="right" bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+                        <td align="right" valign="top" bgcolor="#FFFFFF"><strong>General Material Designation:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $gmd; ?>
+                        </td>
+                        <td align="right" bgcolor="#FFFFFF"><strong>ISBN/ISSN:</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $isbn; ?>
+                        </td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+                        <td align="right" valign="top" bgcolor="#FFFFFF"><strong>Material type: </strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $classification; ?>
+                        </td>
+                        <td align="right" bgcolor="#FFFFFF"><strong>Subject(s)</strong></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $subject1; ?>,
+                            <?php echo $subject2; ?>
+                        </td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF"><a href="admin_edit.php?id=<?php echo $id; ?>">edit</a> | <a href="admin_delete.php?id=<?php echo $id; ?>"
+                                onclick="return trash();">delete</a>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+                        <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td align="right" bgcolor="#FFFFFF"><input name="action" type="hidden" id="action" value="<?php echo $sql; ?>" /></td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">
+                            <?php echo $subject3; ?>,
+                            <?php echo $subject4; ?>
+                        </td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF"></td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+                        <td align="right" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td align="right" bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                        <td bgcolor="#FFFFFF">&nbsp;</td>
+                    </tr>
+                </table>
+                <p>
+                    <?php
 
             }
 //list table
@@ -704,75 +735,84 @@ if (($pdf == "") && ($help == "") && ($pdb == "")) {
                 ?>
 
 
-  <tr>
+                    <tr>
 
-    <td bgcolor="<?php echo $bg; ?>" colspan="2"><?php echo '<a href="#"  onClick="MM_openBrWindow1(\'plus_info.php?id=' . $id . '\',\'\',\'scrollbars=yes,width=600,height=500\')" style="cursor: pointer;">Card Catalog</a>'; ?> </td>
-	<?php if (($book_preview == "on")) {?><td bgcolor="<?php echo $bg; ?>"><?php if ($userfile != "") {echo '<a href="#" onclick=MM_openBrWindow1("bookpreview.php?id=' . $userfile . '","","scrollbars=no,width=500,height=600")>View Book</a>';}?></td><?php }?>
-    <td bgcolor="<?php echo $bg; ?>">
-      <?php
-
-                if (($pdf == "") && ($help == "") && ($pdb == "")) {
-                    //echo'<img src="no_preview.gif"
-                    //title="'.$title.' by ' .$author.'"/>';
-                } else {
-                    echo '&nbsp;&nbsp;<a href="view_result.php?dest=' . $dest . '&id=' . $id . '" target="_blank">
-					ebook
-					</a>';
-
-                }
-                ?></td>
-				    <td bgcolor="<?php echo $bg; ?>"><?php echo $title; ?></td>
-     <td bgcolor="<?php echo $bg; ?>"><?php echo $author; ?></td>
-    <td bgcolor="<?php echo $bg; ?>"><?php echo $access_no; ?></td>
-
-    <td bgcolor="<?php echo $bg; ?>"> <?php if ($qty == 0) {
-                    echo '<blink><strong class="style6">item out!</strong></blink>';
-                } else {
-                    echo '<strong >Available</strong>';
-                }
-
-                ?></td>
-			 <? if ($school_code=="all") echo" <td width='8%' bgcolor='$bg'>$code_mo</td>
- 	 ";?>
-	   <? if ($location2=="on") echo" <td  bgcolor='$bg'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$location</td>
- 	 ";?>
-
-</tr>
-
-
+                        <td bgcolor="<?php echo $bg; ?>" colspan="2">
+                            <?php echo '<a href="#"  onClick="MM_openBrWindow1(\'plus_info.php?id=' . $id . '\',\'\',\'scrollbars=yes,width=600,height=500\')" style="cursor: pointer;">Card Catalog</a>'; ?>
+                        </td>
+                        <?php if (($book_preview == "on")) {?>
+                        <td bgcolor="<?php echo $bg; ?>">
+                            <?php if ($userfile != "") {echo '<a href="#" onclick=MM_openBrWindow1("bookpreview.php?id=' . $userfile . '","","scrollbars=no,width=500,height=600")>View Book</a>';}?>
+                        </td>
+                        <?php }?>
+                        <td bgcolor="<?php echo $bg; ?>">
 <?php
-}
-//end list table
-            //============end table 1=================================================
+                    if (($pdf == "") && ($help == "") && ($pdb == "")) {
+                        //echo'<img src="no_preview.gif"
+                        //title="'.$title.' by ' .$author.'"/>';
+                    } else {
+                        echo '&nbsp;&nbsp;<a href="view_result.php?dest=' . $dest . '&id=' . $id . '" target="_blank">ebook</a>';
+                    }
+?>
+                        </td>
+                        <td bgcolor="<?php echo $bg; ?>">
+                            <?php echo $title; ?>
+                        </td>
+                        <td bgcolor="<?php echo $bg; ?>">
+                            <?php echo $author; ?>
+                        </td>
+                        <td bgcolor="<?php echo $bg; ?>">
+                            <?php echo $access_no; ?>
+                        </td>
 
+                        <td bgcolor="<?php echo $bg; ?>">
+<?php 
+                    if ($qty == 0) {
+                        echo '<blink><strong class="style6">item out!</strong></blink>';
+                    } else {
+                        echo '<strong >Available</strong>';
+                    }
+?>
+                        </td>
+<?php if ($school_code=="all") { echo '<td width="8%" bgcolor="' . $bg . '">' . $code_mo . '</td>'; } ?>
+<!--<?php if ($location2=="on") echo "<td bgcolor='$bg'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$location</td>"; ?>-->
+
+                    </tr>
+<?php
+            }
             $count++;
         }
 
     }
     if ($search_output == 2) {
 
-        ?></table><?php
-
-    }
-}?>
-    </p>
-	<p>
-	  <?php
-display_pagination($pagination);
+        ?>
+                </table>
+<?php
+}
 ?>
-	</p>
-  </div>
-</div>
-<div class="lowercontent"></div>
-<div class="footer1">
-<table align="center">
-<tr>
-<td><img src="logo/anilag systems logo 300x155 trnsparent.png" /></td>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td><img src="images/isch.gif" width="200" height="70"/></td>
-</tr>
-</table></div>
-<div class="footer"><?php echo $system_title; ?><br />
-<?php echo $footer; ?></div>
+            </p>
+            <p>
+<?php
+        display_pagination($pagination);
+?>
+            </p>
+        </div>
+    </div>
+    <div class="lowercontent"></div>
+    <div class="footer1">
+        <table align="center">
+            <tr>
+                <td><img src="logo/anilag systems logo 300x155 trnsparent.png" /></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><img src="images/isch.gif" width="200" height="70" /></td>
+            </tr>
+        </table>
+    </div>
+    <div class="footer">
+        <?php echo $system_title; ?><br />
+        <?php echo $footer; ?>
+    </div>
 </body>
+
 </html>

@@ -332,7 +332,7 @@ $i = 0;
  			       <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
 
 	        </tr>
-			<? if ($upload_file=="on") echo"<tr>
+			<?php if ($upload_file=="on") echo"<tr>
 
  			       <td align='right'>Photo</td>
  			       <td align='left'><strong>  <input name='userfile' type='file'  size='15' class='dilaw' />
@@ -572,7 +572,7 @@ $i = 0;
     while ($row = mysql_fetch_array($result)) {
         $type = $row['type'];
         ?>
-			<option <? if ($usertype=="$type") echo selected;?>><?php echo $type; ?></option>
+			<option <?php if ($usertype=="$type") echo selected;?>><?php echo $type; ?></option>
 <?php $i++;}?></select>
  			       </strong></td>
  			     <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
@@ -589,7 +589,7 @@ $i = 0;
  			       <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
 
 	        </tr>
-<? if ($upload_file=="on") echo"<tr>
+<?php if ($upload_file=="on") echo"<tr>
 
  			       <td align='right'>Photo</td>
  			       <td align='left'><strong>  <input name='userfile' type='file'  size='15' class='dilaw' />
@@ -634,7 +634,7 @@ $i = 0;
     while ($row = mysql_fetch_array($result)) {
         $code = $row['school_code'];
         ?>
-			<option <? if ($school_code=="$code") echo selected;?>><?php echo $code; ?></option>
+			<option <?php if ($school_code=="$code") echo selected;?>><?php echo $code; ?></option>
 <?php $i++;}?>
 </select>
 				   </strong></td>

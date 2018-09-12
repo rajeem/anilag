@@ -179,9 +179,9 @@ $i = 0;
     while ($row = mysql_fetch_array($result6)) {
         $code = $row['school_code'];
         ?>
-              <option <? if ($dschool_code=="$code") echo "selected";?>><?php echo $code; ?></option>
+              <option <?php if ($dschool_code=="$code") echo "selected";?>><?php echo $code; ?></option>
               <?php $i++;}?>
-              <option  value="all"<? if ($school_code=="all") echo "selected";?>>All</option>
+              <option  value="all"<?php if ($school_code=="all") echo "selected";?>>All</option>
           </select></td>
           <td valign="top" colspan="2">
 

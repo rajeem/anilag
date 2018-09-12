@@ -344,9 +344,9 @@ if ($location2 == "on") {
  		   <td width="20%" bgcolor="#000000"><strong class="style9">Main Author</strong></td>
  		   <td width="14%" bgcolor="#000000"><span class="style7"><strong>Access No.</strong></span></td>
  	 	  <td width="10%" bgcolor="#000000"><span class="style9">Availability</span></td>
- 	  <? if ($school_code=="all") echo" <td width='15%' bgcolor='#000000'><span class='style9'>School</span></td>
+ 	  <?php if ($school_code=="all") echo" <td width='15%' bgcolor='#000000'><span class='style9'>School</span></td>
  	 ";?>
-	  <? if ($location2=="on") echo" <td width='20%' bgcolor='#000000'><span class='style9'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</span></td>
+	  <?php if ($location2=="on") echo" <td width='20%' bgcolor='#000000'><span class='style9'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</span></td>
  	 ";?>
 	   </tr>
 		<?php }?>

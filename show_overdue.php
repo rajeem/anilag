@@ -256,7 +256,7 @@ if ($window == 1) {
                      <td width="22%">&nbsp;</td>
                      <td width="19%">&nbsp;</td>
                      <td width="20%">&nbsp;</td>
-                     <? if ($type_code=="all") echo" <td>&nbsp;</td>
+                     <?php if ($type_code=="all") echo" <td>&nbsp;</td>
  	 ";?>
                    </tr>
                    <tr>
@@ -265,7 +265,7 @@ if ($window == 1) {
                      <td><strong>Author</strong></td>
                      <td><strong>Borrower</strong></td>
                      <td><strong>Due date</strong></td>
-                     <? if ($type_code=="all") echo" <td><strong>&nbsp;&nbsp;&nbsp;School</strong></td>
+                     <?php if ($type_code=="all") echo" <td><strong>&nbsp;&nbsp;&nbsp;School</strong></td>
  	 ";?>
                    </tr>
 				   <?php
@@ -317,7 +317,7 @@ $x = 2;
                      <td bgcolor="<?php echo $bg; ?>"><?php echo $author; ?></td>
                      <td bgcolor="<?php echo $bg; ?>"><a href="pay_fee.php?bar_id_from_home=<?php echo $bar_id; ?>"><?php echo $bar_name; ?></a></td>
                      <td bgcolor="<?php echo $bg; ?>"><?php echo $deadline; ?></td>
-                      <? if ($type_code=="all") echo" <td width='15%' bgcolor='$bg'>&nbsp;&nbsp;&nbsp;$school_code</td>
+                      <?php if ($type_code=="all") echo" <td width='15%' bgcolor='$bg'>&nbsp;&nbsp;&nbsp;$school_code</td>
  	 ";?>
                    </tr>
 				   <?php
@@ -330,7 +330,7 @@ $x = 2;
         <td>&nbsp;</td>
         <td>&nbsp;</td>
 
-		 <? if ($type_code=="all") echo" <td>&nbsp;</td>
+		 <?php if ($type_code=="all") echo" <td>&nbsp;</td>
  	 ";?>
       </tr>
     </table>

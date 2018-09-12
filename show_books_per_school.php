@@ -359,8 +359,8 @@ $result6 = mysql_query($sq6);
 while ($row = mysql_fetch_array($result6)) {
     $code = $row['school_code'];
     ?>
-                <option <? if ($school_code=="$code") echo selected;?>><?php echo $code; ?></option>
-          <?php $i++;}?><option  value="all"<? if ($school_code=="all") echo selected;?>>All</option></select></td>
+                <option <?php if ($school_code=="$code") echo selected;?>><?php echo $code; ?></option>
+          <?php $i++;}?><option  value="all"<?php if ($school_code=="all") echo selected;?>>All</option></select></td>
 		  <td>
             <input name="Submit" type="submit" class="btn" onclick="heckForm()" value="Search"/>
             <a href="admin.php?show=do"></a></td>

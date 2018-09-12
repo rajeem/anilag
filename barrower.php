@@ -223,7 +223,7 @@ if($search!=""){
    
   </tr>
   <tr>
-    <td align="center" bgcolor="#FFFFFF"> <? if ($ROWS==0){  echo "No Books/Material borrowed!";}?>
+    <td align="center" bgcolor="#FFFFFF"> <?php if ($ROWS==0){  echo "No Books/Material borrowed!";}?>
   </td>
     <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
     <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
@@ -937,7 +937,7 @@ switch ($araw2) {
     
   </tr>
   <tr>
-    <? if ($ROWS!=0){?><td><input type="button" name="submit2" value="Print Current Borrowed Book(s)" class="btn" onclick="MM_openBrWindow1('report/index.php?sql=100&amp;bar_id=<?php echo $bar_id; ?>&full_name=<?php echo $last.", ".$first;?>','','scrollbars=yes,width=1000,height=800')" onmouseover="this.className='btn btnhov'" onmouseout="this.className='btn'"/></td><?php } ?>
+    <?php if ($ROWS!=0){?><td><input type="button" name="submit2" value="Print Current Borrowed Book(s)" class="btn" onclick="MM_openBrWindow1('report/index.php?sql=100&amp;bar_id=<?php echo $bar_id; ?>&full_name=<?php echo $last.", ".$first;?>','','scrollbars=yes,width=1000,height=800')" onmouseover="this.className='btn btnhov'" onmouseout="this.className='btn'"/></td><?php } ?>
     
 	<?php
 	$nyoy="SELECT * FROM history WHERE bar_id='$bar_id'";

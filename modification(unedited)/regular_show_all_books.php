@@ -336,10 +336,10 @@ $rows=mysql_num_rows($result);
  		   <td width="19%" bgcolor="#000000"><strong class="style9">Main Author</strong></td>
  		   <td width="11%" bgcolor="#000000"><span class="style7"><strong>Access No.</strong></span></td>
  	 	   <td width="10%" bgcolor="#000000"><span class="style9">Availability</span></td>
- 	     <? if ($school_code=="all") echo" <td width='8%' bgcolor='#000000'><span class='style9'>School</span></td>
+ 	     <?php if ($school_code=="all") echo" <td width='8%' bgcolor='#000000'><span class='style9'>School</span></td>
  	 ";?>
 	 
-	   <? if ($location2=="on") echo" <td  bgcolor='#000000'><span class='style9'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</span></td>
+	   <?php if ($location2=="on") echo" <td  bgcolor='#000000'><span class='style9'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</span></td>
  	 ";?></tr>
 		
 			<?php		
@@ -820,9 +820,9 @@ else{
 				  }
 			
 			?></td>
-			 <? if ($school_code=="all") echo" <td width='8%' bgcolor='$bg'>$code_mo</td>
+			 <?php if ($school_code=="all") echo" <td width='8%' bgcolor='$bg'>$code_mo</td>
  	 ";?>
-	   <? if ($location2=="on") echo" <td  bgcolor='$bg'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$location</td>
+	   <?php if ($location2=="on") echo" <td  bgcolor='$bg'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$location</td>
  	 ";?>
    
 </tr>

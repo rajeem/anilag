@@ -1203,7 +1203,7 @@ $i = 0;
     while ($row = mysql_fetch_array($result)) {
         $code = $row['school_code'];
         ?>
-                <option <? if ($school_code==$code) echo selected;?>><?php echo $code; ?></option>
+                <option <?php if ($school_code==$code) echo selected;?>><?php echo $code; ?></option>
                 <?php $i++;}?>
               </select>
           </div></td>
@@ -1263,9 +1263,9 @@ $i = 0;
           <td align="right" class="style2"><div align="left">*Mode of Acquisition:</div></td>
           <td><div align="left">
               <select name="mode_of_ac" id="mode_of_ac" >
-                <option value="Donation" <? if($mode_of_ac=="Donation") echo selected;?>>Donation</option>
-                <option value="Exchange" <? if($mode_of_ac=="Exchange") echo selected;?>>Exchange</option>
-             <option value="Purchase" <? if($mode_of_ac=="Purchase") echo selected;?>>Purchase</option>
+                <option value="Donation" <?php if($mode_of_ac=="Donation") echo selected;?>>Donation</option>
+                <option value="Exchange" <?php if($mode_of_ac=="Exchange") echo selected;?>>Exchange</option>
+             <option value="Purchase" <?php if($mode_of_ac=="Purchase") echo selected;?>>Purchase</option>
                  </select>
               <input name="mode_ac" type="text"  id="mode_ac" size="33" value="<?php echo $mode_ac; ?>" />
           </div></td>
@@ -1704,7 +1704,7 @@ $i = 0;
     while ($row = mysql_fetch_array($result)) {
         $code = $row['school_code'];
         ?>
-                <option <? if ($school_code==$code) echo selected;?>><?php echo $code; ?></option>
+                <option <?php if ($school_code==$code) echo selected;?>><?php echo $code; ?></option>
                 <?php $i++;}?>
               </select>
           </div></td>
@@ -1767,9 +1767,9 @@ $i = 0;
           <td align="right" class="style2"><div align="left">*Mode of Acquisition:</div></td>
           <td><div align="left">
                <select name="mode_of_ac" id="mode_of_ac" >
-                <option value="Donation" <? if($mode_of_ac=="Donation") echo selected;?>>Donation</option>
-                <option value="Exchange" <? if($mode_of_ac=="Exchange") echo selected;?>>Exchange</option>
-             <option value="Purchase" <? if($mode_of_ac=="Purchase") echo selected;?>>Purchase</option>
+                <option value="Donation" <?php if($mode_of_ac=="Donation") echo selected;?>>Donation</option>
+                <option value="Exchange" <?php if($mode_of_ac=="Exchange") echo selected;?>>Exchange</option>
+             <option value="Purchase" <?php if($mode_of_ac=="Purchase") echo selected;?>>Purchase</option>
                  </select>
               <input name="mode_ac" type="text"  id="mode_ac" size="33" value="<?php echo $mode_ac; ?>"/>
           </div></td>
@@ -2198,7 +2198,7 @@ $i = 0;
     while ($row = mysql_fetch_array($result)) {
         $code = $row['school_code'];
         ?>
-                <option <? if ($dschool_code==$code) echo selected;?>><?php echo $code; ?></option>
+                <option <?php if ($dschool_code==$code) echo selected;?>><?php echo $code; ?></option>
                 <?php $i++;}?>
               </select>
           </div></td>
@@ -2691,9 +2691,9 @@ $i = 0;
           <td align="right" class="style2"><div align="left">*Mode of Acquisition:</div></td>
           <td><div align="left">
              <select name="mode_of_ac" id="mode_of_ac" >
-                <option value="Donation" <? if($mode_of_ac=="Donation") echo selected;?>>Donation</option>
-                <option value="Exchange" <? if($mode_of_ac=="Exchange") echo selected;?>>Exchange</option>
-             <option value="Purchase" <? if($mode_of_ac=="Purchase") echo selected;?>>Purchase</option>
+                <option value="Donation" <?php if($mode_of_ac=="Donation") echo selected;?>>Donation</option>
+                <option value="Exchange" <?php if($mode_of_ac=="Exchange") echo selected;?>>Exchange</option>
+             <option value="Purchase" <?php if($mode_of_ac=="Purchase") echo selected;?>>Purchase</option>
               </select>
               <input name="mode_ac" type="text"  id="mode_ac" size="33" value="<?php echo $mode_ac; ?>" />
           </div></td>

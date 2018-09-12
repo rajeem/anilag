@@ -331,7 +331,7 @@ if($search!=""){
   </tr>
   <tr>
     <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
-    <td align="center" bgcolor="#FFFFFF"> <? if ($ROWS==0){  echo "No Books/Material borrowed!";}?>  </td>
+    <td align="center" bgcolor="#FFFFFF"> <?php if ($ROWS==0){  echo "No Books/Material borrowed!";}?>  </td>
     <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
     <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
      <td align="center" bgcolor="#FFFFFF" colspan="2">&nbsp;</td>
@@ -1075,7 +1075,7 @@ switch ($araw2) {
   </tr>
   <tr>
     <td><strong>Subtotal:</strong></td>
-    <td><input name="subtotal" type="text" id="subtotal" value="<? echo $amount;?>" ></td>
+    <td><input name="subtotal" type="text" id="subtotal" value="<?php echo $amount;?>" ></td>
     <td>&nbsp;</td>
     <td  rowspan="4"><textarea cols="26" rows="5"  name="justification" id="justification" ></textarea></td>
     <td align="center"></td>
