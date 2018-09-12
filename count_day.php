@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 function count_days($start, $end)
 {
     if ($start != '0000-00-00' and $end != '0000-00-00') {

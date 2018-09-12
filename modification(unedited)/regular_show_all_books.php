@@ -93,7 +93,7 @@ $search = $_SESSION['search'];		//text
 //============================if the search field is blank ====end
 
 //============================if the search field is not blank ====
-if($search!=""){
+if(issearch($search)){
 
 $back="\\";
 $sql = str_replace ($back, "", $sql);
@@ -110,7 +110,7 @@ $count = count(explode(" ", $search));
 
 
 //============================if the search field is not blank
-	if(($search!="")&&($count>=2)){			
+	if (isset($search) && $count >= 2) {			
        
 		if($school_code=="all"){
 			$sql="SELECT * from card_cat where match(call_num,author_sname,author_fname,
@@ -257,25 +257,6 @@ $result=mysql_query($sql,$connect) or die("cant execute query!.....");
 <title><?php echo $system_title."--".$footer;?></title>
 <link rel="stylesheet" type="text/css" href="css/<?php echo $css;?>" />
 <style type="text/css">
-<!--
-#Layer3 {
-	position:absolute;
-	width:200px;
-	height:115px;
-	z-index:1;
-	left: 571px;
-	top: 797px;
-}
-.style4 {
-	font-size: larger;
-	font-weight: bold;
-}
-.style5 {color: #FF0000}
-.style6 {font-size: larger; font-weight: bold; color: #FF0000; }
-.style7 {color: #FFFFFF}
-.style9 {color: #FFFFFF; font-weight: bold; }
-
--->
 </style>
 </head>
 <body>
@@ -290,7 +271,6 @@ $result=mysql_query($sql,$connect) or die("cant execute query!.....");
 <ul id="navlist">
 <li id="active"><a href="index.php" id="current" title="Search">Search</a></li>
 <li><a href="admin_login.php" title="Administrator">Administrator</a></li>
-<li><a href="elib.rar" title="Help">Download demo version</a></li>
 <li><a href="help2.php" title="Help">Help</a></li>
 </ul>
 </div>
@@ -313,7 +293,7 @@ if ($window ==1){
   */
 //output error msg if there is
 $rows=mysql_num_rows($result);
-	if($search!=""){
+	if (isset($search)){
 		if($rows==0){
 		echo "<strong><font color=red>Your search return zero result</font>
 			 in category ".$type."</strong>";
@@ -350,7 +330,7 @@ $rows=mysql_num_rows($result);
 	
 				$count=1;
 
-				if($_GET['type']!=""){
+				if (isset($_GET['type'])) {
 				$type=$_GET['type'];
 				}
 				$x=2;
@@ -453,7 +433,7 @@ $rows=mysql_num_rows($result);
 				$bg="#Ffffff";
 				}
 			
-					if($pdf!=""){
+					if (isset($pdf)) {
 					$dest="pdf";
 					$doc="(PDF)";
 					//$front='pdf.jpeg';

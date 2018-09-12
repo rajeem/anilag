@@ -284,7 +284,6 @@ $result = mysql_query($sql, $connect) or die("cant execute query!.....");
             <ul id="navlist">
                 <li id="active"><a href="index.php" id="current" title="Search">Search</a></li>
                 <li><a href="admin_login.php" title="Administrator">Administrator</a></li>
-                <li><a href="elib.rar" title="Download Demo Version">Download demo version</a></li>
                 <li><a href="help2.php" title="Help">Help</a></li>
             </ul>
         </div>
@@ -353,7 +352,7 @@ if ($window == 1) {
 
         $count = 1;
 
-        if ($_GET['type'] != "") {
+        if (isset($_GET['type'])) {
             $type = $_GET['type'];
         }
         $x = 2;
@@ -789,7 +788,7 @@ if ($window == 1) {
         ?>
                 </table>
 <?php
-}
+}}
 ?>
             </p>
             <p>

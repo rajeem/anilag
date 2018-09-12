@@ -55,7 +55,6 @@ if (isset($_POST['submit'])) {
 <ul id="navlist">
 <li id="active"><a href="index.php" id="current" title="Search">Search</a></li>
 <li><a href="admin_login.php" title="Administrator">Administrator</a></li>
-<li><a href="elib.rar" title="Download Demo Version">Download demo version</a></li>
 <li><a href="help2.php" title="Help">Help</a></li>
 </ul>
 </div>
@@ -69,7 +68,7 @@ if (isset($_POST['submit'])) {
           <td bgcolor="#000000"><table width="327" height="170" border="0" cellpadding="5" cellspacing="5" class="bg_login">
             <tr>
               <td><?php
-if (($usernameerror != "") || ($errorup != "")) {
+if ((isset($usernameerror)) || (isset($errorup))) {
     echo '<img src="images/warningnew.gif" width="50" height="45" />';
 } else {
     echo '<img src="images/mm_spacer.gif" width="50" height="45" />';
@@ -94,125 +93,6 @@ if (($usernameerror != "") || ($errorup != "")) {
         </tr>
       </table>
     </form>
-      <p><?php echo $pagination; ?><a href="index.php"></a></p>
-      <?php
-
-/**perform the query
- *with limit assigned
- */
-
-echo $er;
-if (($_POST['op'] != 1) && ($txt != "")) {
-    $sql .= " LIMIT $from, $max_results ";
-    $result = mysql_query($sql, $connect) or die("cant execute query!.....");
-    $rows = mysql_num_rows($result);
-    if ($search != "") {
-        if ($rows == 0) {
-            echo "<strong><font color=red>Your search return zero result(s)</font>
-			 in category " . $type . "</strong>";
-        }
-    }
-    if ($rows > 0) {
-        echo '<img src="images/arrowr.gif" width="15" height="9" />Your search for
-		<strong>' . $search . '</strong> returned <strong>' . $number . '</strong> results<br><br><hr/>';
-
-        $count = 1;
-        while ($row = mysql_fetch_array($result)) {
-            $id = $row['id'];
-            $call_num = $row['call_num'];
-            $author = $row['author'];
-            $corp_author = $row['corp_author'];
-            $title = $row['title'];
-            $subject = $row['subject'];
-            $isbn = $row['isbn'];
-            $edition = $row['edition'];
-            $place_pub = $row['place_pub'];
-            $publisher = $row['publisher'];
-            $date_pub = $row['date_pub'];
-            $collation = $row['collation'];
-            $language = $row['language'];
-            $pdf = $row['pdf'];
-            $help = $row['help'];
-            $front = $row['front'];
-            $pdb = $row['pdb'];
-
-            if ($pdf != "") {
-                $dest = "pdf";
-                $doc = "(PDF)";
-            }
-            if ($help != "") {
-                $dest = "help";
-                $doc = "(compiled HTML)";
-            }
-            if ($pdb != "") {
-                $dest = "pdb";
-                $doc = "(PDB)";
-            }
-            if (($pdf != "") && ($help != "")) {
-                $dest = "all";
-            }
-            if ($front == "") {
-                $front = 'no_preview.gif';
-            }
-            ?>
-      <table width="100%" border="0" cellpadding="0" cellspacing="0">
-        <tr>
-          <td width="77" rowspan="3"><?php
-if (($pdf == "") && ($help == "") && ($pdb == "")) {
-                echo '<img src="images/no_preview.gif"
-					title="' . $title . ' by ' . $author . '"/>';
-            } else {
-                echo '<a href="view_result.php?dest=' . $dest . '&id=' . $id . '">
-					<img src="images/front/' . $front . '"
-					title="' . $title . ' by ' . $author . '' . $doc . '"/>
-					</a>';
-            }
-            ?>
-              <br />
-              <br /></td>
-          <td width="277" bgcolor="#FFFFFF"><strong></strong><strong>Author(s):</strong>
-              <?php
-if (($pdf != "") || ($help != "") || ($pdb != "")) {
-                echo '<a href="view_result.php?dest=' . $dest . '&id=' . $id . '">' . $author . '</a><br>';
-            } else {
-                echo "<strong>" . $author . "</strong>";
-            }
-            ?></td>
-          <td width="207" bgcolor="#FFFFFF"><strong>Subject:</strong> <?php echo $subject; ?></td>
-        </tr>
-        <tr>
-          <td><strong>Title:</strong><?php echo $title; ?></td>
-          <td><strong>Language:</strong><?php echo $language; ?></td>
-        </tr>
-        <tr>
-          <td bgcolor="#FFFFFF"><strong>Date of Publication</strong>: <?php echo $date_pub; ?></td>
-          <td bgcolor="#FFFFFF"><strong>Collation</strong>:<?php echo $collation; ?></td>
-        </tr>
-        <tr>
-          <td><a href="admin_edit.php?id=<?php echo $id; ?>"></a> <a href="admin_delete.php"></a></td>
-          <td><strong>Publisher:</strong><?php echo $publisher; ?></td>
-          <td><strong>Edition</strong>:<?php echo $edition; ?></td>
-        </tr>
-        <tr>
-          <td><strong>Call Number</strong><?php echo $call_num; ?></td>
-          <td bgcolor="#FFFFFF"><strong>Place of Publication</strong>: <?php echo $place_pub; ?></td>
-          <td bgcolor="#FFFFFF"><strong>ISBN</strong>:<?php echo $isbn; ?></td>
-        </tr>
-      </table>
-      <hr />
-			     <p>
-			       <?php
-$count++;
-        }
-
-    }
-}
-?>
-    </p>
-			     <p><?php echo $pagination;
-?> </p>
-  </div>
-</div>
 <div class="lowercontent"></div>
 <div class="footer1"><table align="center">
 <tr>

@@ -9,14 +9,14 @@ include("include/connect.php");
 include("include/gensettings.php");
 include("user.php");
 include("count_day.php");
-$search= $_POST['search'];
+$search= isset($_POST['search']) ? $_POST['search'] : '';
 
 
-if ($_GET['bar_id_from_home']!=""){
+if (isset($_GET['bar_id_from_home'])){
 $search = $_GET['bar_id_from_home'];}
 
 
-if ($_GET['bar_id']!=""){
+if (isset($_GET['bar_id'])){
 $search = $_GET['bar_id'];}
 
 $query="SELECT * FROM borrowers_pic where bar_id = '$search' ";
@@ -41,14 +41,6 @@ $rowko = mysql_fetch_array($result);
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title><?php echo $system_title."--".$footer;?></title>
 <link rel="stylesheet" type="text/css" href="css/<?php echo $css;?>" />
-<style type="text/css">
-<!--
-.style1 {	color: #FFFFFF;
-	font-weight: bold;
-}
-
--->
-</style>
 </head>
 <body>
 <div class="header">
@@ -96,11 +88,11 @@ $rowko = mysql_fetch_array($result);
         </tr>
       </table></form>
 <?php 
-if(($_POST['op']==1)&&($_POST['search']!="")||($_GET['bar_id']!="")||($_GET['bar_id_from_home']!="")){
-$search= $_POST['search'];
+if (isset($_POST['op']) && (isset($_POST['search']) || isset($_GET['bar_id']) || isset($_GET['bar_id_from_home']))) {
+	$search= $_POST['search'];
 
 
-	if($_GET['bar_id']!=""){
+	if(isset($_GET['bar_id'])){
 	$search=$_GET['bar_id'];
 	
 	
@@ -131,7 +123,7 @@ $search= $_POST['search'];
 	
 	//if bar id is from home
 	//bar id from home
-	if($_GET['bar_id_from_home']!=""){
+	if(isset($_GET['bar_id_from_home'])){
 	$search=$_GET['bar_id_from_home'];
 	}
 	
@@ -159,7 +151,7 @@ $RESULT=mysql_query($SQL,$connect) or die("cant execute query!.....3.232");
 $ROWS = mysql_num_rows($RESULT);
 
 $rows=mysql_num_rows($result);
-if($search!=""){
+if(isset($search)){
 		if($rows==0){
 		echo "<strong><font color=red>Your search return zero result</font></strong>";
 		}

@@ -16,11 +16,11 @@ $amount=0;
 
 if($uri=="admin"){
 
-if ($_GET['bar_id_from_home']!=""){
+if (isset($_GET['bar_id_from_home'])) {
 $search = $_GET['bar_id_from_home'];}
 
 
-if ($_GET['bar_id']!=""){
+if (isset($_GET['bar_id'])){
 $search = $_GET['bar_id'];}
 
 $query="SELECT * FROM borrowers_pic where bar_id = '$search' ";
@@ -114,11 +114,11 @@ document.myform2.book_ret[i].checked = true ;
         </tr>
       </table></form>
 <?php 
-if(($_POST['op']==1)&&($_POST['search']!="")||($_GET['bar_id']!="")||($_GET['bar_id_from_home']!="")||($_POST['pay'])){
+if(($_POST['op']==1)&&(isset($_POST['search']))||(isset($_GET['bar_id']))||(isset($_GET['bar_id_from_home']))||(isset($_POST['pay']))){
 $search= $_POST['search'];
 $date = date("Y-m-d");
 // if return link is clear
-	if($_GET['bar_id']!=""){
+	if(isset($_GET['bar_id'])){
 	$search=$_GET['bar_id'];
 	
 	
@@ -249,7 +249,7 @@ for ( $i=0; $i < $cnt; $i++ ) {
 	//if bar id is from home
 	//bar id from home
 	
-	if($_GET['bar_id_from_home']!=""){
+	if(isset($_GET['bar_id_from_home'])){
 	$search=$_GET['bar_id_from_home'];
 	}
 

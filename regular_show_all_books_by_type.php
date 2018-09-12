@@ -199,25 +199,6 @@ $result = mysql_query($sql, $connect) or die("cant execute query!.....");
 <title><?php echo $system_title . "--" . $footer; ?></title>
 <link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
 <style type="text/css">
-<!--
-#Layer3 {
-	position:absolute;
-	width:200px;
-	height:115px;
-	z-index:1;
-	left: 571px;
-	top: 797px;
-}
-.style4 {
-	font-size: larger;
-	font-weight: bold;
-}
-.style5 {color: #FF0000}
-.style6 {font-size: larger; font-weight: bold; color: #FF0000; }
-.style7 {color: #FFFFFF}
-.style9 {color: #FFFFFF; font-weight: bold; }
-
--->
 </style>
 </head>
 <body>
@@ -232,7 +213,6 @@ $result = mysql_query($sql, $connect) or die("cant execute query!.....");
 <ul id="navlist">
 <li id="active"><a href="index2.php" id="current" title="Search">Search</a></li>
 <li><a href="admin_login.php" title="Administrator">Administrator</a></li>
-<li><a href="elib.tar.gz" title="Help">Download demo version</a></li>
 <li><a href="help2.php" title="Help">Help</a></li>
 </ul>
 </div>

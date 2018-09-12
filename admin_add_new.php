@@ -14,11 +14,11 @@ include "user.php";
 //authorized
 if ($add_book == "on") {
 
-    if ($_POST['add_new']) {
+    if (isset($_POST['add_new'])) {
         $op = 1;
     }
 
-    if ($_POST['add_copy']) {
+    if (isset($_POST['add_copy'])) {
         $front = $_SESSION["front"];
         $pdf = $_SESSION["pdf"];
         $help = $_SESSION["help"];
@@ -49,7 +49,7 @@ if ($add_book == "on") {
     }
 
 //if form submit
-    if ($_POST['add']) {
+    if (isset($_POST['add'])) {
         $front = $_SESSION["front"];
         $pdf = $_SESSION["pdf"];
         $help = $_SESSION["help"];
@@ -238,14 +238,6 @@ return false;}
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title><?php echo $system_title . "--" . $footer; ?></title>
 <link rel="stylesheet" type="text/css" href="css/<?php echo $css; ?>" />
-<style type="text/css">
-<!--
-.style2 {
-	font-size: small;
-	font-family: Arial, Helvetica, sans-serif;
-}
--->
-</style>
 </head>
 <body>
 <div class="header">
@@ -274,7 +266,7 @@ return false;}
     <form id="myform" name="myform" method="post" action="admin_add_new.php">
       <table width="80%" border="0" cellpadding="0" cellspacing="3" >
         <tr>
-          <td colspan="4"><?php echo $fielderror; ?></td>
+          <td colspan="4"><?php echo (isset($fielderror) ? $fielderror : ''); ?></td>
         </tr>
         <tr>
 		<tr>
@@ -353,13 +345,13 @@ $i = 0;
         <tr>
           <td><div align="left">
               <?php
-if (($recordadded != "")) {
+if (isset($recordadded)) {
         echo '<img src="images/check1.png" width="50" height="45" />';
     } else {
         echo '<img src="images/mm_spacer.gif" width="50" height="45" />';
     }
     ?>
-              <?php echo $recordadded; ?></div></td>
+              <?php echo (isset($recordadded) ? $recordadded : ''); ?></div></td>
         </tr>
       </table>
     </form>

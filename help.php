@@ -22,7 +22,6 @@ include "include/gensettings.php";
 <ul id="navlist">
 <li id="active"><a href="index.php" id="current" title="Search">Search</a></li>
 <li><a href="admin_login.php" title="Administrator">Administrator</a></li>
-<li><a href="elib.tar.gz">Download Demo Version </a></li>
 <li><a href="help.php" title="Help">Help</a></li>
 </ul>
 </div>

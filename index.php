@@ -96,7 +96,6 @@ if (isset($_POST['op']) && $_POST['op'] == 1) {
 <ul id="navlist">
 <li id="active"><a href="index.php" id="current" title="Search">Search</a></li>
 <li><a href="admin_login.php" title="Administrator">Administrator</a></li>
-<li><a href="elib.rar" title="Download Demo Version">Download demo version</a></li>
 <li><a href="help2.php" title="Help">Help</a></li>
 </ul>
 </div>

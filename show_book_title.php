@@ -38,16 +38,18 @@ while ($row = mysql_fetch_array($result)) {
     $author_fname = $row['author_fname'];
     $author_mname = $row['author_mname'];
 
-    $sql = "SELECT * from card_cat where title = '$title' && author_sname='$author_sname'&& author_fname='$author_fname'&& author_mname='$author_mname' && flag='up'";
-    $result_2 = mysql_query($sql, $connect) or die("cant execute query!y");
+    $sql = 'SELECT * from card_cat where title = "' . $title . '" && author_sname="' . $author_sname . '&& author_fname= "' . $author_fname . '" && author_mname="' . $author_mname . '" && flag="up"';
+    $result_2 = mysql_query($sql, $connect) or die("cant execute query!y1");
     $lahatan_2 = mysql_num_rows($result_2);
 
     $sql_2b = "SELECT * from card_cat where title = '$title' && author_sname='$author_sname'&& author_fname='$author_fname'&& author_mname='$author_mname' && qty=1";
-    $result_2b = mysql_query($sql_2b, $connect) or die("cant execute query!y");
+    $result_2b = mysql_query($sql_2b, $connect) or die("cant execute query!y2");
     $lahatan_2b = mysql_num_rows($result_2b); //available copies
 
     $sql_3 = "UPDATE card_cat set flag='down' where title = '$title' && author_sname='$author_sname'&& author_fname='$author_fname'&& author_mname='$author_mname'";
     $result_3 = mysql_query($sql_3, $connect) or die("cant execute query!x");
+
+    $x = 0; $y = 0;
 
     if ($lahatan_2 == 0) {
 
@@ -180,7 +182,6 @@ el.value = el.value.replace(/[^0-9]/g, "");
 <ul id="navlist">
 <li id="active"><a href="index.php" id="current" title="Search">Search</a></li>
 <li><a href="admin_login.php" title="Administrator">Administrator</a></li>
-<li><a href="elib.rar" title="Help">Download demo version</a></li>
 <li><a href="help2.php" title="Help">Help</a></li>
 </ul>
 </div>

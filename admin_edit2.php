@@ -343,7 +343,6 @@ if ($_POST['add_copy']) {
     session_unregister("pdb");
     //$hanap_code        =$_POST['school_code'];
     $school_code = $_POST['school_code'];
-    //if($school_code==""){
     //$school_code=$dschool_code;
     //}
     $location = $_POST['location'];

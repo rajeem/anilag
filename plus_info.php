@@ -79,9 +79,6 @@ while ($row = mysql_fetch_array($result)) {
     $subject5 = $row['subject5'];
     $subject6 = $row['subject6'];
     $subject7 = $row['subject7'];
-    $subject8 = $row['subject8'];
-    $subject9 = $row['subject9'];
-    $subject10 = $row['subject10'];
     $source_of_fund = $row['source_of_fund'];
     $mode_of_ac = $row['mode_of_ac'];
     $date_ac = $row['date_ac'];
@@ -232,7 +229,6 @@ function MM_openBrWindow1(theURL,winName,features) { //v2.0
       <td align="left" bgcolor="#FFFFFF">
 	    <span class="style1"><?php if (($preliminary != "") && ($no_of_pages != "") && ($size_dimension !== "")) {?>
 	    <?php echo "&nbsp;&nbsp;&nbsp;" . $preliminary; ?>, <?php echo $no_of_pages; ?>p.&nbsp;:&nbsp;ill. ; <?php echo $size_dimension; ?>
-	    <?php //if ($isbn!="") echo "<br>&nbsp;&nbsp;&nbsp;&nbsp;ISBN:".'  '.$isbn;?>
         </span><?php }?></td>
   </tr>
   <tr>
@@ -241,13 +237,6 @@ function MM_openBrWindow1(theURL,winName,features) { //v2.0
   <tr>
     <td align="left" bgcolor="#FFFFFF"><span class="style1"></span></td>
     <td bgcolor="#FFFFFF"><span class="style1"><?php if ($isbn != "") {?>&nbsp;&nbsp;&nbsp;ISBN&nbsp;<?php echo $isbn; ?><?php }?>
-      <?php // if($subject1!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;".$subject1; ?>
-		<?php //if($subject2!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;".$subject2; ?>
-	    <?php //if($subject3!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;".$subject3; ?>
-	    <?php //if($subject4!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;".$subject4; ?>
-	    <?php //if($subject5!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.&nbsp;".$subject5; ?>
-	    <?php //if($subject6!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.&nbsp;".$subject6; ?>
-	    <?php //if($subject7!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.&nbsp;".$subject7; ?>
 
     </span></td>
   </tr>
@@ -257,13 +246,7 @@ function MM_openBrWindow1(theURL,winName,features) { //v2.0
   <tr>
     <td align="right" bgcolor="#FFFFFF"><span class="style1"></span></td>
 	<td bgcolor="#FFFFFF">
-      <span class="style1">&nbsp;&nbsp;<?php //if (($other_author1_sname!="")&&($other_author1_sname!="")&&($other_author1_sname!="")) echo 'I.'.$other_author1_sname.' '.$other_author1_fname.' '.$other_author1_mname{0}.'.';?>
-
-	 <?php //if (($other_author2_sname!="")&&($other_author2_sname!="")&&($other_author2_sname!="")){ echo '    II.'.$other_author2_sname.' '.$other_author2_fname.' '.$other_author2_mname{0}.'.';
-
-    //if($title!="") echo "<br>III.".$title; else if($parallel_title!="") echo "<br>III.".$parallel_title; else if($oti!="") echo "<br>III.".$oti;  else if($uti!="") echo "<br>III.".$uti; }
-    //else{
-    //if($title!="") echo "<br>II.".$title; else if($parallel_title!="") echo "<br>II.".$parallel_title; else if($oti!="") echo "<br>II.".$oti;  else if($uti!="") echo "<br>II.".$uti;}?>
+      <span class="style1">&nbsp;&nbsp;
 		 <?php if ($subject1 != "") {
         echo "1.&nbsp;" . $subject1 . ". ";
     }
@@ -382,13 +365,6 @@ function MM_openBrWindow1(theURL,winName,features) { //v2.0
   <tr>
     <td align="left" bgcolor="#FFFFFF"><span class="style1"></span></td>
     <td bgcolor="#FFFFFF"><span class="style1"><?php if ($isbn != "") {?>&nbsp;&nbsp;&nbsp;ISBN&nbsp;<?php echo $isbn; ?><?php }?>
-      <?php // if($subject1!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;".$subject1; ?>
-		<?php //if($subject2!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;".$subject2; ?>
-	    <?php //if($subject3!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;".$subject3; ?>
-	    <?php //if($subject4!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;".$subject4; ?>
-	    <?php //if($subject5!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.&nbsp;".$subject5; ?>
-	    <?php //if($subject6!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.&nbsp;".$subject6; ?>
-	    <?php //if($subject7!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.&nbsp;".$subject7; ?>
 
     </span></td>
   </tr>
@@ -399,13 +375,6 @@ function MM_openBrWindow1(theURL,winName,features) { //v2.0
     <td align="right" bgcolor="#FFFFFF"><span class="style1"></span></td>
 	<td bgcolor="#FFFFFF">
       <span class="style1">&nbsp;&nbsp;
-	 <?php //if (($other_author1_sname!="")&&($other_author1_sname!="")&&($other_author1_sname!="")) echo 'I.'.$other_author1_sname.' '.$other_author1_fname.' '.$other_author1_mname{0}.'.';?>
-
-	 <?php //if (($other_author2_sname!="")&&($other_author2_sname!="")&&($other_author2_sname!="")){ echo '    II.'.$other_author2_sname.' '.$other_author2_fname.' '.$other_author2_mname{0}.'.';
-
-    //if($title!="") echo "<br>III.".$title; else if($parallel_title!="") echo "<br>III.".$parallel_title; else if($oti!="") echo "<br>III.".$oti;  else if($uti!="") echo "<br>III.".$uti; }
-    //else{
-    //if($title!="") echo "<br>II.".$title; else if($parallel_title!="") echo "<br>II.".$parallel_title; else if($oti!="") echo "<br>II.".$oti;  else if($uti!="") echo "<br>II.".$uti;}?>
 		 <?php if ($subject1 != "") {
         echo "1.&nbsp;" . $subject1 . ". ";
     }
@@ -485,13 +454,6 @@ function MM_openBrWindow1(theURL,winName,features) { //v2.0
   <tr>
     <td align="left" bgcolor="#FFFFFF"><span class="style1"></span></td>
     <td bgcolor="#FFFFFF"><span class="style1"><?php if ($isbn != "") {?>&nbsp;&nbsp;&nbsp;ISBN&nbsp;<?php echo $isbn; ?><?php }?>
-      <?php // if($subject1!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;".$subject1; ?>
-		<?php //if($subject2!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;".$subject2; ?>
-	    <?php //if($subject3!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;".$subject3; ?>
-	    <?php //if($subject4!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;".$subject4; ?>
-	    <?php //if($subject5!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.&nbsp;".$subject5; ?>
-	    <?php //if($subject6!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.&nbsp;".$subject6; ?>
-	    <?php //if($subject7!="") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.&nbsp;".$subject7; ?>
 
     </span></td>
   </tr>
@@ -502,13 +464,6 @@ function MM_openBrWindow1(theURL,winName,features) { //v2.0
     <td align="right" bgcolor="#FFFFFF"><span class="style1"></span></td>
 	<td bgcolor="#FFFFFF">
       <span class="style1">&nbsp;&nbsp;
-	 <?php //if (($other_author1_sname!="")&&($other_author1_sname!="")&&($other_author1_sname!="")) echo 'I.'.$other_author1_sname.' '.$other_author1_fname.' '.$other_author1_mname{0}.'.';?>
-
-	 <?php //if (($other_author2_sname!="")&&($other_author2_sname!="")&&($other_author2_sname!="")){ echo '    II.'.$other_author2_sname.' '.$other_author2_fname.' '.$other_author2_mname{0}.'.';
-
-    //if($title!="") echo "<br>III.".$title; else if($parallel_title!="") echo "<br>III.".$parallel_title; else if($oti!="") echo "<br>III.".$oti;  else if($uti!="") echo "<br>III.".$uti; }
-    //else{
-    //if($title!="") echo "<br>II.".$title; else if($parallel_title!="") echo "<br>II.".$parallel_title; else if($oti!="") echo "<br>II.".$oti;  else if($uti!="") echo "<br>II.".$uti;}?>
 		 <?php if ($subject1 != "") {
         echo "1.&nbsp;" . $subject1 . ". ";
     }
