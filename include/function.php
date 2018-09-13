@@ -71,9 +71,4 @@ function classification($classification)
         $class_image = "camera.gif";
     }
     return $class_image;
-
-}
-
-function defaultIfEmpty(&$var, $def) {
-	return isset($var) ? $var 
 }
