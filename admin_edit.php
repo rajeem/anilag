@@ -148,10 +148,10 @@ if ($edit_book == "on") {
             $pdb = $_SESSION["pdb"];
         }
 
-        session_unregister("front");
-        session_unregister("pdf");
-        session_unregister("help");
-        session_unregister("pdb");
+        unset($_SESSION['front']);
+        unset($_SESSION['pdf']);
+        unset($_SESSION['help']);
+        unset($_SESSION['pdb']);
 
         if (($title == "") || ($author == "")) {
             $fielderror = "<strong><font color=red>Please fill the important fields!</font></strong>";

@@ -55,26 +55,24 @@ if (file_exists($filename)) {
 
         if ($type == "front") {
             $front = $attachment_of_user;
-            session_unregister("front");
-            session_register("front");
+            unset($_SESSION['front']);
+            $_SESSION['front'] = $front;
         }
         if ($type == "pdf") {
             $pdf = $attachment_of_user;
-            session_unregister("pdf");
-            session_register("pdf");
+            unset($_SESSION['pdf']);
+            $_SESSION['pdf']) = $pdf;
         }
         if ($type == "help") {
             $help = $attachment_of_user;
-            session_unregister("help");
-            session_register("help");
+            unset($_SESSION['help']);
+            $_SESSION['help'] = $help;
         }
         if ($type == "pdb") {
             $pdb = $attachment_of_user;
-            session_unregister("pdb");
-            session_register("pdb");
+            unset($_SESSION['pdb']);
+            $_SESSION['pdb'] = $pdb;
         }
-        //session_unregister("attachment_of_user");
-        //session_register("attachment_of_user");
 
         echo "<font color=\"#ffffff\" \"face=Arial, Helvetica, sans-serif\">
 			<br>The file " . basename($_FILES['uploadedfile']['name']) .

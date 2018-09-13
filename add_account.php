@@ -39,50 +39,39 @@ if ($_POST['add']) {
 
 <head>
 <script type="text/JavaScript">
-<!--
-function MM_openBrWindow1(theURL,winName,features) { //v2.0
-  window.open(theURL,winName,features);
-}
+  function FormValidate() {
 
-function MM_openBrWindow(theURL,winName,features) { //v2.0
-  window.open(theURL,winName,features);
-}
-//-->
-</script>
+    if (document.myform.name.value == "") {
+      alert("Enter the username!");
+      document.myform.name.focus();
+      return false;
+    }
 
-<script type="text/JavaScript">
-<!--
-function FormValidate(){
+    if (document.myform.first.value == "") {
+      alert("Enter the firstname!");
+      document.myform.first.focus();
+      return false;
+    }
 
-if (document.myform.name.value == ""){
-alert("Enter the username!");
-document.myform.name.focus();
-return false;}
-
-if (document.myform.first.value == ""){
-alert("Enter the firstname!");
-document.myform.first.focus();
-return false;}
-
-if (document.myform.last.value == ""){
-alert("Enter the Last Name!");
-document.myform.last.focus();
-return false;}
+    if (document.myform.last.value == "") {
+      alert("Enter the Last Name!");
+      document.myform.last.focus();
+      return false;
+    }
 
 
-if (document.myform.middle.value == ""){
-alert("Enter the username!");
-document.myform.middle.focus();
-return false;}
+    if (document.myform.middle.value == "") {
+      alert("Enter the username!");
+      document.myform.middle.focus();
+      return false;
+    }
 
-if (document.myform.password.value == ""){
-alert("Enter the user password!");
-document.myform.password.focus();
-return false;}
-
-}
-
-//-->
+    if (document.myform.password.value == "") {
+      alert("Enter the user password!");
+      document.myform.password.focus();
+      return false;
+    }
+  }
 </script>
 
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />

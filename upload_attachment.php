@@ -1,7 +1,7 @@
 <?php
 session_start();
 $error = $_SESSION['error'];
-session_unregister("error");
+unset($_SESSION['error']);
 
 include "include/connect.php";
 include "include/gensettings.php";
