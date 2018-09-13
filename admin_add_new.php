@@ -81,7 +81,7 @@ if ($add_book == "on") {
         $_SESSION['author_mname'] = $_POST['mname'];
         $_SESSION['title'] = $_POST['title'];
         $_SESSION['access_num'] = $_POST['access_no'];
-        $_SESSION['subject_classification'] = $_POST['subject_classification'];
+        $_SESSION['subject_classification'] = isset($_POST['subject_classification']) ? $_POST['subject_classification'] : '';
         $_SESSION['subject1'] = $_POST['subject1'];
         $_SESSION['subject2'] = $_POST['subject2'];
         $_SESSION['subject3'] = $_POST['subject3'];
