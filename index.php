@@ -94,7 +94,7 @@ require_once("/layout/header.php");
                   echo '<option>' . $row['school_code'] . '</option>';
                 }
               }
-              echo '<option value="all"' . ($school_code == "all" ? ' selected="selected"' : '') . '>All</option>';
+              echo '<option value="all"' . ($row['school_code'] == "all" ? ' selected="selected"' : '') . '>All</option>';
             ?>
           </select></td>
         <td>
