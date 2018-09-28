@@ -88,7 +88,7 @@ require_once("/layout/header.php");
               $sq6 = "SELECT * from school order by school_code";
               $result6 = mysql_query($sq6);
               while ($row = mysql_fetch_array($result6)) {
-                if ($dschool_code == $code) { 
+                if ($dschool_code == $row['school_code']) { 
                   echo '<option selected="selected">' . $row['school_code'] . '</option>';
                 } else {
                   echo '<option>' . $row['school_code'] . '</option>';
