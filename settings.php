@@ -19,14 +19,14 @@ $selected15 = "";
 //authorized
 if ($uri == "admin") {
     if (isset($_POST['op'])) {
-        $save_css = $_POST['template'];
+        $css = $_POST['template'];
         $hour_allow = $_POST['hour_allow'];
         $rate = $_POST['rate'];
-        $sat = isset($_POST['sat']);
-        $sun = isset($_POST['sun']);
-        $auto = $_POST['auto'];
+        $sat = isset($_POST['sat']) ? 'on' : '';
+        $sun = isset($_POST['sun']) ? 'on' : '';
+        $auto_id = $_POST['auto_id'];
         $auto_deadline = $_POST['auto1'];
-        $header = $_POST['header'];
+        $header_title = $_POST['header_title'];
         $overdue_price = $_POST['overdue_price'];
         $search_output = $_POST['search_output'];
         $location2 = isset($_POST['location2']) ? $_POST['location2'] : '';
@@ -36,8 +36,8 @@ if ($uri == "admin") {
         $default_school = $_POST['school_code'];
         $book_preview = $_POST['bp'];
 
-        $sql = "UPDATE settings set css='$save_css',hour_allow='$hour_allow',auto_id='$auto',";
-        $sql .= "header_title='$header',auto_deadline='$auto_deadline',rate='$rate',sat='$sat',";
+        $sql = "UPDATE settings set css='$css',hour_allow='$hour_allow',auto_id='$auto_id',";
+        $sql .= "header_title='$header_title',auto_deadline='$auto_deadline',rate='$rate',sat='$sat',";
         $sql .= "sun='$sun',location2='$location2',author_card='$author_card',title_card='$title_card',";
         $sql .= "overdue_price='$overdue_price',search_output='$search_output',rec_per_page='$rec_per_page',";
         $sql .= "default_school='$default_school',book_preview='$book_preview'";
@@ -249,7 +249,7 @@ if ($uri == "admin") {
 
                         <td width="20%" align="right">Name/Header:</td>
                         <td width="2%">&nbsp;</td>
-                        <td colspan="2"><input name="header" type="text" id="header" value="<?php echo $header_title; ?>"
+                        <td colspan="2"><input name="header_title" type="text" id="header_title" value="<?php echo $header_title; ?>"
                                 size="40" class="dilaw" /></td>
                     </tr>
                     <tr>
@@ -281,9 +281,9 @@ if ($uri == "admin") {
                         <td align="right">Auto setting of borrowers ID</td>
                         <td>&nbsp;</td>
                         <td>
-                            <input type="radio" name="auto" value="1" <?php echo $selected3; ?>/>
+                            <input type="radio" name="auto_id" value="1" <?php echo $selected3; ?>/>
                             ON
-                            <input type="radio" name="auto" value="0" <?php echo $selected4; ?>/>
+                            <input type="radio" name="auto_id" value="0" <?php echo $selected4; ?>/>
                             OFF</td>
                         <td>&nbsp;</td>
                     </tr>
